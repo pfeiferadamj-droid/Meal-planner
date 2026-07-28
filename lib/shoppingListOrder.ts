@@ -213,6 +213,7 @@ const KEYWORD_RULES: readonly KeywordRule[] = [
   {
     zone: 'Flowers',
     terms: ['flowers', 'bouquet', 'floral', 'floral arrangement', 'plant'],
+    excludeTerms: ['plantain', 'plant based'],
   },
   {
     zone: 'Frozen Food',
@@ -288,7 +289,7 @@ const KEYWORD_RULES: readonly KeywordRule[] = [
   {
     zone: 'Beverages',
     terms: [
-      'sparkling water', 'seltzer', 'juice', 'lemonade', 'kombucha', 'soda',
+      'sparkling water', 'spring water', 'seltzer', 'juice', 'lemonade', 'kombucha', 'soda',
       'beverage', 'beverages', 'drink', 'drinks', 'iced tea', 'black tea',
       'green tea', 'herbal tea', 'tea bags', 'tea sachets', 'chai', 'yerba mate',
     ],
