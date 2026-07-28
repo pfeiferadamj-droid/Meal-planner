@@ -52,13 +52,15 @@ Under the hood: Next.js App Router, React, TypeScript, Tailwind, and an embedded
 
 - [Node.js 20+](https://nodejs.org) — that's it. No Docker, no database install.
   (On a Mac, download the macOS installer from nodejs.org, or `brew install node` if you use Homebrew.)
-- `git`, for cloning (macOS offers to install it automatically the first time you run a `git` command).
+- `git`, for cloning. On a fresh Mac, the first `git` command pops up a dialog offering to install the **Command Line Developer Tools** — click **Install** (not "Get Xcode"), wait for it to finish (~5–10 min), then re-run your `git` command. If you dismissed the dialog, bring it back with `xcode-select --install`.
 
 ## Quick start
 
 Works great from the VS Code integrated terminal (Terminal → New Terminal), or any terminal.
 
 ### 1. Clone and install
+
+Run these **one line at a time** (pasting the whole block at once can glue lines together in some terminals):
 
 ```bash
 git clone https://github.com/pfeiferadamj-droid/Meal-planner.git
