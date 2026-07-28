@@ -235,7 +235,7 @@ function validateShoppingClassifications(
 }
 
 function printShoppingOrder(shoppingList: ListCategory[]) {
-  console.log("🛒 Derived shopping order (Trader Joe's run, then Hy-Vee):");
+  console.log("🛒 Derived shopping order:");
   for (const category of shoppingList) {
     console.log(`  ${category.category}: ${category.items.map((item) => item.n).join(", ")}`);
   }

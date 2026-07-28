@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { HOUSEHOLD_GOODS_SECTION } from "@/lib/constants";
 import { deriveShoppingListFromMeals } from "@/lib/domain/shoppingListDerivation";
-import { STORE_WALK_ORDER } from "@/lib/shoppingListOrder";
+import { HYVEE_STORE_ORDER, STORE_WALK_ORDER } from "@/lib/shoppingListOrder";
 import type { HouseholdGoodsItem, MealInput } from "@/lib/types";
 
 function meal(
@@ -98,19 +98,24 @@ const checkedList = deriveShoppingListFromMeals(
 
 assert.equal(checkedList.at(-1)?.items[0]?.checked, true);
 
-// Hy-Vee items land in Hy-Vee zones, after the Trader Joe's run.
-const mealWithHyvee = meal("Meal C", ["Chicken thighs", "Trader Joe's Spinach"]);
-const twoStoreList = deriveShoppingListFromMeals([mealWithHyvee], [], []);
-const meatCounter = twoStoreList.find((category) => category.category === "Meat Counter");
+// A Hy-Vee week regroups the whole list into Hy-Vee zones.
+const hyveeMeal = meal("Meal C", ["Chicken thighs", "Baby spinach", "Trader Joe's Rice"]);
+const hyveeList = deriveShoppingListFromMeals([hyveeMeal], [], [], [], { store: "hyvee" });
+const hyveeCategories = hyveeList.map((category) => category.category);
 
+assert.ok(
+  hyveeCategories.every((category) =>
+    HYVEE_STORE_ORDER.includes(category as (typeof HYVEE_STORE_ORDER)[number])
+  ),
+  "Hy-Vee week list should only use Hy-Vee zones"
+);
 assert.deepEqual(
-  meatCounter?.items.map((item) => item.n),
+  hyveeList.find((category) => category.category === "Meat Counter")?.items.map((item) => item.n),
   ["Chicken thighs"]
 );
-assert.ok(
-  twoStoreList.findIndex((category) => category.category === "Vegetables") <
-    twoStoreList.findIndex((category) => category.category === "Meat Counter"),
-  "Trader Joe's zones should come before Hy-Vee zones"
+assert.deepEqual(
+  hyveeList.find((category) => category.category === "Produce")?.items.map((item) => item.n),
+  ["Baby spinach"]
 );
 
 // On-hand ("Use Up") ingredients auto-mark matching derived items as pantry.

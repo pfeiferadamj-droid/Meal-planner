@@ -24,7 +24,9 @@ import {
   WeekOption,
   HouseholdGoodsItem,
   OnHandItem,
+  ShoppingStore,
 } from "@/lib/types";
+import { DEFAULT_SHOPPING_STORE, isShoppingStore } from "@/lib/shoppingListOrder";
 import {
   deriveWeekStartDateOnlyFromWeekRange,
   getWeekStartDateOnly,
@@ -46,9 +48,16 @@ export async function readSeedWeekData(): Promise<WeekData> {
       weekData.shoppingList ?? [],
       weekData.junkList,
       weekData.householdGoods ?? [],
-      { onHandItems: weekData.onHandItems ?? [] }
+      {
+        onHandItems: weekData.onHandItems ?? [],
+        store: normalizeShoppingStore(weekData.shoppingStore),
+      }
     ),
   };
+}
+
+function normalizeShoppingStore(value: unknown): ShoppingStore {
+  return isShoppingStore(value) ? value : DEFAULT_SHOPPING_STORE;
 }
 
 async function enrichJunkList(
@@ -145,12 +154,13 @@ async function buildStoredMealPlan(
   const junkList = await enrichJunkList(client, mealPlanId, row.plan_data.junkList ?? []);
   const householdGoods: HouseholdGoodsItem[] = row.plan_data.householdGoods ?? [];
   const onHandItems: OnHandItem[] = row.plan_data.onHandItems ?? [];
+  const shoppingStore = normalizeShoppingStore(row.plan_data.shoppingStore);
   const shoppingList = deriveShoppingListFromMeals(
     meals,
     row.plan_data.shoppingList ?? [],
     junkList,
     householdGoods,
-    { onHandItems }
+    { onHandItems, store: shoppingStore }
   );
 
   return {
@@ -161,6 +171,7 @@ async function buildStoredMealPlan(
     junkList,
     householdGoods,
     onHandItems,
+    shoppingStore,
     source: row.source,
     status: row.status,
     generationContext: row.generation_context ?? {},
@@ -280,16 +291,20 @@ export async function upsertMealPlan(
       existingPlanRow?.plan_data.onHandItems ??
       normalizedWeekData.onHandItems ??
       [];
+    const shoppingStore = normalizeShoppingStore(
+      existingPlanRow?.plan_data.shoppingStore ?? normalizedWeekData.shoppingStore
+    );
     const weekDataToStore: WeekData & { shoppingList: ListCategory[] } = {
       ...normalizedWeekData,
       householdGoods,
       onHandItems,
+      shoppingStore,
       shoppingList: deriveShoppingListFromMeals(
         normalizedWeekData.meals,
         previousShoppingList,
         normalizedWeekData.junkList,
         householdGoods,
-        { onHandItems }
+        { onHandItems, store: shoppingStore }
       ),
     };
 
@@ -392,6 +407,7 @@ export async function updateMealPlanLists(
     junkList: ListCategory[];
     householdGoods: HouseholdGoodsItem[];
     onHandItems: OnHandItem[];
+    shoppingStore: ShoppingStore;
     source?: string;
     generationContext?: Record<string, unknown>;
   }
@@ -403,6 +419,7 @@ export async function updateMealPlanLists(
       junkListJson: JSON.stringify(input.junkList),
       householdGoodsJson: JSON.stringify(input.householdGoods),
       onHandItemsJson: JSON.stringify(input.onHandItems),
+      shoppingStoreJson: JSON.stringify(input.shoppingStore),
       source: input.source ?? "user_edit",
       generationContextJson: JSON.stringify(input.generationContext ?? {}),
     });
@@ -425,6 +442,7 @@ export async function mutateMealPlanComposition(
     const junkList = planRow.plan_data.junkList ?? [];
     const householdGoods: HouseholdGoodsItem[] = planRow.plan_data.householdGoods ?? [];
     const onHandItems: OnHandItem[] = planRow.plan_data.onHandItems ?? [];
+    const shoppingStore = normalizeShoppingStore(planRow.plan_data.shoppingStore);
     const touchedMealIds = new Set<number>();
 
     if (input.action === "add") {
@@ -521,7 +539,7 @@ export async function mutateMealPlanComposition(
       previousShoppingList,
       junkList,
       householdGoods,
-      { pruneOrphans, onHandItems }
+      { pruneOrphans, onHandItems, store: shoppingStore }
     );
 
     await mealRepo.updateMealPlanLists(client, {
@@ -530,6 +548,7 @@ export async function mutateMealPlanComposition(
       junkListJson: JSON.stringify(junkList),
       householdGoodsJson: JSON.stringify(householdGoods),
       onHandItemsJson: JSON.stringify(onHandItems),
+      shoppingStoreJson: JSON.stringify(shoppingStore),
       source: "menu_edit",
       generationContextJson: JSON.stringify({
         lastCompositionAction: input.action,

@@ -4,7 +4,7 @@
 
 This file documents the home Trader Joe's walk order used by the app. Shopping lists are derived from meal ingredients, then grouped into these sections so the shopper can move through the store once.
 
-Trader Joe's is the primary store. A small set of items (fresh butcher meat, gluten-free bakery) is bought at Hy-Vee instead — see `data/hyvee-items.md` for the item rules and `data/hyvee-areas.md` for the Hy-Vee walk order. The app shows the full Trader Joe's run first, then the Hy-Vee run.
+The household makes **one grocery run per week**. Trader Joe's is the default store and this file documents its walk order; when a week is shopped at Hy-Vee instead (Shop page toggle), the whole list regroups into the Hy-Vee walk order documented in `data/hyvee-areas.md`.
 
 ---
 

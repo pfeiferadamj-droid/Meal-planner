@@ -146,11 +146,13 @@ export function serializePlanData(weekData: {
   junkList: unknown;
   householdGoods?: unknown;
   onHandItems?: unknown;
+  shoppingStore?: unknown;
 }) {
   return {
     shoppingList: weekData.shoppingList,
     junkList: weekData.junkList,
     householdGoods: weekData.householdGoods ?? [],
     onHandItems: weekData.onHandItems ?? [],
+    shoppingStore: weekData.shoppingStore ?? "traderJoes",
   };
 }

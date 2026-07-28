@@ -63,6 +63,12 @@ export interface OnHandItem {
   n: string;
 }
 
+/**
+ * The single store this week's shopping run happens at. One grocery visit
+ * per week — Trader Joe's by default, Hy-Vee when chosen on the Shop page.
+ */
+export type ShoppingStore = "traderJoes" | "hyvee";
+
 export interface ListItem {
   n: string;
   q?: string;
@@ -88,6 +94,7 @@ export interface WeekData<TMeal = MealInput> {
   junkList: ListCategory[];
   householdGoods?: HouseholdGoodsItem[];
   onHandItems?: OnHandItem[];
+  shoppingStore?: ShoppingStore;
   feedback?: MealFeedback[];
 }
 
@@ -116,6 +123,7 @@ export interface StoredMealPlan {
   junkList: ListCategory[];
   householdGoods: HouseholdGoodsItem[];
   onHandItems: OnHandItem[];
+  shoppingStore: ShoppingStore;
   source: string;
   status: string;
   generationContext: Record<string, unknown>;
@@ -148,6 +156,7 @@ export interface MealPlanRow {
     junkList: StoredMealPlan["junkList"];
     householdGoods?: StoredMealPlan["householdGoods"];
     onHandItems?: StoredMealPlan["onHandItems"];
+    shoppingStore?: StoredMealPlan["shoppingStore"];
   };
   source: string;
   status: string;

@@ -57,8 +57,9 @@ You are operating the Harvest meal planning engine for Trader Joe's weeks.
 - Junk category strings must exactly match: Coffee/Creamer, Beer/Wine, Chips, Sweets, Frozen Food, Frozen Treats, Beverages/Drinks
 
 ✅ SHOPPING SECTION ORDER:
-- Derived shopping lists cover TWO stores: the Trader Joe's walk (`data/shopping-areas.md`) first, then the Hy-Vee walk (`data/hyvee-areas.md`)
-- Store assignment is automatic: fresh butcher meat and gluten-free bakery go to Hy-Vee, everything else stays TJ's (`data/hyvee-items.md`). Name ingredients naturally and let the router place them.
+- ONE store per week: Trader Joe's by default; a week can be shopped at Hy-Vee instead (`shoppingStore: "hyvee"` on the plan, or the Shop page toggle).
+- The derived list uses the chosen store's walk order — `data/shopping-areas.md` (TJ's) or `data/hyvee-areas.md` (Hy-Vee). Never author store sections by hand.
+- On Hy-Vee weeks, plan generic / nationally available items — no TJ's-exclusive products unless already in the pantry.
 - Vegan Items means the refrigerated vegan/plant-based area only. Beans/lentils stay Pantry Items; frozen vegan items stay Frozen Food.
 - Dairy & Eggs is separate from Deli Meats & Cheeses.
 

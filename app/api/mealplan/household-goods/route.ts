@@ -50,7 +50,7 @@ async function saveHouseholdGoods(
     mealPlan.shoppingList,
     mealPlan.junkList,
     householdGoods,
-    { onHandItems: mealPlan.onHandItems ?? [] }
+    { onHandItems: mealPlan.onHandItems ?? [], store: mealPlan.shoppingStore }
   );
 
   return updateMealPlanLists(mealPlan.id, {
@@ -58,6 +58,7 @@ async function saveHouseholdGoods(
     junkList: mealPlan.junkList,
     householdGoods,
     onHandItems: mealPlan.onHandItems ?? [],
+    shoppingStore: mealPlan.shoppingStore,
     source: "user_edit",
     generationContext: {
       updatedFrom,

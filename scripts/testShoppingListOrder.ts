@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import {
   classifyShoppingItem,
-  getItemStore,
   getItemStoreZone,
   StoreId,
   StoreZone,
@@ -10,7 +9,7 @@ import {
 const cases: Array<{
   itemName: string;
   expectedZone: StoreZone;
-  expectedStore?: StoreId;
+  store?: StoreId;
   expectedConfidence?: "exact" | "keyword" | "fallback";
 }> = [
   {
@@ -61,71 +60,53 @@ const cases: Array<{
   { itemName: "Trader Joe's Restaurant Style Tortilla Chips", expectedZone: "Chips" },
   { itemName: "Trader Joe's Pinot Noir", expectedZone: "Beer/Wine" },
 
-  // Hy-Vee: fresh butcher-counter proteins
-  { itemName: "Chicken thighs", expectedZone: "Meat Counter", expectedStore: "hyvee" },
-  { itemName: "chicken breasts", expectedZone: "Meat Counter", expectedStore: "hyvee" },
-  { itemName: "Ground beef", expectedZone: "Meat Counter", expectedStore: "hyvee" },
-  { itemName: "Ground chicken", expectedZone: "Meat Counter", expectedStore: "hyvee" },
-  { itemName: "Pork tenderloin", expectedZone: "Meat Counter", expectedStore: "hyvee" },
-  // Hy-Vee: gluten-free bakery
+  // Hy-Vee weeks: the same items regroup into Hy-Vee sections
+  { itemName: "Chicken thighs", expectedZone: "Meat Counter", store: "hyvee" },
+  { itemName: "Ground beef", expectedZone: "Meat Counter", store: "hyvee" },
+  { itemName: "Baby spinach", expectedZone: "Produce", store: "hyvee" },
+  { itemName: "Sweet potatoes", expectedZone: "Produce", store: "hyvee" },
+  { itemName: "Greek yogurt", expectedZone: "Dairy Case", store: "hyvee" },
+  { itemName: "Crumbled feta cheese", expectedZone: "Deli", store: "hyvee" },
+  { itemName: "Frozen riced cauliflower", expectedZone: "Frozen Aisle", store: "hyvee" },
+  { itemName: "Corn tortillas", expectedZone: "Bakery & Gluten-Free", store: "hyvee" },
   {
     itemName: "Gluten-free hamburger buns",
     expectedZone: "Bakery & Gluten-Free",
-    expectedStore: "hyvee",
+    store: "hyvee",
   },
+  { itemName: "Sparkling water", expectedZone: "Grocery Aisles", store: "hyvee" },
+  { itemName: "Tortilla chips", expectedZone: "Grocery Aisles", store: "hyvee" },
+  { itemName: "Pinot Noir", expectedZone: "Beer & Wine", store: "hyvee" },
   {
-    itemName: "Canyon Bakehouse Hamburger Buns",
-    expectedZone: "Bakery & Gluten-Free",
-    expectedStore: "hyvee",
-  },
-  // Manual Hy-Vee override via name prefix; no zone keyword → aisles fallback
-  {
-    itemName: "Hy-Vee Birthday Cake",
+    itemName: "Mystery item",
     expectedZone: "Grocery Aisles",
-    expectedStore: "hyvee",
+    store: "hyvee",
     expectedConfidence: "fallback",
   },
-  // Stays at Trader Joe's: brand-named, TJ-specific proteins, frozen
-  {
-    itemName: "Trader Joe's Chicken Sausage — Roasted Garlic",
-    expectedZone: "Meats & Seafood",
-    expectedStore: "traderJoes",
-  },
-  { itemName: "chicken sausage", expectedZone: "Meats & Seafood", expectedStore: "traderJoes" },
-  { itemName: "frozen chicken thighs", expectedZone: "Frozen Food", expectedStore: "traderJoes" },
-  {
-    itemName: "Trader Joe's Gluten Free Whole Grain Bread",
-    expectedZone: "Bread & Tortillas",
-    expectedStore: "traderJoes",
-  },
+  // The same TJ-default items keep their TJ zones without a store argument
+  { itemName: "Chicken thighs", expectedZone: "Meats & Seafood" },
+  { itemName: "frozen chicken thighs", expectedZone: "Frozen Food" },
 ];
 
 for (const testCase of cases) {
-  const classification = classifyShoppingItem(testCase.itemName);
+  const store = testCase.store ?? "traderJoes";
+  const classification = classifyShoppingItem(testCase.itemName, store);
 
   assert.equal(
     classification.zone,
     testCase.expectedZone,
-    `${testCase.itemName} should classify to ${testCase.expectedZone}`
+    `${testCase.itemName} should classify to ${testCase.expectedZone} at ${store}`
   );
   assert.equal(
-    getItemStoreZone(testCase.itemName),
+    classification.store,
+    store,
+    `${testCase.itemName} classification should carry store ${store}`
+  );
+  assert.equal(
+    getItemStoreZone(testCase.itemName, store),
     testCase.expectedZone,
     `${testCase.itemName} getItemStoreZone wrapper should match classification`
   );
-
-  if (testCase.expectedStore) {
-    assert.equal(
-      classification.store,
-      testCase.expectedStore,
-      `${testCase.itemName} should be assigned to ${testCase.expectedStore}`
-    );
-    assert.equal(
-      getItemStore(testCase.itemName),
-      testCase.expectedStore,
-      `${testCase.itemName} getItemStore wrapper should match classification`
-    );
-  }
 
   if (testCase.expectedConfidence) {
     assert.equal(

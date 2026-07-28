@@ -15,8 +15,8 @@ export const MIN_DINNERS_PER_WEEK = 1;
 export const MAX_DINNERS_PER_WEEK = 7;
 export const DEFAULT_DINNERS_PER_WEEK = 4;
 
-// Combined shopping category order: the Trader Joe's walk, then the Hy-Vee
-// walk. Sourced from lib/shoppingListOrder.ts (single source of truth).
+// All known shopping zones in walk order (a week's list only ever uses one
+// store's zones). Sourced from lib/shoppingListOrder.ts (single source of truth).
 export const STORE_CATEGORY_ORDER = [
   ...TRADER_JOES_STORE_ORDER,
   ...HYVEE_STORE_ORDER,

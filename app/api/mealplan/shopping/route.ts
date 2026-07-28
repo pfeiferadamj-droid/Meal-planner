@@ -17,13 +17,14 @@ async function saveShoppingList(
 ) {
   const organizedShoppingList = options?.preserveItemOrder
     ? shoppingList
-    : organizeShoppingListForStoreLayout(shoppingList);
+    : organizeShoppingListForStoreLayout(shoppingList, mealPlan.shoppingStore);
 
   return updateMealPlanLists(mealPlan.id, {
     shoppingList: organizedShoppingList,
     junkList: mealPlan.junkList,
     householdGoods: mealPlan.householdGoods ?? [],
     onHandItems: mealPlan.onHandItems ?? [],
+    shoppingStore: mealPlan.shoppingStore,
     source: "user_edit",
     generationContext: {
       updatedFrom,
@@ -71,7 +72,7 @@ export const POST = createRouteHandler(async (request: NextRequest) => {
 
     // Find or create the persisted store-zone category for the item.
     const shoppingList = [...mealPlan.shoppingList];
-    const itemStoreZone = getItemStoreZone(itemName);
+    const itemStoreZone = getItemStoreZone(itemName, mealPlan.shoppingStore);
     let categoryIndex = shoppingList.findIndex(c => c.category === itemStoreZone);
     if (categoryIndex === -1) {
       categoryIndex = shoppingList.findIndex(c => c.category === category);

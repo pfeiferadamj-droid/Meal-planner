@@ -73,7 +73,7 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 
 | Ingredient | TJ's Product | Format | Notes |
 |---|---|---|---|
-| Chicken breasts / thighs | Fresh chicken (Hy-Vee meat counter) | Fresh | Generic name fine; fresh cuts are bought at Hy-Vee (see `data/hyvee-items.md`) |
+| Chicken breasts / thighs | Fresh chicken (TJ's butcher section; Hy-Vee meat counter on Hy-Vee weeks) | Fresh | Generic name fine |
 | Cooked chicken, ready to eat | Trader Joe's Just Chicken | Refrigerated vacuum pack | #1 meal-prep protein; use sliced or pulled |
 | Cooked chicken strips | Trader Joe's Grilled Chicken Strips | Frozen | Great from frozen into bowls and wraps |
 | Shredded smoked chicken | Trader Joe's Hardwood Smoked Pulled Chicken | Refrigerated | Smoky, ready to heat; great on salad kits and bowls |
@@ -81,7 +81,7 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 | Chicken sausage | Trader Joe's Chicken Sausage — Sun-Dried Tomato | Refrigerated, fully cooked | Pairs well with Mediterranean builds |
 | Chicken sausage | Trader Joe's Chicken Sausage — Spicy Jalapeño | Refrigerated, fully cooked | Use when you want heat built into the protein |
 | Chicken sausage | Trader Joe's Chicken Sausage — Roasted Garlic | Refrigerated, fully cooked | Mild, versatile |
-| Ground chicken | Ground chicken (Hy-Vee meat counter) | Fresh | Generic name fine |
+| Ground chicken | Ground chicken (TJ's butcher section or Hy-Vee meat counter) | Fresh | Generic name fine |
 
 #### If you need red meat (beef / pork / lamb — max once every 10 days)
 
@@ -89,9 +89,9 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 
 | Ingredient | TJ's Product | Format | Notes |
 |---|---|---|---|
-| Ground beef | Ground beef (Hy-Vee meat counter) | Fresh | Generic name fine |
+| Ground beef | Grass-fed ground beef (TJ's butcher section or Hy-Vee meat counter) | Fresh | Generic name fine |
 | Braised beef for tacos/bowls | Trader Joe's Frozen Beef Birria | Frozen | Rich, stew-braised; excellent with corn tortillas; verify GF label |
-| Pork tenderloin | Pork tenderloin (Hy-Vee meat counter) | Fresh | Quick-roasting cut that fits the 30-min window |
+| Pork tenderloin | Pork tenderloin (TJ's butcher section or Hy-Vee meat counter) | Fresh | Quick-roasting cut that fits the 30-min window |
 
 **Never plan:** fish or seafood (salmon, white fish, shrimp, smoked salmon), turkey in any form (ground turkey, deli turkey, turkey bacon), or Beef Bulgogi (soy-sauce marinade contains wheat).
 
@@ -165,7 +165,7 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 |---|---|---|
 | Corn tortillas | Corn tortillas (TJ's) | Naturally GF; tacos, tostadas, quick quesadillas |
 | GF bread | Trader Joe's Gluten Free Whole Grain Bread | For the rare bread-based dinner |
-| GF buns / bagels / wraps | Hy-Vee gluten-free section (Canyon Bakehouse, Schär, Udi's) | Name the item "gluten-free …" so it routes to the Hy-Vee run |
+| GF buns / bagels / wraps | Hy-Vee gluten-free section (Canyon Bakehouse, Schär, Udi's) | Hy-Vee weeks only — plan these when the week is shopped at Hy-Vee |
 
 #### If you need pasta
 
@@ -412,9 +412,12 @@ The household keeps a **"Use Up" list** in the app (Menu → Use Up tab) of ingr
 
 ---
 
-## 🛒 Shopping List — Two-Store Walk Order
+## 🛒 Shopping List — One Store Per Week
 
-The shopping list covers **two stores**: the full Trader Joe's run first, then a short **Hy-Vee** run. The app assigns each item to a store automatically — fresh butcher meat and gluten-free bakery go to Hy-Vee, everything else stays at Trader Joe's (rules in `data/hyvee-items.md`, Hy-Vee layout in `data/hyvee-areas.md`). Do not author store sections by hand; just name ingredients naturally ("chicken thighs", "gluten-free hamburger buns") and the router does the rest.
+The household makes **one grocery run per week**: Trader Joe's by default, occasionally Hy-Vee instead. The week's store is chosen on the Shop page (or via `shoppingStore` on the plan: `"traderJoes"` | `"hyvee"`), and the app orders the entire list for that store's walk. Do not author store sections by hand.
+
+- **Trader Joe's weeks (default):** plan exactly as documented in this file.
+- **Hy-Vee weeks:** prefer generic ingredient names and nationally available brands; don't plan TJ's-exclusive products the shopper can't buy (a TJ's engine is fine only if it's already in the pantry). Hy-Vee weeks are the time for GF buns/bagels/wraps and butcher-counter cuts. Full guidance in `data/hyvee-areas.md`.
 
 ### Trader Joe's walk order
 
@@ -431,17 +434,12 @@ Order categories to follow the **physical layout of the home Trader Joe's store*
 9. **Vegan Items** — Refrigerated vegan/plant-based section only: tofu, tempeh, plant-based meat-style items, refrigerated vegan dips and dressings
 10. **Pantry Items** — Sauces, condiments, dry grains, oats, pasta, canned beans, canned tomatoes, jarred vegetables, nuts, seeds, nut butters, crackers, crispbread, oils, vinegars, spices, broth, coconut milk, snacks
 11. **Frozen Food** — Frozen proteins, frozen grains, frozen vegetables, frozen complete entrees, cauliflower gnocchi, frozen treats
-12. **Meats & Seafood** — TJ's packaged/refrigerated proteins (fresh butcher cuts route to Hy-Vee instead)
+12. **Meats & Seafood** — Fresh chicken, ground beef, butcher-counter proteins
 13. **Bread & Tortillas** — Lavash, tortillas, English muffins, sprouted bread, pita, baguette, bagels, crumpets, naan, rolls
 
-### Hy-Vee walk order
+### Hy-Vee walk order (Hy-Vee weeks)
 
-1. **Produce** — fresh fruit and vegetables bought at Hy-Vee
-2. **Bakery & Gluten-Free** — GF bread, buns, bagels, wraps (Canyon Bakehouse, Schär, Udi's)
-3. **Meat Counter** — chicken thighs/breasts, ground chicken, ground beef, pork tenderloin, steaks, roasts
-4. **Grocery Aisles** — shelf-stable Hy-Vee items (fallback)
-5. **Dairy Case** — milk, yogurt, cheese, eggs, butter
-6. **Frozen Aisle** — frozen Hy-Vee items
+Produce → Bakery & Gluten-Free → Deli → Meat Counter → Grocery Aisles → Dairy Case → Frozen Aisle → Beer & Wine. Items map from their Trader Joe's zone automatically — see `data/hyvee-areas.md`.
 
 ### Shopping List Rules
 - **Do not author `shoppingList` by hand**: the app derives it from meal `ingredients`.
@@ -451,7 +449,7 @@ Order categories to follow the **physical layout of the home Trader Joe's store*
 - **Pantry state is app-managed**: pantry flags live on the persisted shopping list after user interaction.
 - **Frozen wins over fresh naming**: frozen broccoli, salmon, edamame, and grains belong in Frozen Food, not vegetables, meats, vegan, or pantry.
 - **Vegan Items is not a global vegan override**: beans, lentils, chickpeas, frozen edamame, and frozen vegan entrees stay in their normal physical sections.
-- **Store assignment is automatic**: fresh butcher meat and gluten-free bakery route to the Hy-Vee run; everything else (and anything named "Trader Joe's …") stays on the TJ's run. See `data/hyvee-items.md`.
+- **One store per week**: the whole list targets the week's chosen store (`shoppingStore`); switching the store on the Shop page regroups every item into that store's walk order.
 - **On-hand ingredients auto-mark pantry**: items matching the household's Use Up list arrive with `pantry: true` — don't hand-author that.
 
 ---

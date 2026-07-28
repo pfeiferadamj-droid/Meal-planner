@@ -71,6 +71,7 @@ Confirm in the app at http://localhost:3000/menu.
 
 - [ ] Read diner + companion preference docs
 - [ ] Checked the on-hand ("Use Up") list and worked items into the week where they fit
+- [ ] Confirmed this week's store (Trader Joe's default; Hy-Vee weeks use generic/nationally available items)
 - [ ] Confirmed this week's dinner count (default 4, max 7)
 - [ ] All meals are dinners, nothing else
 - [ ] Every meal gluten-free; no fish/seafood, turkey, or tofu/tempeh

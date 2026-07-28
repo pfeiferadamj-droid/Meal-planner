@@ -2,9 +2,9 @@
 
 ## A note on layout
 
-This file documents the home Hy-Vee walk order used by the app, the same way `data/shopping-areas.md` documents the Trader Joe's walk. Only items assigned to Hy-Vee (see `data/hyvee-items.md`) land in these sections — everything else stays on the Trader Joe's run.
+The household makes **one grocery run per week** — Trader Joe's by default, Hy-Vee when chosen for the week (Shop page toggle, or `shoppingStore: "hyvee"` on the plan). On a Hy-Vee week the entire shopping list is grouped into the sections below, in this walk order — the same way `data/shopping-areas.md` works for Trader Joe's weeks.
 
-The zone list and keyword rules live in `lib/shoppingListOrder.ts` (`HYVEE_STORE_ORDER` and `HYVEE_KEYWORD_RULES`). Keep this doc and that file aligned. If the local store gets remodeled or the walk order feels wrong, update both.
+The zone list and the Trader Joe's → Hy-Vee section mapping live in `lib/shoppingListOrder.ts` (`HYVEE_STORE_ORDER` and `TRADER_JOES_TO_HYVEE_ZONE`). Keep this doc and that file aligned. If the local store gets remodeled or the walk order feels wrong, update both.
 
 ---
 
@@ -12,12 +12,14 @@ The zone list and keyword rules live in `lib/shoppingListOrder.ts` (`HYVEE_STORE
 
 | Zone | What's Here |
 |---|---|
-| **Produce** | Fresh fruit and vegetables: bananas, apples, citrus, avocados, potatoes, onions, greens, fresh herbs |
-| **Bakery & Gluten-Free** | Bakery plus the dedicated gluten-free section: GF bread, buns, bagels, English muffins, tortillas and wraps (Canyon Bakehouse, Schär, Udi's) |
-| **Meat Counter** | Fresh butcher-counter proteins: chicken thighs/breasts, ground chicken, ground beef, pork tenderloin, pork chops, steaks, roasts |
-| **Grocery Aisles** | Center-store shelf-stable items; the fallback for anything not matched elsewhere |
-| **Dairy Case** | Milk, yogurt, cheese, eggs, butter, cream |
-| **Frozen Aisle** | Anything frozen bought at Hy-Vee |
+| **Produce** | Fresh fruit and vegetables, fresh herbs, salad kits, floral |
+| **Bakery & Gluten-Free** | Bakery plus the dedicated gluten-free section: GF bread, buns, bagels, tortillas and wraps (Canyon Bakehouse, Schär, Udi's) |
+| **Deli** | Deli meats and cheeses, hummus, prepared refrigerated proteins |
+| **Meat Counter** | Fresh butcher-counter proteins: chicken thighs/breasts, ground chicken, ground beef, pork tenderloin, steaks, roasts |
+| **Grocery Aisles** | Center-store shelf-stable items: sauces, grains, canned goods, snacks, chips, sweets, beverages; the fallback zone |
+| **Dairy Case** | Milk, yogurt, cottage cheese, eggs, butter, refrigerated plant-based items |
+| **Frozen Aisle** | Frozen vegetables, grains, entrées, treats |
+| **Beer & Wine** | Beer, wine, and other alcohol; last stop in the walk |
 
 ---
 
@@ -28,19 +30,39 @@ The zone list and keyword rules live in `lib/shoppingListOrder.ts` (`HYVEE_STORE
       ↓
 2. Bakery & Gluten-Free
       ↓
-3. Meat Counter
+3. Deli
       ↓
-4. Grocery Aisles
+4. Meat Counter
       ↓
-5. Dairy Case
+5. Grocery Aisles
       ↓
-6. Frozen Aisle
+6. Dairy Case
+      ↓
+7. Frozen Aisle
+      ↓
+8. Beer & Wine
 ```
 
 ---
 
-## Practical Notes
+## How items are placed
 
-- **Hy-Vee is the second stop.** The shopping list shows the full Trader Joe's run first, then the Hy-Vee run.
-- **Zone names are unique across stores on purpose.** "Meat Counter" is Hy-Vee; "Meats & Seafood" is Trader Joe's. Never reuse a Trader Joe's zone name here.
-- **Grocery Aisles is the fallback** for Hy-Vee items that don't match a more specific section.
+Items classify through the (rich) Trader Joe's keyword rules first, then map onto the Hy-Vee section that carries the same goods:
+
+| Trader Joe's zone | Hy-Vee zone |
+|---|---|
+| Flowers, Prepped Salads, Herbs, Vegetables, Fruit, Roots | Produce |
+| Bread & Tortillas | Bakery & Gluten-Free |
+| Deli Meats & Cheeses | Deli |
+| Meats & Seafood | Meat Counter |
+| Beverages, Pantry Items, Sweets, Chips | Grocery Aisles |
+| Dairy & Eggs, Vegan Items | Dairy Case |
+| Frozen Food | Frozen Aisle |
+| Beer/Wine | Beer & Wine |
+
+## Planning a Hy-Vee week
+
+- Prefer **generic ingredient names** and nationally available brands — the shopper can't buy "Trader Joe's Zhoug Sauce" at Hy-Vee.
+- TJ's-branded engines are fine **only if they're already in the pantry** (mark them `pantry: true` context or lean on the Use Up list); otherwise pick a Hy-Vee-available equivalent and name it plainly ("chimichurri sauce", "sweet chili sauce" — still gluten-free).
+- Hy-Vee's gluten-free bakery (Canyon Bakehouse, Schär, Udi's) is much bigger than TJ's — Hy-Vee weeks are the time to plan GF buns, bagels, and wraps.
+- The fresh meat counter is a strength: chicken thighs, ground chicken, pork tenderloin, steaks all fit the household rules (red-meat cadence still applies).

@@ -25,11 +25,11 @@ The planning rules live in `data/diner-preferences.md` (dietary hard rules and w
 
 ## Why Harvest
 
-Most meal apps optimize for recipes. Harvest optimizes for **one weekly shop — Trader Joe's first, with a short Hy-Vee run for fresh meat and gluten-free bakery**:
+Most meal apps optimize for recipes. Harvest optimizes for **one weekly shop — Trader Joe's by default, or Hy-Vee when you pick it for the week**:
 
 - A flat menu of **dinners — you choose how many per week** (no day grid to babysit)
 - Macros that matter in practice — **calories, protein, carbs, fat, and fiber**
-- A shopping list ordered for how you actually walk each store, split by store automatically
+- A shopping list ordered for how you actually walk the week's store, with a per-week store toggle
 - A companion “junk” list, household goods list, and a **“Use Up” list** of ingredients already at home (they feed the next plan and auto-mark Pantry on the shopping list)
 - Hearts, swaps, and an explore library so good meals come back
 
@@ -42,7 +42,7 @@ It also ships with markdown + JSON tooling so you (or an AI assistant) can draft
 | Surface | What it does |
 |---|---|
 | **Menu** (`/menu`) | The week’s meals by type, plus Junk, Use Up, and Household tabs |
-| **Shop** (`/shop`) | Derived shopping list in store walking order — Trader Joe's run, then Hy-Vee |
+| **Shop** (`/shop`) | Derived shopping list in the week's store walking order (Trader Joe's or Hy-Vee) |
 | **Explore** (`/explore`) | Searchable meal library with hearts and history |
 | **Offline-friendly** | Service worker keeps the current week usable in-store |
 
@@ -144,8 +144,7 @@ npm run meal-plan:publish   # publish to the app (running or not)
 | [`data/meal-plan-skill.md`](data/meal-plan-skill.md) | AI/CLI week-authoring skill + JSON scaffold |
 | [`data/MEAL_PLAN_PRODUCTION_WORKFLOW.md`](data/MEAL_PLAN_PRODUCTION_WORKFLOW.md) | End-to-end publish checklist |
 | [`data/shopping-areas.md`](data/shopping-areas.md) | Trader Joe's store-area hints used when ordering the list |
-| [`data/hyvee-items.md`](data/hyvee-items.md) | What gets bought at Hy-Vee instead of Trader Joe's |
-| [`data/hyvee-areas.md`](data/hyvee-areas.md) | Hy-Vee store-area hints and walk order |
+| [`data/hyvee-areas.md`](data/hyvee-areas.md) | Hy-Vee walk order + guidance for Hy-Vee weeks |
 
 ## Project layout
 
@@ -188,6 +187,7 @@ Scripts talk to the same embedded database as the app (or through the app's API 
 | `*` | `/api/mealplan/junk` | Junk list updates |
 | `*` | `/api/mealplan/household-goods` | Household list updates |
 | `POST`/`DELETE` | `/api/mealplan/on-hand` | “Use Up” (at-home ingredients) list updates |
+| `PUT` | `/api/mealplan/store` | Choose the week's store (Trader Joe's or Hy-Vee) |
 | `GET`/`POST` | `/api/meals` | Meal library |
 | `PUT` | `/api/meals/[id]` | Update a meal |
 

@@ -1,6 +1,10 @@
 import { HOUSEHOLD_GOODS_SECTION } from "@/lib/constants";
-import { ListCategory, ListItem, MealInput, StoredMeal, HouseholdGoodsItem, OnHandItem } from "@/lib/types";
-import { getItemStoreZone, organizeShoppingListForStoreLayout } from "@/lib/shoppingListOrder";
+import { ListCategory, ListItem, MealInput, StoredMeal, HouseholdGoodsItem, OnHandItem, ShoppingStore } from "@/lib/types";
+import {
+  DEFAULT_SHOPPING_STORE,
+  getItemStoreZone,
+  organizeShoppingListForStoreLayout,
+} from "@/lib/shoppingListOrder";
 import { normalizeShoppingName, shoppingItemMatchesMealIngredient } from "@/lib/domain/shoppingUsage";
 
 type DerivableMeal = MealInput | StoredMeal;
@@ -14,10 +18,11 @@ export function deriveShoppingListFromMeals(
   previousShoppingList: ListCategory[] = [],
   junkList: ListCategory[] = [],
   householdGoods: HouseholdGoodsItem[] = [],
-  options?: { pruneOrphans?: boolean; onHandItems?: OnHandItem[] }
+  options?: { pruneOrphans?: boolean; onHandItems?: OnHandItem[]; store?: ShoppingStore }
 ): ListCategory[] {
   const previousByName = getPreviousItemsByName(previousShoppingList);
   const derivedByName = new Map<string, ListItem>();
+  const store = options?.store ?? DEFAULT_SHOPPING_STORE;
   const onHandItems = options?.onHandItems ?? [];
   const isOnHand = (itemName: string) =>
     onHandItems.some((onHand) => shoppingItemMatchesMealIngredient(itemName, onHand.n));
@@ -70,9 +75,10 @@ export function deriveShoppingListFromMeals(
 
   const storeLayoutList = organizeShoppingListForStoreLayout(
     Array.from(derivedByName.values()).map((item) => ({
-      category: getItemStoreZone(item.n),
+      category: getItemStoreZone(item.n, store),
       items: [item],
-    }))
+    })),
+    store
   );
 
   const householdSection = buildHouseholdGoodsSection(householdGoods, previousShoppingList);

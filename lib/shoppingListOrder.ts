@@ -1,18 +1,24 @@
-import { ListCategory } from './types';
+import { ListCategory, ShoppingStore } from './types';
 
 /**
- * Stores the household shops at. Trader Joe's is the default; a small set of
- * items (fresh butcher meat, gluten-free bakery) is bought at Hy-Vee instead.
- * Item → store rules are documented in data/hyvee-items.md.
+ * The household makes ONE grocery run per week — Trader Joe's by default,
+ * Hy-Vee when chosen for the week (Shop page toggle / plan `shoppingStore`).
+ * The whole shopping list is ordered for the chosen store's walk.
  */
-export const STORE_IDS = ['traderJoes', 'hyvee'] as const;
+export const STORE_IDS = ['traderJoes', 'hyvee'] as const satisfies readonly ShoppingStore[];
 
-export type StoreId = typeof STORE_IDS[number];
+export type StoreId = ShoppingStore;
+
+export const DEFAULT_SHOPPING_STORE: StoreId = 'traderJoes';
 
 export const STORE_LABELS: Record<StoreId, string> = {
   traderJoes: "Trader Joe's",
   hyvee: 'Hy-Vee',
 };
+
+export function isShoppingStore(value: unknown): value is StoreId {
+  return value === 'traderJoes' || value === 'hyvee';
+}
 
 /**
  * Home Trader Joe's store walking order.
@@ -44,36 +50,60 @@ export type TraderJoesStoreZone = typeof TRADER_JOES_STORE_ORDER[number];
  * Home Hy-Vee walking order.
  * This follows the physical layout documented in data/hyvee-areas.md.
  * Zone names are intentionally distinct from the Trader Joe's zones so a flat
- * persisted shopping list stays unambiguous about which store a section is in.
+ * persisted shopping list stays unambiguous about which store it was built for.
  */
 export const HYVEE_STORE_ORDER = [
   'Produce',
   'Bakery & Gluten-Free',
+  'Deli',
   'Meat Counter',
   'Grocery Aisles',
   'Dairy Case',
-  'Frozen Aisle'
+  'Frozen Aisle',
+  'Beer & Wine'
 ] as const;
 
 export type HyveeStoreZone = typeof HYVEE_STORE_ORDER[number];
 
 export type StoreZone = TraderJoesStoreZone | HyveeStoreZone;
 
-/** Combined walk order: the full Trader Joe's run, then the Hy-Vee run. */
+/** Every known zone across both stores (walk order within each store). */
 export const STORE_WALK_ORDER: readonly StoreZone[] = [
   ...TRADER_JOES_STORE_ORDER,
   ...HYVEE_STORE_ORDER,
 ];
 
+export const STORE_ZONE_ORDERS: Record<StoreId, readonly StoreZone[]> = {
+  traderJoes: TRADER_JOES_STORE_ORDER,
+  hyvee: HYVEE_STORE_ORDER,
+};
+
 const DEFAULT_STORE_ZONE: TraderJoesStoreZone = 'Pantry Items';
 const DEFAULT_HYVEE_ZONE: HyveeStoreZone = 'Grocery Aisles';
 
-const HYVEE_ZONE_SET: ReadonlySet<string> = new Set(HYVEE_STORE_ORDER);
-
-/** Maps a persisted shopping-list category (store zone) back to its store. */
-export function getStoreForShoppingCategory(category: string): StoreId {
-  return HYVEE_ZONE_SET.has(category) ? 'hyvee' : 'traderJoes';
-}
+/**
+ * Items classify through the (rich) Trader Joe's rules; on Hy-Vee weeks the
+ * resulting TJ zone maps onto the Hy-Vee section that carries the same goods.
+ */
+const TRADER_JOES_TO_HYVEE_ZONE: Record<TraderJoesStoreZone, HyveeStoreZone> = {
+  'Flowers': 'Produce',
+  'Prepped Salads': 'Produce',
+  'Herbs': 'Produce',
+  'Vegetables': 'Produce',
+  'Fruit': 'Produce',
+  'Roots': 'Produce',
+  'Beverages': 'Grocery Aisles',
+  'Deli Meats & Cheeses': 'Deli',
+  'Dairy & Eggs': 'Dairy Case',
+  'Vegan Items': 'Dairy Case',
+  'Pantry Items': 'Grocery Aisles',
+  'Frozen Food': 'Frozen Aisle',
+  'Sweets': 'Grocery Aisles',
+  'Meats & Seafood': 'Meat Counter',
+  'Bread & Tortillas': 'Bakery & Gluten-Free',
+  'Chips': 'Grocery Aisles',
+  'Beer/Wine': 'Beer & Wine',
+};
 
 export type ShoppingItemClassificationConfidence = 'exact' | 'keyword' | 'fallback';
 
@@ -86,12 +116,6 @@ export interface ShoppingItemClassification {
 
 interface KeywordRule {
   zone: TraderJoesStoreZone;
-  terms: readonly string[];
-  excludeTerms?: readonly string[];
-}
-
-interface HyveeKeywordRule {
-  zone: HyveeStoreZone;
   terms: readonly string[];
   excludeTerms?: readonly string[];
 }
@@ -320,7 +344,8 @@ const KEYWORD_RULES: readonly KeywordRule[] = [
     zone: 'Bread & Tortillas',
     terms: [
       'bread', 'tortilla', 'sourdough', 'pita', 'lavash', 'bagel', 'english muffin',
-      'crumpet', 'baguette', 'ciabatta', 'roll', 'naan',
+      'crumpet', 'baguette', 'ciabatta', 'roll', 'naan', 'buns', 'hamburger bun',
+      'hot dog bun',
     ],
   },
   {
@@ -352,121 +377,26 @@ const KEYWORD_RULES: readonly KeywordRule[] = [
   },
 ];
 
-/**
- * Items the household prefers to buy at Hy-Vee instead of Trader Joe's.
- * Keep aligned with data/hyvee-items.md. Everything else defaults to TJ's,
- * and anything with "Trader Joe's" in the name always stays at TJ's.
- */
-const HYVEE_ITEM_RULES: readonly { terms: readonly string[]; excludeTerms?: readonly string[] }[] = [
-  {
-    // Fresh butcher-counter proteins — better cuts and prices at Hy-Vee.
-    // TJ's-specific refrigerated proteins (chicken sausage, Just Chicken,
-    // pulled chicken, chicken strips) and frozen items stay at TJ's.
-    terms: [
-      'chicken thigh', 'chicken thighs', 'chicken breast', 'chicken breasts',
-      'chicken drumstick', 'chicken drumsticks', 'whole chicken',
-      'ground chicken', 'ground beef', 'ground pork', 'ground lamb',
-      'pork tenderloin', 'pork chop', 'pork chops', 'pork shoulder',
-      'steak', 'sirloin', 'flank steak', 'chuck roast', 'beef roast',
-      'stew meat', 'lamb chop', 'lamb chops',
-    ],
-    excludeTerms: [
-      'frozen', 'sausage', 'just chicken', 'pulled chicken',
-      'chicken strips', 'canned', 'broth', 'seasoning',
-    ],
-  },
-  {
-    // Gluten-free bakery — Hy-Vee's dedicated GF section beats TJ's.
-    terms: [
-      'gluten free bread', 'gf bread', 'gluten free bun', 'gluten free buns',
-      'gf bun', 'gf buns', 'gluten free bagel', 'gluten free bagels',
-      'gluten free english muffin', 'gluten free tortilla', 'gluten free wrap',
-      'gluten free hamburger', 'gluten free hot dog',
-      'canyon bakehouse', 'schar', 'udi s',
-    ],
-  },
-];
-
-/** Which store an item should be bought at. Trader Joe's is the default. */
-export function getItemStore(itemName: string): StoreId {
-  const name = normalizeShoppingItemForClassification(itemName);
-
-  if (name.includes('trader joe')) {
-    return 'traderJoes';
-  }
-  if (name.includes('hy vee') || name.includes('hyvee')) {
-    return 'hyvee';
-  }
-
-  for (const rule of HYVEE_ITEM_RULES) {
-    if (rule.excludeTerms?.some((term) => name.includes(normalizeShoppingItemForClassification(term)))) {
-      continue;
-    }
-    if (rule.terms.some((term) => name.includes(normalizeShoppingItemForClassification(term)))) {
-      return 'hyvee';
-    }
-  }
-
-  return 'traderJoes';
-}
-
-/**
- * Hy-Vee zone rules are intentionally light: only items assigned to Hy-Vee by
- * HYVEE_ITEM_RULES (or added there by hand) ever reach this classifier.
- */
-const HYVEE_KEYWORD_RULES: readonly HyveeKeywordRule[] = [
-  {
-    zone: 'Frozen Aisle',
-    terms: ['frozen'],
-  },
-  {
-    zone: 'Bakery & Gluten-Free',
-    terms: [
-      'bread', 'bun', 'buns', 'bagel', 'tortilla', 'wrap', 'english muffin',
-      'roll', 'rolls', 'baguette', 'gluten free', 'canyon bakehouse', 'schar',
-      'udi s',
-    ],
-  },
-  {
-    zone: 'Meat Counter',
-    terms: [
-      'chicken', 'beef', 'pork', 'steak', 'sirloin', 'flank', 'lamb',
-      'roast', 'stew meat', 'ribs', 'ham',
-    ],
-  },
-  {
-    zone: 'Dairy Case',
-    terms: [
-      'milk', 'yogurt', 'cheese', 'egg', 'eggs', 'butter', 'cream',
-      'kefir', 'cottage',
-    ],
-  },
-  {
-    zone: 'Produce',
-    terms: [
-      'banana', 'apple', 'berries', 'lemon', 'lime', 'avocado', 'orange',
-      'grape', 'pear', 'potato', 'sweet potato', 'onion', 'garlic', 'ginger',
-      'carrot', 'spinach', 'cucumber', 'tomato', 'zucchini', 'pepper',
-      'broccoli', 'kale', 'cabbage', 'mushroom', 'lettuce', 'romaine',
-      'squash', 'corn', 'herbs', 'cilantro', 'parsley', 'basil',
-    ],
-  },
-];
-
 export function shouldIncludeShoppingItem(itemName: string) {
   return !itemName.trim().toLowerCase().startsWith('leftover');
 }
 
 /**
- * Places every item in the correct store zone across both stores, following
- * the combined walk order: the full Trader Joe's run, then the Hy-Vee run.
+ * Places every item in the correct zone of the week's chosen store, in that
+ * store's walking order.
  *
  * PRECEDENCE RULE: More specific patterns are checked BEFORE general patterns
  * This prevents incorrect matching (eg: "frozen chicken" matches Frozen not Fresh)
  */
-export function organizeShoppingListForStoreLayout(shoppingList: ListCategory[]): ListCategory[] {
+export function organizeShoppingListForStoreLayout(
+  shoppingList: ListCategory[],
+  store: StoreId = DEFAULT_SHOPPING_STORE
+): ListCategory[] {
+  const zoneOrder = STORE_ZONE_ORDERS[store];
+  const fallbackZone = store === 'hyvee' ? DEFAULT_HYVEE_ZONE : DEFAULT_STORE_ZONE;
+
   // Initialize empty categories in correct walking order
-  const orderedList: ListCategory[] = STORE_WALK_ORDER.map(category => ({
+  const orderedList: ListCategory[] = zoneOrder.map(category => ({
     category,
     items: []
   }));
@@ -478,16 +408,16 @@ export function organizeShoppingListForStoreLayout(shoppingList: ListCategory[])
         return;
       }
 
-      const targetZone = getItemStoreZone(item.n);
-      const zoneIndex = STORE_WALK_ORDER.indexOf(targetZone);
+      const targetZone = getItemStoreZone(item.n, store);
+      const zoneIndex = zoneOrder.indexOf(targetZone);
 
       if (zoneIndex !== -1) {
         orderedList[zoneIndex].items.push(item);
       } else {
-        const fallbackIndex = STORE_WALK_ORDER.indexOf(DEFAULT_STORE_ZONE);
+        const fallbackIndex = zoneOrder.indexOf(fallbackZone);
         orderedList[fallbackIndex].items.push(item);
         if (process.env.NODE_ENV === 'development') {
-          console.warn(`[ShoppingList] Unknown store zone for item: "${item.n}" - placed in ${DEFAULT_STORE_ZONE}`);
+          console.warn(`[ShoppingList] Unknown store zone for item: "${item.n}" - placed in ${fallbackZone}`);
         }
       }
     });
@@ -498,23 +428,34 @@ export function organizeShoppingListForStoreLayout(shoppingList: ListCategory[])
 }
 
 /**
- * Returns which store zone an item is physically located in.
- * The store is decided first (getItemStore), then the zone within that store.
- * Trader Joe's mapping rules sourced from data/shopping-areas.md;
- * Hy-Vee mapping rules sourced from data/hyvee-areas.md.
+ * Returns which zone of the given store an item is physically located in.
+ * Trader Joe's mapping rules sourced from data/shopping-areas.md; on Hy-Vee
+ * weeks the TJ zone maps onto the Hy-Vee section per data/hyvee-areas.md.
  *
  * ✅ ORDER MATTERS: More specific terms checked FIRST
  * ✅ All edge cases explicitly handled per store layout documentation
  */
-export function getItemStoreZone(itemName: string): StoreZone {
-  return classifyShoppingItem(itemName).zone;
+export function getItemStoreZone(
+  itemName: string,
+  store: StoreId = DEFAULT_SHOPPING_STORE
+): StoreZone {
+  return classifyShoppingItem(itemName, store).zone;
 }
 
-export function classifyShoppingItem(itemName: string): ShoppingItemClassification {
-  const store = getItemStore(itemName);
-  return store === 'hyvee'
-    ? classifyHyveeItem(itemName)
-    : classifyTraderJoesItem(itemName);
+export function classifyShoppingItem(
+  itemName: string,
+  store: StoreId = DEFAULT_SHOPPING_STORE
+): ShoppingItemClassification {
+  const traderJoes = classifyTraderJoesItem(itemName);
+  if (store === 'traderJoes') {
+    return traderJoes;
+  }
+
+  return {
+    ...traderJoes,
+    store,
+    zone: TRADER_JOES_TO_HYVEE_ZONE[traderJoes.zone as TraderJoesStoreZone] ?? DEFAULT_HYVEE_ZONE,
+  };
 }
 
 function classifyTraderJoesItem(itemName: string): ShoppingItemClassification {
@@ -537,21 +478,4 @@ function classifyTraderJoesItem(itemName: string): ShoppingItemClassification {
   }
 
   return { store: 'traderJoes', zone: DEFAULT_STORE_ZONE, confidence: 'fallback' };
-}
-
-function classifyHyveeItem(itemName: string): ShoppingItemClassification {
-  const name = normalizeShoppingItemForClassification(itemName);
-
-  for (const rule of HYVEE_KEYWORD_RULES) {
-    if (rule.excludeTerms?.some((term) => name.includes(normalizeShoppingItemForClassification(term)))) {
-      continue;
-    }
-
-    const matchedTerm = rule.terms.find((term) => name.includes(normalizeShoppingItemForClassification(term)));
-    if (matchedTerm) {
-      return { store: 'hyvee', zone: rule.zone, confidence: 'keyword', matchedTerm };
-    }
-  }
-
-  return { store: 'hyvee', zone: DEFAULT_HYVEE_ZONE, confidence: 'fallback' };
 }

@@ -14,10 +14,10 @@ export const GET = createRouteHandler(async (request: NextRequest) => {
     listMealPlanWeeks(),
   ]);
 
-  // Reorganize shopping list to match actual Trader Joe's store walking order
+  // Reorganize shopping list to match the walking order of this week's store
   const organizedMealPlan = mealPlan ? {
     ...mealPlan,
-    shoppingList: organizeShoppingListForStoreLayout(mealPlan.shoppingList)
+    shoppingList: organizeShoppingListForStoreLayout(mealPlan.shoppingList, mealPlan.shoppingStore)
   } : null;
 
   return { mealPlan: organizedMealPlan, weeks };
