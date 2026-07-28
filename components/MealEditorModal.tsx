@@ -16,7 +16,7 @@ interface MealEditorModalProps {
   defaultType?: MealType;
   isOpen: boolean;
   onClose: () => void;
-  onSaved: () => Promise<void>;
+  onSaved: (savedMealId?: number) => Promise<void>;
 }
 
 type IngredientCategory = MealIngredient["category"];
@@ -269,7 +269,13 @@ export default function MealEditorModal({
         throw new Error(isCreateMode ? "Unable to create new meal." : "Unable to save meal changes right now.");
       }
 
-      await onSaved();
+      const responseBody = (await response.json().catch(() => null)) as
+        | { data?: { mealId?: number } }
+        | null;
+      const savedMealId = isCreateMode
+        ? responseBody?.data?.mealId
+        : meal?.mealId;
+      await onSaved(typeof savedMealId === "number" ? savedMealId : undefined);
       resetAndClose();
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Unable to save meal changes right now.");

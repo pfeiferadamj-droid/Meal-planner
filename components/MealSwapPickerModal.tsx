@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Loader2, Search, X } from "lucide-react";
+import { Loader2, Plus, Search, X } from "lucide-react";
 import MealEditorModal from "@/components/MealEditorModal";
 import { useMealsInfiniteQuery } from "@/lib/hooks/useExploreMeals";
 import { Macros, MealType, StoredMeal } from "@/lib/types";
@@ -99,8 +99,12 @@ export default function MealSwapPickerModal({
     }
   }
 
-  async function handleMealCreated() {
+  async function handleMealCreated(createdMealId?: number) {
     await refreshMeals();
+    if (typeof createdMealId === "number") {
+      // Pre-select the meal that was just created so one tap adds it.
+      setSelectedMealId(createdMealId);
+    }
     setIsEditorOpen(false);
   }
 
@@ -142,8 +146,9 @@ export default function MealSwapPickerModal({
           <button
             type="button"
             onClick={() => setIsEditorOpen(true)}
-            className="mt-3 text-sm font-semibold text-harvest-green"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-xl border border-harvest-green/40 bg-harvest-green/5 px-3 py-2 text-sm font-semibold text-harvest-green"
           >
+            <Plus size={16} />
             Create new meal
           </button>
         </div>
