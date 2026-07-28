@@ -2,7 +2,7 @@
 
 Active week of food: six dinners shopped in one trip. There are no days or timeslots; `meals` is a flat list shown in the app's "The Menu" view. Fiber is a first-class macro on every ingredient and meal.
 
-Every meal is gluten-free (whole-household rule) and leans low-sodium (whole ingredients, light-handed sauces). One dinner uses red meat (Chimichurri Beef & Green Bean Rice Bowl) — none was eaten in the prior 10 days, keeping the once-per-10-days cadence. No standalone, fried, or scrambled eggs: the only egg dish poaches them directly into the sauce. This plan replaces the unshopped 7-dinner draft for the same week. Fearless Flyer was unreachable at planning time, so every product is from the verified catalog in `data/data_context.md`.
+Every meal is gluten-free (whole-household rule) and leans low-sodium (whole ingredients, light-handed sauces). One dinner uses red meat (Chimichurri Beef & Green Bean Rice Bowl) — none was eaten in the prior 10 days, keeping the once-per-10-days cadence. Per household rules there are no featured-egg dishes, no lentils, and no yogurt-based sauces anywhere in this plan. Fearless Flyer was unreachable at planning time, so every product is from the verified catalog in `data/data_context.md`.
 
 ## Canonical JSON
 ```json
@@ -11,21 +11,21 @@ Every meal is gluten-free (whole-household rule) and leans low-sodium (whole ing
   "meals": [
     {
       "type": "Dinner",
-      "name": "Eggs in Purgatory with Feta & Baby Potatoes",
+      "name": "Arrabiata Chicken Sausage Skillet with Potatoes & Feta",
       "build": {
-        "pro": ["Trader Joe's Large Brown Eggs, poached in the sauce", "Trader Joe's Crumbled Feta Cheese"],
+        "pro": ["Trader Joe's Spinach & Feta Chicken Sausage, sliced & seared", "Trader Joe's Crumbled Feta Cheese"],
         "base": ["baby potatoes"],
         "veg": ["baby spinach"],
         "engine": ["Trader Joe's Arrabiata Sauce"]
       },
       "ingredients": [
-        { "name": "Trader Joe's Large Brown Eggs", "quantity": "3 eggs, poached in sauce", "category": "pro", "macros": { "cal": 210, "p": 18, "c": 0, "f": 15, "fiber": 0 } },
-        { "name": "Trader Joe's Crumbled Feta Cheese", "quantity": "1/4 cup", "category": "pro", "macros": { "cal": 90, "p": 5, "c": 1, "f": 7, "fiber": 0 } },
+        { "name": "Trader Joe's Spinach & Feta Chicken Sausage", "quantity": "2 links, sliced", "category": "pro", "macros": { "cal": 220, "p": 24, "c": 4, "f": 12, "fiber": 0 } },
+        { "name": "Trader Joe's Crumbled Feta Cheese", "quantity": "2 tbsp", "category": "pro", "macros": { "cal": 45, "p": 3, "c": 1, "f": 4, "fiber": 0 } },
         { "name": "Baby potatoes", "quantity": "6 oz, roasted", "category": "base", "macros": { "cal": 130, "p": 3, "c": 30, "f": 0, "fiber": 3 } },
         { "name": "Baby spinach", "quantity": "2 cups, wilted in", "category": "veg", "macros": { "cal": 14, "p": 2, "c": 2, "f": 0, "fiber": 1 } },
         { "name": "Trader Joe's Arrabiata Sauce", "quantity": "3/4 cup", "category": "engine", "macros": { "cal": 70, "p": 2, "c": 10, "f": 2, "fiber": 2 } }
       ],
-      "macros": { "cal": 514, "p": 30, "c": 43, "f": 24, "fiber": 6 }
+      "macros": { "cal": 479, "p": 34, "c": 47, "f": 18, "fiber": 6 }
     },
     {
       "type": "Dinner",
@@ -104,20 +104,19 @@ Every meal is gluten-free (whole-household rule) and leans low-sodium (whole ing
       "type": "Dinner",
       "name": "Harissa White Bean & Butternut Squash Stew",
       "build": {
-        "pro": ["Trader Joe's Cannellini Beans", "Trader Joe's Non-Fat Plain Greek Yogurt, dolloped"],
+        "pro": ["Trader Joe's Cannellini Beans"],
         "base": ["butternut squash"],
         "veg": ["Tuscan kale"],
         "engine": ["Trader Joe's Harissa Paste", "Trader Joe's Organic Tahini"]
       },
       "ingredients": [
-        { "name": "Trader Joe's Cannellini Beans", "quantity": "1 cup drained", "category": "pro", "macros": { "cal": 200, "p": 13, "c": 36, "f": 1, "fiber": 9 } },
-        { "name": "Trader Joe's Non-Fat Plain Greek Yogurt", "quantity": "1/2 cup, dolloped", "category": "pro", "macros": { "cal": 65, "p": 11, "c": 4, "f": 0, "fiber": 0 } },
+        { "name": "Trader Joe's Cannellini Beans", "quantity": "1 1/4 cups drained", "category": "pro", "macros": { "cal": 250, "p": 16, "c": 45, "f": 1, "fiber": 11 } },
         { "name": "Butternut squash", "quantity": "1 1/2 cups cubed", "category": "base", "macros": { "cal": 90, "p": 2, "c": 24, "f": 0, "fiber": 4 } },
         { "name": "Tuscan kale", "quantity": "2 cups chopped", "category": "veg", "macros": { "cal": 20, "p": 2, "c": 4, "f": 0, "fiber": 2 } },
         { "name": "Trader Joe's Harissa Paste", "quantity": "1 1/2 tbsp", "category": "engine", "macros": { "cal": 35, "p": 1, "c": 4, "f": 2, "fiber": 1 } },
-        { "name": "Trader Joe's Organic Tahini", "quantity": "1 tbsp, drizzled", "category": "engine", "macros": { "cal": 90, "p": 3, "c": 3, "f": 8, "fiber": 1 } }
+        { "name": "Trader Joe's Organic Tahini", "quantity": "1 1/2 tbsp, drizzled", "category": "engine", "macros": { "cal": 135, "p": 5, "c": 5, "f": 12, "fiber": 2 } }
       ],
-      "macros": { "cal": 500, "p": 32, "c": 75, "f": 11, "fiber": 17 }
+      "macros": { "cal": 530, "p": 26, "c": 82, "f": 15, "fiber": 20 }
     }
   ],
   "junkList": [

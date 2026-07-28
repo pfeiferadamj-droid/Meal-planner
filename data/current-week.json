@@ -3,10 +3,10 @@
   "meals": [
     {
       "type": "Dinner",
-      "name": "Eggs in Purgatory with Feta & Baby Potatoes",
+      "name": "Arrabiata Chicken Sausage Skillet with Potatoes & Feta",
       "build": {
         "pro": [
-          "Trader Joe's Large Brown Eggs, poached in the sauce",
+          "Trader Joe's Spinach & Feta Chicken Sausage, sliced & seared",
           "Trader Joe's Crumbled Feta Cheese"
         ],
         "base": [
@@ -21,26 +21,26 @@
       },
       "ingredients": [
         {
-          "name": "Trader Joe's Large Brown Eggs",
-          "quantity": "3 eggs, poached in sauce",
+          "name": "Trader Joe's Spinach & Feta Chicken Sausage",
+          "quantity": "2 links, sliced",
           "category": "pro",
           "macros": {
-            "cal": 210,
-            "p": 18,
-            "c": 0,
-            "f": 15,
+            "cal": 220,
+            "p": 24,
+            "c": 4,
+            "f": 12,
             "fiber": 0
           }
         },
         {
           "name": "Trader Joe's Crumbled Feta Cheese",
-          "quantity": "1/4 cup",
+          "quantity": "2 tbsp",
           "category": "pro",
           "macros": {
-            "cal": 90,
-            "p": 5,
+            "cal": 45,
+            "p": 3,
             "c": 1,
-            "f": 7,
+            "f": 4,
             "fiber": 0
           }
         },
@@ -82,10 +82,10 @@
         }
       ],
       "macros": {
-        "cal": 514,
-        "p": 30,
-        "c": 43,
-        "f": 24,
+        "cal": 479,
+        "p": 34,
+        "c": 47,
+        "f": 18,
         "fiber": 6
       }
     },
@@ -458,8 +458,7 @@
       "name": "Harissa White Bean & Butternut Squash Stew",
       "build": {
         "pro": [
-          "Trader Joe's Cannellini Beans",
-          "Trader Joe's Non-Fat Plain Greek Yogurt, dolloped"
+          "Trader Joe's Cannellini Beans"
         ],
         "base": [
           "butternut squash"
@@ -475,26 +474,14 @@
       "ingredients": [
         {
           "name": "Trader Joe's Cannellini Beans",
-          "quantity": "1 cup drained",
+          "quantity": "1 1/4 cups drained",
           "category": "pro",
           "macros": {
-            "cal": 200,
-            "p": 13,
-            "c": 36,
+            "cal": 250,
+            "p": 16,
+            "c": 45,
             "f": 1,
-            "fiber": 9
-          }
-        },
-        {
-          "name": "Trader Joe's Non-Fat Plain Greek Yogurt",
-          "quantity": "1/2 cup, dolloped",
-          "category": "pro",
-          "macros": {
-            "cal": 65,
-            "p": 11,
-            "c": 4,
-            "f": 0,
-            "fiber": 0
+            "fiber": 11
           }
         },
         {
@@ -535,23 +522,23 @@
         },
         {
           "name": "Trader Joe's Organic Tahini",
-          "quantity": "1 tbsp, drizzled",
+          "quantity": "1 1/2 tbsp, drizzled",
           "category": "engine",
           "macros": {
-            "cal": 90,
-            "p": 3,
-            "c": 3,
-            "f": 8,
-            "fiber": 1
+            "cal": 135,
+            "p": 5,
+            "c": 5,
+            "f": 12,
+            "fiber": 2
           }
         }
       ],
       "macros": {
-        "cal": 500,
-        "p": 32,
-        "c": 75,
-        "f": 11,
-        "fiber": 17
+        "cal": 530,
+        "p": 26,
+        "c": 82,
+        "f": 15,
+        "fiber": 20
       }
     }
   ],
@@ -708,6 +695,9 @@
       "category": "Deli Meats & Cheeses",
       "items": [
         {
+          "n": "Trader Joe's Spinach & Feta Chicken Sausage"
+        },
+        {
           "n": "Trader Joe's Crumbled Feta Cheese"
         },
         {
@@ -736,12 +726,6 @@
     {
       "category": "Dairy & Eggs",
       "items": [
-        {
-          "n": "Trader Joe's Large Brown Eggs"
-        },
-        {
-          "n": "Trader Joe's Non-Fat Plain Greek Yogurt"
-        },
         {
           "n": "Trader Joe's Original Coconut Creamer",
           "q": "1 carton",

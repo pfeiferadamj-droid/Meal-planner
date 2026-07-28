@@ -27,7 +27,9 @@ No day scheduling. No daily calorie targets. Meals are a flat list.
    - Never more than **1 red-meat dinner per week**, and only if the last red-meat dinner was **10+ days ago** (check `lastServedAt` / recent weeks — roughly 2 red-meat dinners per 3 weeks).
    - When in doubt, plan zero red-meat dinners for the week.
 6. **Target Low Sodium** options when available.
-7. **No fried or scrambled eggs.** Eggs cooked into a dish in some way are fine. No standalone eggs. 
+7. **Eggs are never the featured protein at dinner.** No fried, scrambled, poached, or standalone eggs — and no eggs-in-sauce dishes either (no shakshuka, no eggs in purgatory). Egg is acceptable only as a minor bound-in ingredient (e.g., binding a fritter or fried rice); when in doubt, skip eggs entirely.
+8. **No lentils** in any form — green, red, steamed, dry, or lentil pasta. Other legumes (chickpeas, black beans, cannellini/white beans) are fine and encouraged.
+9. **No yogurt-based sauces, dollops, or dressings.** No tzatziki, raita, yogurt drizzles, or yogurt garnishes on meals.
 ---
 
 ## Calorie Targets
@@ -57,17 +59,17 @@ Rotate across these proteins. Aim for **≥3 different protein types per week.**
 | Chicken sausage | Great for skillets and sheet-pan style dinners — confirm GF |
 | Ground chicken | Bowls, tacos (corn tortillas), larb-style dishes |
 | Beef / pork / lamb | **Red meat — max 1 per week AND 10+ days since last serving** |
-| Eggs | First-class dinner protein (hashes, fried rice, shakshuka-style) |
-| Legumes | Lentils, chickpeas, black beans — first-class protein, not a side |
+| Legumes | Chickpeas, black beans, cannellini — first-class protein, not a side. **Never lentils.** |
+| Cheese | Feta, cheddar, parmesan as a supporting protein in vegetarian meals |
 | Meat substitutes | Only if gluten-free and not soy-block based; use sparingly |
 
-**Never:** fish, shellfish, turkey, tofu, tempeh, seitan.
+**Never:** fish, shellfish, turkey, tofu, tempeh, seitan, lentils, eggs as the featured protein, yogurt-based sauces.
 
 ---
 
 ## Vegetarian Meals
 
-Vegetarian dinners are welcome when they fit the week — they also make the red-meat cadence easier to hit. Make them satisfying and protein-complete with legumes, eggs, and cheese (no tofu/tempeh).
+Vegetarian dinners are welcome when they fit the week — they also make the red-meat cadence easier to hit. Make them satisfying and protein-complete with legumes (no lentils) and cheese (no tofu/tempeh, no featured eggs).
 
 ---
 
@@ -127,6 +129,7 @@ Vary engines every meal. Check [traderjoes.com](https://www.traderjoes.com) and 
 - [ ] All meals are dinners (no other meal types), and the count matches what was requested this week (default 4, max 7)
 - [ ] Every meal 100% gluten-free (bases, engines, and hidden sources checked)
 - [ ] No fish, shellfish, turkey, tofu, tempeh, or seitan anywhere
+- [ ] No lentils; no yogurt-based sauces or dollops; no eggs as a featured protein (incl. eggs-in-sauce)
 - [ ] ≤1 red-meat dinner, and none if red meat was served in the last 10 days
 - [ ] ≥3 different protein types across the week
 - [ ] Different TJ's engine on every meal

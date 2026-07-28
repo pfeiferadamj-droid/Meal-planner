@@ -14,12 +14,12 @@ This file is your complete system context. Everything you need to produce, valid
 - **Source of truth:** `data/diner-preferences.md` — read fully at the start of every planning session.
 - Two diners share every dinner, so every rule applies to every meal. The week is **dinners only**; the **count is chosen per week** (typically 4, up to 7 — ask if unspecified, default 4).
 - **HARD RULE — gluten-free:** one diner is gluten-free; **every meal must be 100% gluten-free** (no wheat/barley/rye; no soy sauce/Soyaki/hoisin — tamari or coconut aminos only; GF bases only; verify sauces).
-- **HARD RULE — excluded proteins:** no fish or seafood, no turkey, no tofu/tempeh/seitan — ever, in any form.
+- **HARD RULE — excluded proteins:** no fish or seafood, no turkey, no tofu/tempeh/seitan, no lentils — ever, in any form. Eggs never as a featured dinner protein (no fried/scrambled/poached/eggs-in-sauce). No yogurt-based sauces or dollops.
 - **HARD RULE — red meat cadence:** beef/pork/lamb at most **once every 10 days** — never more than 1 red-meat dinner per week, and none if red meat appeared in the previous 10 days (`last_served_at`).
 - **Calories:** all meals loosely **450–550 kcal per serving**; dinners scale to 2 servings plus leftovers.
 - **Cooking:** 20–30 minutes, up to two pans; sear, sauté, boil, roast, grill, assemble. Frozen grains/veg freely; frozen entrées **≤1–2/week** (GF only).
-- **Proteins:** rotate roster in doc (chicken thighs over breast, chicken sausage, ground chicken, eggs, legumes; occasional red meat within cadence). **≥3 types/week.**
-- **Vegetarian:** welcome when it fits the week; protein-complete via legumes, eggs, and cheese (no tofu/tempeh).
+- **Proteins:** rotate roster in doc (chicken thighs over breast, chicken sausage, ground chicken, beans — never lentils; occasional red meat within cadence). **≥3 types/week.**
+- **Vegetarian:** welcome when it fits the week; protein-complete via beans and cheese (no tofu/tempeh, no lentils, no featured eggs).
 - **Cuisine:** bold, globally inspired; rotate profiles — no same cuisine twice in one week.
 - **Fiber:** first-class on every card; legumes, GF whole grains, veg, seeds.
 - **Engines:** widely vary TJ's sauces, dressings, seasonings, and salad kits — check [traderjoes.com](https://www.traderjoes.com) and the Fearless Flyer for new options; **no duplicate engine across the week; every engine must be gluten-free.**
@@ -45,7 +45,7 @@ TJ's is the shopping destination, not the identity of every ingredient. The meal
 |---|---|
 | Signature engines & sauces (Chili Onion Crunch, Bomba, Zhoug, EBTB Seasoning, Green Goddess Dressing, etc. — GF only) | Basic proteins: "chicken breasts," "chicken thighs," "ground beef," "eggs" |
 | Specialty or unique items the shopper goes to TJ's specifically for (Elote Chopped Salad Kit, Norwegian Crispbread, Cauliflower Gnocchi, Frozen Gingery Green Beans with Shiitake, etc.) | Fresh produce: "avocado," "zucchini," "cucumber," "cherry tomatoes," "baby spinach," "banana" |
-| Branded dairy where the specific product matters (Non-Fat Plain Greek Yogurt, Low-Fat Cottage Cheese) | Commodity starches used as basic ingredients: "brown rice," "rolled oats," "lentils," "quinoa," "chickpeas" |
+| Branded dairy where the specific product matters (Non-Fat Plain Greek Yogurt, Low-Fat Cottage Cheese) | Commodity starches used as basic ingredients: "brown rice," "quinoa," "chickpeas" |
 | Items that would be confusing or inferior if substituted (Mandarin Orange Chicken, Beef Bulgogi, Palak Paneer) | Basic breads and wraps: "sprouted bread," "lavash," "pita" |
 
 ### Frozen Item Rule
@@ -95,23 +95,21 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 
 **Never plan:** fish or seafood (salmon, white fish, shrimp, smoked salmon), turkey in any form (ground turkey, deli turkey, turkey bacon), or Beef Bulgogi (soy-sauce marinade contains wheat).
 
-#### If you need eggs or dairy protein
+#### If you need dairy protein (eggs never featured at dinner; yogurt never as a sauce)
 
 | Ingredient | TJ's Product | Format | Notes |
 |---|---|---|---|
-| Eggs | Eggs (cage free, from TJ's) | Fresh | "Eggs" in builds; specific on shopping list if needed |
 | Hard boiled eggs, ready to eat | Trader Joe's Cage Free Hard Boiled Eggs | Refrigerated pack | Peeled, ready to eat; great for snacks |
-| Greek yogurt | Trader Joe's Non-Fat Plain Greek Yogurt | Refrigerated tub | Primary protein dairy; large tub |
+| Greek yogurt | Trader Joe's Non-Fat Plain Greek Yogurt | Refrigerated tub | Snacks only — never as a sauce, dollop, or dressing on meals |
 | Cottage cheese | Trader Joe's Low-Fat Cottage Cheese (2%) | Refrigerated tub | High protein, versatile for bowls |
 | String cheese | Trader Joe's Low-Fat String Cheese | Refrigerated pack | 7–8g protein each; portable snack |
 | Feta | Trader Joe's Crumbled Feta Cheese | Refrigerated tub | For salads, bowls, snack plates |
 | Ricotta | Trader Joe's Part-Skim Ricotta | Refrigerated | For pasta builds |
 
-#### If you need plant-based protein (no tofu, no tempeh — legumes and eggs only)
+#### If you need plant-based protein (no tofu, no tempeh, no lentils — beans only)
 
 | Ingredient | TJ's Product | Format | Notes |
 |---|---|---|---|
-| Lentils, cooked | Green lentils (TJ's canned) | Canned | Rinse and use; "lentils" in builds |
 | Black beans | Black beans (TJ's canned) | Canned | "black beans" in builds |
 | Chickpeas | Chickpeas (TJ's canned) | Canned | "chickpeas" in builds |
 | Cannellini beans | Cannellini beans (TJ's canned) | Canned | "white beans" in builds |
@@ -147,7 +145,6 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 |---|---|---|
 | Quinoa | Quinoa (TJ's organic) | Complete protein, fast cooking; "quinoa" in builds |
 | Brown rice | Brown rice (TJ's dry) | Dry shelf-stable; "brown rice" in builds |
-| Lentils | Green lentils (TJ's dry) | Cook stovetop; "lentils" in builds |
 | White rice / basmati | White or basmati rice (TJ's dry) | "basmati rice" in builds |
 
 #### If you need a specialty starch
@@ -171,7 +168,6 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 | Ingredient | TJ's Product | Notes |
 |---|---|---|
 | Brown rice pasta | Trader Joe's Brown Rice Pasta | The only pasta in scope — gluten-free |
-| Red lentil pasta | Trader Joe's Organic Red Lentil Sedanini | GF and high protein/fiber |
 
 ---
 
@@ -252,7 +248,7 @@ These are grocery staples. Never brand-prefix produce unless it's a specific TJ'
 | Trader Joe's Garlic Spread & Dip | Creamy, spreadable roasted garlic | Lavash, bowl base, marinade |
 | Trader Joe's Red Pepper Spread | Sweet-smoky pepper | Wraps, eggs, grain bowls |
 | Trader Joe's Eggplant Garlic Spread | Thick, savory | Pasta sauce alternative or spread on crackers |
-| Trader Joe's Mango Ginger Chutney | Sweet heat | Indian dishes, chicken, yogurt dips |
+| Trader Joe's Mango Ginger Chutney | Sweet heat | Indian dishes, chicken |
 | Trader Joe's Tahini | Sesame richness | Dressings, drizzles, sauces |
 | Trader Joe's Organic Taco Sauce | Classic taco flavor | Mexican builds |
 | Trader Joe's Salsa Autentica | Complex, real-ingredient salsa | Mexican bowls, eggs, chips |
@@ -366,7 +362,7 @@ Full rules, the hard dietary rules (gluten-free, excluded proteins, red-meat cad
 ### Meal Variety Rules
 Follow `data/diner-preferences.md` for the full validation checklist. Key rules:
 - **Gluten-free**: every meal, every ingredient, every engine — no exceptions
-- **Excluded proteins**: no fish/seafood, no turkey, no tofu/tempeh/seitan
+- **Excluded proteins**: no fish/seafood, no turkey, no tofu/tempeh/seitan, no lentils; eggs never featured; no yogurt-based sauces
 - **Red meat cadence**: ≤1 red-meat dinner per week, and only if the last was 10+ days ago (`last_served_at`)
 - **Protein rotation**: ≥3 different protein types across the week
 - **Vegetarian**: welcome when it fits the week; protein-complete via legumes, eggs, cheese
@@ -488,7 +484,7 @@ Never serve a disliked meal unless feedback is >60 days old and the reason no lo
 
 ### Step 2: Week Architecture
 Read `data/diner-preferences.md` first, then:
-- Confirm every candidate is gluten-free and contains no fish/seafood, turkey, or tofu/tempeh
+- Confirm every candidate is gluten-free and contains no fish/seafood, turkey, tofu/tempeh, lentils, yogurt sauces, or featured eggs
 - Decide red meat: at most 1 red-meat dinner, and only if none in the last 10 days
 - Choose a protein arc with ≥3 types (chicken, eggs, legumes carry most weeks)
 - Assign distinct cuisine profiles — no repeats in the same week
@@ -516,7 +512,7 @@ Follow `data/companion-preferences.md` end to end (dislikes, per-category counts
 Use the checklist in `data/diner-preferences.md`, plus:
 - ✅ All meals are Dinners, and the count matches the week's request (default 4, max 7)
 - ✅ Every meal 100% gluten-free (bases, engines, toppings, hidden sources)
-- ✅ No fish/seafood, turkey, or tofu/tempeh/seitan anywhere
+- ✅ No fish/seafood, turkey, tofu/tempeh/seitan, or lentils anywhere; no yogurt sauces; no featured-egg dishes
 - ✅ ≤1 red-meat dinner, and none if red meat was served in the last 10 days
 - ✅ Every meal and ingredient carries a `fiber` macro (grams)
 - ✅ All meals loosely 450–550 kcal
@@ -626,7 +622,7 @@ Meal names should sound like something you'd order at a good fast-casual spot �
 - "Chimichurri Beef & Potato Skillet"
 - "Chili Crunch Chicken with Cauliflower Rice"
 - "Bomba Chicken & Quinoa Plate"
-- "Lentil Feta Power Bowl"
+- "White Bean Feta Power Bowl"
 - "Green Goddess Egg Bowl"
 - "Sweet Chili Chicken Jasmine Rice Bowl"
 - "Smoky Chickpea Sweet Potato Hash"

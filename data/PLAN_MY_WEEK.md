@@ -17,7 +17,7 @@ Copy everything below the line into a Claude chat to generate and publish this w
 
 You are planning one week of dinners for our household using this repo's Harvest meal engine. Work through these steps in order:
 
-1. **Read the rules first** — `data/diner-preferences.md` (hard dietary rules + validation checklist), `data/companion-preferences.md` (junk list), and `data/data_context.md` (Trader Joe's product guidance). The hard rules are non-negotiable: everything gluten-free; no fish/seafood, turkey, or tofu/tempeh; red meat at most once every 10 days.
+1. **Read the rules first** — `data/diner-preferences.md` (hard dietary rules + validation checklist), `data/companion-preferences.md` (junk list), and `data/data_context.md` (Trader Joe's product guidance). The hard rules are non-negotiable: everything gluten-free; no fish/seafood, turkey, or tofu/tempeh; no lentils; no yogurt-based sauces; eggs never as a featured dinner protein; red meat at most once every 10 days.
 
 2. **Check history so we don't repeat ourselves.**
    - Look at the recent files in `data/mealplans/` (and, if the app is running, `curl -s http://localhost:3000/api/meals` for the library with `lastServedAt` and heart counts).
