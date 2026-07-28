@@ -121,7 +121,7 @@ npm run meal-plan:sync
 npm run meal-plan:publish
 ```
 
-Host-side DB scripts need `DATABASE_URL` (see `.env.example`). Use `docker-compose.dev.yml` so Postgres is on `localhost:5432`, or point at a reachable instance.
+Scripts use the embedded database automatically — publishing goes through the running app's API when the app is up, or straight to `.harvest-db/` when it isn't. No connection setup needed.
 
 ## Output Template
 

@@ -5,6 +5,7 @@ import {
 } from "@/lib/mealPlanMarkdown";
 import { upsertMealPlan } from "@/lib/services/mealPlanService";
 import { closePool } from "@/lib/db";
+import { trySeedViaRunningApp } from "./seedViaApi";
 
 async function main() {
   const startedAt = Date.now();
@@ -27,8 +28,19 @@ async function main() {
   await writeWeekDataJson(weekData);
   logStep(`Synced JSON (${fmtMs(Date.now() - t)})`);
 
-  logStep("Upserting meal plan into Postgres");
+  logStep("Publishing week (running app if available, else embedded database)");
   t = stepStartedAt();
+  const viaApp = await trySeedViaRunningApp();
+
+  if (viaApp) {
+    logStep(`Published through the running app (${fmtMs(Date.now() - t)})`);
+    logStep(`Done (${fmtMs(Date.now() - startedAt)})`);
+    console.log(
+      JSON.stringify({ ok: true, via: "running app", ...viaApp }, null, 2)
+    );
+    return;
+  }
+
   const mealPlan = await upsertMealPlan(weekData, {
     source: "current-week.md",
     generationContext: {
@@ -45,6 +57,7 @@ async function main() {
     JSON.stringify(
       {
         ok: true,
+        via: "embedded database",
         mealPlanId: mealPlan.id,
         weekRange: mealPlan.weekRange,
         source: mealPlan.source,

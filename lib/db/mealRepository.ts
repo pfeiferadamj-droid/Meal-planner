@@ -1,4 +1,4 @@
-import { PoolClient } from "pg";
+import type { DbClient } from "@/lib/db";
 import {
   MealPlanRow,
   MealRow,
@@ -13,7 +13,7 @@ import {
  */
 
 export async function getMealPlanById(
-  client: PoolClient,
+  client: DbClient,
   id: number
 ): Promise<MealPlanRow | null> {
   const result = await client.query<MealPlanRow>(
@@ -24,7 +24,7 @@ export async function getMealPlanById(
 }
 
 export async function getMealPlanByWeekRange(
-  client: PoolClient,
+  client: DbClient,
   weekRange: string
 ): Promise<MealPlanRow | null> {
   const result = await client.query<MealPlanRow>(
@@ -35,7 +35,7 @@ export async function getMealPlanByWeekRange(
 }
 
 export async function getMealPlanByWeekStartDate(
-  client: PoolClient,
+  client: DbClient,
   weekStartDateOnly: string
 ): Promise<MealPlanRow | null> {
   const result = await client.query<MealPlanRow>(
@@ -51,7 +51,7 @@ export async function getMealPlanByWeekStartDate(
 }
 
 export async function getMostRecentlyUpdatedMealPlan(
-  client: PoolClient
+  client: DbClient
 ): Promise<MealPlanRow | null> {
   const result = await client.query<MealPlanRow>(
     `
@@ -64,7 +64,7 @@ export async function getMostRecentlyUpdatedMealPlan(
   return result.rows[0] ?? null;
 }
 
-export async function listMealPlanWeeks(client: PoolClient): Promise<MealPlanRow[]> {
+export async function listMealPlanWeeks(client: DbClient): Promise<MealPlanRow[]> {
   const result = await client.query<MealPlanRow>(
     `
       SELECT *
@@ -76,7 +76,7 @@ export async function listMealPlanWeeks(client: PoolClient): Promise<MealPlanRow
 }
 
 export async function upsertMealPlanRow(
-  client: PoolClient,
+  client: DbClient,
   input: {
     weekRange: string;
     weekStartDateOnly: string;
@@ -116,7 +116,7 @@ export async function upsertMealPlanRow(
 }
 
 export async function updateMealPlanLists(
-  client: PoolClient,
+  client: DbClient,
   input: {
     mealPlanId: number;
     shoppingListJson: string;
@@ -163,7 +163,7 @@ export async function updateMealPlanLists(
 }
 
 export async function getDistinctMealIdsForPlan(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number
 ): Promise<Array<{ meal_id: number | string }>> {
   const result = await client.query<{ meal_id: number | string }>(
@@ -177,12 +177,12 @@ export async function getDistinctMealIdsForPlan(
   return result.rows;
 }
 
-export async function deleteMealPlanMeals(client: PoolClient, mealPlanId: number): Promise<void> {
+export async function deleteMealPlanMeals(client: DbClient, mealPlanId: number): Promise<void> {
   await client.query(`DELETE FROM meal_plan_meals WHERE meal_plan_id = $1`, [mealPlanId]);
 }
 
 export async function insertMealPlanMeal(
-  client: PoolClient,
+  client: DbClient,
   input: {
     mealPlanId: number;
     slotOrder: number;
@@ -207,7 +207,7 @@ export async function insertMealPlanMeal(
 }
 
 export async function getMealPlanMealAtSlot(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number,
   slotOrder: number
 ): Promise<{ meal_id: number | string } | null> {
@@ -224,7 +224,7 @@ export async function getMealPlanMealAtSlot(
 }
 
 export async function getMaxSlotOrderForPlan(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number
 ): Promise<number> {
   const result = await client.query<{ max_slot: number | null }>(
@@ -240,7 +240,7 @@ export async function getMaxSlotOrderForPlan(
 }
 
 export async function updateMealPlanMealAtSlot(
-  client: PoolClient,
+  client: DbClient,
   input: {
     mealPlanId: number;
     slotOrder: number;
@@ -263,7 +263,7 @@ export async function updateMealPlanMealAtSlot(
 }
 
 export async function deleteMealPlanMealAtSlot(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number,
   slotOrder: number
 ): Promise<number | null> {
@@ -299,7 +299,7 @@ function toNumber(value: number | string): number {
 }
 
 export async function isMealOnPlan(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number,
   mealId: number
 ): Promise<boolean> {
@@ -318,7 +318,7 @@ export async function isMealOnPlan(
 }
 
 export async function getMealsForMealPlan(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number
 ): Promise<MealPlanMealRow[]> {
   const result = await client.query<MealPlanMealRow>(
@@ -341,7 +341,7 @@ export async function getMealsForMealPlan(
 }
 
 export async function getMealFeedbackForPlan(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number
 ): Promise<MealFeedbackRow[]> {
   const result = await client.query<MealFeedbackRow>(
@@ -357,7 +357,7 @@ export async function getMealFeedbackForPlan(
 }
 
 export async function removeStaleMealFeedback(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number
 ): Promise<void> {
   await client.query(
@@ -376,7 +376,7 @@ export async function removeStaleMealFeedback(
 }
 
 export async function findMealByExactSignature(
-  client: PoolClient,
+  client: DbClient,
   meal: {
     name: string;
     meal_type: MealRow["meal_type"];
@@ -426,7 +426,7 @@ export async function findMealByExactSignature(
 }
 
 export async function insertMeal(
-  client: PoolClient,
+  client: DbClient,
   mealData: Omit<
     MealRow,
     | "id"
@@ -477,7 +477,7 @@ export async function insertMeal(
   return result.rows[0];
 }
 
-export async function getMealById(client: PoolClient, mealId: number): Promise<MealRow | null> {
+export async function getMealById(client: DbClient, mealId: number): Promise<MealRow | null> {
   const result = await client.query<MealRow>(
     `
       SELECT *
@@ -491,7 +491,7 @@ export async function getMealById(client: PoolClient, mealId: number): Promise<M
 }
 
 export async function getMealLikedForPlan(
-  client: PoolClient,
+  client: DbClient,
   input: { mealPlanId: number; mealId: number }
 ): Promise<{ liked: boolean } | null> {
   const result = await client.query<{ liked: boolean }>(
@@ -508,7 +508,7 @@ export async function getMealLikedForPlan(
   return result.rows[0] ?? null;
 }
 
-export async function refreshMealStats(client: PoolClient, mealIds: number[]): Promise<void> {
+export async function refreshMealStats(client: DbClient, mealIds: number[]): Promise<void> {
   if (!mealIds.length) return;
 
   await client.query(
@@ -552,7 +552,7 @@ export async function refreshMealStats(client: PoolClient, mealIds: number[]): P
 }
 
 export async function upsertMealFeedback(
-  client: PoolClient,
+  client: DbClient,
   input: { mealPlanId: number; mealId: number; liked: boolean }
 ): Promise<MealFeedbackRow> {
   const result = await client.query<MealFeedbackRow>(
@@ -578,7 +578,7 @@ export async function upsertMealFeedback(
 }
 
 export async function updateMeal(
-  client: PoolClient,
+  client: DbClient,
   input: {
     id: number;
     name: string;
@@ -635,7 +635,7 @@ export async function updateMeal(
 }
 
 export async function insertMealReturningRow(
-  client: PoolClient,
+  client: DbClient,
   mealData: Omit<
     MealRow,
     | "id"
@@ -686,7 +686,7 @@ export async function insertMealReturningRow(
   return result.rows[0];
 }
 
-export async function ensureMealPlanExists(client: PoolClient, mealPlanId: number): Promise<void> {
+export async function ensureMealPlanExists(client: DbClient, mealPlanId: number): Promise<void> {
   const result = await client.query<{ id: number | string }>(
     `
       SELECT id
@@ -701,7 +701,7 @@ export async function ensureMealPlanExists(client: PoolClient, mealPlanId: numbe
   }
 }
 
-export async function findOrCreateJunkItem(client: PoolClient, name: string): Promise<number | string> {
+export async function findOrCreateJunkItem(client: DbClient, name: string): Promise<number | string> {
   const normalized = name.trim();
   if (!normalized) {
     throw new Error("Junk item name is required.");
@@ -737,7 +737,7 @@ export async function findOrCreateJunkItem(client: PoolClient, name: string): Pr
 }
 
 export async function upsertJunkFeedback(
-  client: PoolClient,
+  client: DbClient,
   input: { mealPlanId: number; junkItemId: number; liked: boolean }
 ): Promise<{
   id: number | string;
@@ -776,7 +776,7 @@ export async function upsertJunkFeedback(
   return result.rows[0];
 }
 
-export async function refreshJunkItemStats(client: PoolClient, junkItemIds: number[]): Promise<void> {
+export async function refreshJunkItemStats(client: DbClient, junkItemIds: number[]): Promise<void> {
   if (!junkItemIds.length) return;
 
   await client.query(
@@ -806,7 +806,7 @@ export async function refreshJunkItemStats(client: PoolClient, junkItemIds: numb
 }
 
 export async function getJunkItemById(
-  client: PoolClient,
+  client: DbClient,
   junkItemId: number
 ): Promise<{ id: number | string; name: string; heart_count: number } | null> {
   const result = await client.query<{ id: number | string; name: string; heart_count: number }>(

@@ -595,7 +595,7 @@ interface WeekData {
    npm run meal-plan:publish
    ```
 
-Publishing upserts the week into PostgreSQL, updates all meal library stats, recalculates appearance counts and heart ratings, and makes the week live.
+Publishing upserts the week into the embedded database (through the running app when it's up), updates all meal library stats, recalculates appearance counts and heart ratings, and makes the week live.
 
 ---
 
@@ -610,7 +610,7 @@ npm run seed:meal-plan                 # Seed database from JSON (recovery only)
 
 ## 📋 Source of Truth Hierarchy
 
-1. **Live PostgreSQL database** — runtime source of truth
+1. **Live embedded database** (PGlite, in `.harvest-db/`) — runtime source of truth
 2. **`data/current-week.md`** — AI working file; only the fenced JSON block is parsed
 3. **`data/current-week.json`** — machine-readable artifact; written by sync script
 

@@ -46,73 +46,60 @@ It also ships with markdown + JSON tooling so you (or an AI assistant) can draft
 | **Explore** (`/explore`) | Searchable meal library with hearts and history |
 | **Offline-friendly** | Service worker keeps the current week usable in-store |
 
-Under the hood: Next.js App Router, React, TypeScript, Tailwind, PostgreSQL, Docker.
+Under the hood: Next.js App Router, React, TypeScript, Tailwind, and an embedded Postgres database ([PGlite](https://pglite.dev/)) — **no Docker, no database server to install**.
 
 ## Prerequisites
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker Engine + Compose)
-- Node.js 20+ (only needed for host-side scripts and local `npm` workflows)
+- [Node.js 20+](https://nodejs.org) — that's it. No Docker, no database install.
+  (On a Mac, download the macOS installer from nodejs.org, or `brew install node` if you use Homebrew.)
 
 ## Quick start
 
-The happy path: one Compose file, one browser tab.
+Works great from the VS Code integrated terminal (Terminal → New Terminal), or any terminal.
 
-### 1. Clone and configure
+### 1. Clone and install
 
 ```bash
 git clone https://github.com/pfeiferadamj-droid/Meal-planner.git
 cd Meal-planner
-cp .env.example .env
+npm install
 ```
-
-Edit `.env` and set a real `POSTGRES_PASSWORD` (the production Compose file will refuse to start without it).
 
 ### 2. Start the app
 
 ```bash
-docker compose up -d --build
+npm run dev
 ```
 
 Open **[http://localhost:3000](http://localhost:3000)** — it redirects to `/menu`.
 
-Postgres stays on the Docker network (not exposed on the host). The app listens on port `3000`.
+The database is embedded in the app (PGlite) and stores its files in `.harvest-db/` inside the project folder. It's created automatically on first run — nothing to configure. Back up or reset the database by copying or deleting that folder (with the app stopped).
 
 ### 3. Load the sample week
 
-With the stack up, seed from the baked-in sample plan:
+With the app running, seed from the baked-in sample plan:
 
 ```bash
 curl -X POST http://localhost:3000/api/mealplan/seed
 ```
 
-Or use the **Seed plan** control in the UI when no week is loaded yet.
+Or use the **Seed plan** control in the UI when no week is loaded yet, or run `npm run seed:meal-plan` in a second terminal.
 
 You should see a full Menu with meals, macros, and shopping data.
 
 ### Stop / reset
 
-```bash
-docker compose down          # stop containers
-docker compose down -v       # also wipe the Postgres volume
-```
+Stop the app with `Ctrl+C` in the terminal. To wipe all data and start fresh, delete the `.harvest-db/` folder while the app is stopped.
 
-## Development stack (hot reload)
-
-For day-to-day UI work, use the dev Compose file. It mounts the repo, runs `next dev`, and publishes Postgres on `localhost:5432` so host scripts can talk to the DB.
+### Everyday development
 
 ```bash
-cp .env.example .env   # DATABASE_URL already points at localhost
-docker compose -f docker-compose.dev.yml up -d --build
-```
-
-Then:
-
-```bash
-npm install
-npm run seed:meal-plan    # host → localhost:5432
+npm run dev                  # app with hot reload
 npm run lint
 npm run test:meal-plan-tools
 ```
+
+> **One process at a time:** the embedded database supports a single process. The publish/seed scripts handle this automatically — when the app is running they publish through its API; when it isn't, they open the database directly. Just avoid opening the project in two dev servers at once.
 
 ## Using the app
 
@@ -132,7 +119,7 @@ npm run meal-plan:bootstrap-markdown
 # Edit data/current-week.md (keep the JSON fence valid)
 
 npm run meal-plan:sync      # validate + write data/current-week.json
-npm run meal-plan:publish   # upsert into Postgres (dev stack / reachable DB)
+npm run meal-plan:publish   # publish to the app (running or not)
 ```
 
 ### Planning context (great for AI-assisted weeks)
@@ -152,7 +139,7 @@ npm run meal-plan:publish   # upsert into Postgres (dev stack / reachable DB)
 app/                 Next.js routes + API handlers
 components/          UI (menu cards, shop list, modals, nav)
 lib/                 Domain logic, DB access, hooks, providers
-db/init/             Fresh-install Postgres schema
+db/init/             Database schema (applied automatically on startup)
 data/                Sample week, preferences, planning docs
 scripts/             Seed / sync / publish / validation tools
 docs/                Screenshots and public assets for the README
@@ -162,7 +149,7 @@ docs/                Screenshots and public assets for the README
 
 | Command | What it does |
 |---|---|
-| `npm run seed:meal-plan` | Upsert `data/current-week.json` into Postgres |
+| `npm run seed:meal-plan` | Load `data/current-week.json` into the database |
 | `npm run meal-plan:sync` | Validate markdown → rewrite JSON |
 | `npm run meal-plan:publish` | Publish the synced week to the database |
 | `npm run meal-plan:bootstrap-markdown` | Rebuild `current-week.md` from JSON |
@@ -172,7 +159,7 @@ docs/                Screenshots and public assets for the README
 | `npm run test:meal-plan-tools` | Run both test suites |
 | `npm run lint` | ESLint |
 
-Host-side DB scripts expect `DATABASE_URL` (see `.env.example`). Use the **dev** Compose file, or point `DATABASE_URL` at a reachable Postgres.
+Scripts talk to the same embedded database as the app (or through the app's API when it's running). Set `DATABASE_DIR` only if you want the data stored somewhere other than `.harvest-db/`.
 
 ## API overview
 
@@ -194,10 +181,10 @@ Host-side DB scripts expect `DATABASE_URL` (see `.env.example`). Use the **dev**
 
 | Symptom | Likely fix |
 |---|---|
-| `POSTGRES_PASSWORD` error on `docker compose up` | Copy `.env.example` → `.env` and set a password |
+| `npm run dev` fails on startup | Make sure you're on Node 20+ (`node --version`) |
 | App is up but Menu is empty | `curl -X POST http://localhost:3000/api/mealplan/seed` |
-| `npm run seed:meal-plan` can’t connect | Use `docker-compose.dev.yml` (Postgres on `5432`) or fix `DATABASE_URL` |
-| Stale UI after a rebuild | Hard-refresh; if needed `docker compose down && docker compose up -d --build` |
+| Seed/publish script errors mid-run | Retry with the app either fully running or fully stopped |
+| Stale UI after an update | Hard-refresh; if needed stop the app (`Ctrl+C`) and `npm run dev` again |
 | Port 3000 already in use | Stop the other process, or change the host mapping in Compose |
 
 ## Contributing

@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Harvest (dev)",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Seed sample week",
+      "type": "npm",
+      "script": "seed:meal-plan",
+      "problemMatcher": []
+    },
+    {
+      "label": "Publish current week",
+      "type": "npm",
+      "script": "meal-plan:publish",
+      "problemMatcher": []
+    }
+  ]
+}

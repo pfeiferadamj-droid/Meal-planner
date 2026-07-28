@@ -36,6 +36,9 @@ yarn-debug.log*
 # local backups (keep private)
 data/backup-week-*.md
 
+# embedded database (PGlite data directory)
+/.harvest-db/
+
 # vercel
 .vercel
 

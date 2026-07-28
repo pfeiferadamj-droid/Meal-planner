@@ -1,7 +1,6 @@
 import { readFile } from "fs/promises";
 import path from "path";
-import { PoolClient } from "pg";
-import { pool, withTransaction } from "@/lib/db";
+import { pool, withTransaction, DbClient } from "@/lib/db";
 import * as mealRepo from "@/lib/db/mealRepository";
 import {
   mapPlanMeals as mapPlanMealsFromRows,
@@ -51,7 +50,7 @@ export async function readSeedWeekData(): Promise<WeekData> {
 }
 
 async function enrichJunkList(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number,
   junkList: ListCategory[]
 ): Promise<ListCategory[]> {
@@ -120,7 +119,7 @@ async function enrichJunkList(
 }
 
 async function getMealFeedbackForPlan(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number
 ): Promise<MealFeedback[]> {
   const rows = await mealRepo.getMealFeedbackForPlan(client, mealPlanId);
@@ -128,7 +127,7 @@ async function getMealFeedbackForPlan(
 }
 
 async function getMealPlanMeals(
-  client: PoolClient,
+  client: DbClient,
   mealPlanId: number
 ): Promise<StoredMeal[]> {
   const rows = await mealRepo.getMealsForMealPlan(client, mealPlanId);
@@ -136,7 +135,7 @@ async function getMealPlanMeals(
 }
 
 async function buildStoredMealPlan(
-  client: PoolClient,
+  client: DbClient,
   row: MealPlanRow
 ): Promise<StoredMealPlan> {
   const mealPlanId = toNumber(row.id);
@@ -185,7 +184,7 @@ function mapWeekOption(row: MealPlanRow): WeekOption {
   };
 }
 
-async function findOrCreateMeal(client: PoolClient, meal: MealInput): Promise<number> {
+async function findOrCreateMeal(client: DbClient, meal: MealInput): Promise<number> {
   const existing = await mealRepo.findMealByExactSignature(client, {
     name: meal.name,
     meal_type: meal.type,
@@ -215,20 +214,20 @@ async function findOrCreateMeal(client: PoolClient, meal: MealInput): Promise<nu
   return toNumber(inserted.id);
 }
 
-async function refreshMealStats(client: PoolClient, mealIds: number[]) {
+async function refreshMealStats(client: DbClient, mealIds: number[]) {
   await mealRepo.refreshMealStats(client, mealIds);
 }
 
-async function removeStaleFeedback(client: PoolClient, mealPlanId: number) {
+async function removeStaleFeedback(client: DbClient, mealPlanId: number) {
   await mealRepo.removeStaleMealFeedback(client, mealPlanId);
 }
 
-async function findOrCreateJunkItem(client: PoolClient, name: string): Promise<number> {
+async function findOrCreateJunkItem(client: DbClient, name: string): Promise<number> {
   const id = await mealRepo.findOrCreateJunkItem(client, name);
   return toNumber(id);
 }
 
-async function refreshJunkItemStats(client: PoolClient, junkItemIds: number[]) {
+async function refreshJunkItemStats(client: DbClient, junkItemIds: number[]) {
   await mealRepo.refreshJunkItemStats(client, junkItemIds);
 }
 

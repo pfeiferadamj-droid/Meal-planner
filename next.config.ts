@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // PGlite ships WASM assets that must load from node_modules at runtime.
+  serverExternalPackages: ["@electric-sql/pglite"],
   // Add local tunnel host patterns here if you expose `next dev` behind a reverse proxy.
   async headers() {
     return [

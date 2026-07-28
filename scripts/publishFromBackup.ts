@@ -3,6 +3,7 @@ import path from "path";
 import { extractWeekDataFromMarkdown, writeWeekDataJson } from "@/lib/mealPlanMarkdown";
 import { upsertMealPlan } from "@/lib/services/mealPlanService";
 import { closePool } from "@/lib/db";
+import { trySeedViaRunningApp } from "./seedViaApi";
 
 function fmtMs(ms: number) {
   return `${(ms / 1000).toFixed(2)}s`;
@@ -45,8 +46,23 @@ async function main() {
   const wroteJson = await writeWeekDataJson(weekData);
   log(`Wrote ${wroteJson} (${fmtMs(Date.now() - t)})`);
 
-  log("Upserting meal plan into Postgres");
+  log("Publishing week (running app if available, else embedded database)");
   t = Date.now();
+  const viaApp = await trySeedViaRunningApp();
+
+  if (viaApp) {
+    log(`Published through the running app (${fmtMs(Date.now() - t)})`);
+    log(`Done (${fmtMs(Date.now() - startedAt)})`);
+    console.log(
+      JSON.stringify(
+        { ok: true, via: "running app", backupPath, currentWeekPath, wroteJson, ...viaApp },
+        null,
+        2
+      )
+    );
+    return;
+  }
+
   const mealPlan = await upsertMealPlan(weekData, {
     source: backupPath,
     generationContext: {
