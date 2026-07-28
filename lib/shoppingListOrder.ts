@@ -10,7 +10,7 @@ export const TRADER_JOES_STORE_ORDER = [
   'Roots',
   'Herbs',
   'Fruit',
-  'Lettuce & Prepped Salads',
+  'Prepped Salads',
   'Meats & Seafood',
   'Deli Meats & Cheeses',
   'Vegan Items',
