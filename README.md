@@ -52,6 +52,7 @@ Under the hood: Next.js App Router, React, TypeScript, Tailwind, and an embedded
 
 - [Node.js 20+](https://nodejs.org) — that's it. No Docker, no database install.
   (On a Mac, download the macOS installer from nodejs.org, or `brew install node` if you use Homebrew.)
+- `git`, for cloning (macOS offers to install it automatically the first time you run a `git` command).
 
 ## Quick start
 
@@ -71,9 +72,18 @@ npm install
 npm run dev
 ```
 
+**In VS Code:** open the project folder and press **⇧⌘B** (Run Build Task) — the "Run Harvest (dev)" task starts the app for you. Seeding and publishing are also available under Terminal → Run Task.
+
 Open **[http://localhost:3000](http://localhost:3000)** — it redirects to `/menu`.
 
 The database is embedded in the app (PGlite) and stores its files in `.harvest-db/` inside the project folder. It's created automatically on first run — nothing to configure. Back up or reset the database by copying or deleting that folder (with the app stopped).
+
+> **Tip for older machines:** `npm run dev` recompiles pages as you browse, which can feel sluggish on older hardware. For day-to-day use, build once and run the optimized app instead:
+>
+> ```bash
+> npm run build
+> npm start
+> ```
 
 ### 3. Load the sample week
 
@@ -185,7 +195,8 @@ Scripts talk to the same embedded database as the app (or through the app's API 
 | App is up but Menu is empty | `curl -X POST http://localhost:3000/api/mealplan/seed` |
 | Seed/publish script errors mid-run | Retry with the app either fully running or fully stopped |
 | Stale UI after an update | Hard-refresh; if needed stop the app (`Ctrl+C`) and `npm run dev` again |
-| Port 3000 already in use | Stop the other process, or change the host mapping in Compose |
+| Port 3000 already in use | Stop the other process, or run on another port: `PORT=3001 npm run dev` |
+| App feels slow in dev mode | Use production mode instead: `npm run build` once, then `npm start` |
 
 ## Contributing
 
