@@ -20,11 +20,8 @@ Preferences for the household's fun list, published alongside each week's meal p
 ## Dislikes (avoid across all categories)
 
 - ❌ Licorice/anise/fennel flavor profile
-- ❌ Overly sweet dessert wines (ports, late-harvest styles)
 - ❌ Artificial-tasting diet/sugar-free sweets and snacks
-- ❌ Rosé wine
 - ❌ Mandarin Orange Chicken
-- ❌ Cauliflower Crust Pizza
 - ❌ Cowboy Caviar
 
 ---
