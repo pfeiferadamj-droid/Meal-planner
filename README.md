@@ -115,7 +115,9 @@ npm run test:meal-plan-tools
 
 ## Using the app
 
-1. **Menu** — browse the week's Dinners; heart, swap, or remove meals. **Add** opens the meal picker, where you can also **Create new meal** from scratch (it's pre-selected after saving — just tap "Add to menu"). Removed something by mistake? **Reset week** (top right) restores the week's published plan.
+1. **Menu** — browse the week's Dinners; heart, swap, or remove meals. **Add** opens the meal picker, where you can also **Create new meal** from scratch (it's pre-selected after saving — just tap "Add to menu").
+   - **Shuffle** (top right) replaces the week's dinners with fresh picks from your meal library — choose how many (1–7) with the count selector. It skips recently served meals, keeps bases/engines varied, and enforces the red-meat cadence. The bigger your Explore library, the more variety it has to work with; brand-new recipes still come from the [AI planning workflow](#authoring-a-week).
+   - **Reset week** restores the week's published plan (undoes removals, swaps, and shuffles).
 2. **Junk / Household tabs** — manage the companion snack list and household staples for the week.
 3. **Shop** — check items off while you walk the store (works better after a visit so the service worker can cache the week).
 4. **Explore** — find past meals by type, protein, or search; open a meal for full ingredient + macro detail.
