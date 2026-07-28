@@ -26,7 +26,8 @@ No day scheduling. No daily calorie targets. Meals are a flat list.
 5. **Red meat at most once every 10 days.** Red meat = beef, pork, and lamb.
    - Never more than **1 red-meat dinner per week**, and only if the last red-meat dinner was **10+ days ago** (check `lastServedAt` / recent weeks — roughly 2 red-meat dinners per 3 weeks).
    - When in doubt, plan zero red-meat dinners for the week.
-
+6. **Target Low Sodium** options when available.
+7. **No fried or scrambled eggs.** Eggs cooked into a dish in some way are fine. No standalone eggs. 
 ---
 
 ## Calorie Targets

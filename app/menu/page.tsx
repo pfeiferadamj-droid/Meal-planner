@@ -10,6 +10,8 @@ import OnHandPanel from "@/components/OnHandPanel";
 import MenuMealCard from "@/components/MenuMealCard";
 import MealPlanGate from "@/components/MealPlanGate";
 import MealSwapPickerModal from "@/components/MealSwapPickerModal";
+import ResetWeekButton from "@/components/ResetWeekButton";
+import ShuffleDinnersButton from "@/components/ShuffleDinnersButton";
 import { MEAL_TYPES } from "@/lib/constants";
 import { useMealPlanMutations } from "@/lib/hooks/useMealPlanMutations";
 import { useMealPlan } from "@/lib/MealPlanProvider";
@@ -295,7 +297,16 @@ export default function MenuPage() {
 
         return (
           <main className="px-4 pb-8">
-            <p className={`mb-5 ${sectionLabelColorClass.green}`}>The Menu</p>
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+              <p className={sectionLabelColorClass.green}>The Menu</p>
+              <div className="flex items-center gap-2">
+                <ResetWeekButton onReset={refresh} />
+                <ShuffleDinnersButton
+                  currentCount={readyPlan.meals.length}
+                  onShuffled={refresh}
+                />
+              </div>
+            </div>
 
             <MenuContent
               groups={groups}

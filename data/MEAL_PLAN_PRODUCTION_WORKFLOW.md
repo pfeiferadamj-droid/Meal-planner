@@ -2,6 +2,8 @@
 
 Step-by-step procedure for generating and publishing a new weekly meal plan locally.
 
+> **Shortcut:** `data/PLAN_MY_WEEK.md` is a ready-to-paste prompt that walks Claude through this whole workflow.
+
 **Related docs:** `data/diner-preferences.md` · `data/companion-preferences.md` · `data/data_context.md`
 
 ---

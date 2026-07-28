@@ -115,14 +115,18 @@ npm run test:meal-plan-tools
 
 ## Using the app
 
-1. **Menu** — browse the week's Dinners; heart, swap, or remove meals; add from the library.
+1. **Menu** — browse the week's Dinners; heart, swap, or remove meals. **Add** opens the meal picker, where you can also **Create new meal** from scratch (it's pre-selected after saving — just tap "Add to menu").
+   - **Shuffle** (top right) replaces the week's dinners with fresh picks from your meal library — choose how many (1–7) with the count selector. It skips recently served meals, keeps bases/engines varied, and enforces the red-meat cadence. The bigger your Explore library, the more variety it has to work with; brand-new recipes still come from the [AI planning workflow](#authoring-a-week).
+   - **Reset week** restores the week's published plan (undoes removals, swaps, and shuffles).
 2. **Junk / Household tabs** — manage the companion snack list and household staples for the week.
 3. **Shop** — check items off while you walk the store (works better after a visit so the service worker can cache the week).
 4. **Explore** — find past meals by type, protein, or search; open a meal for full ingredient + macro detail.
 
 ## Authoring a week
 
-Harvest treats a week as a markdown file with a fenced JSON block (see `data/current-week.md` and `data/mealplans/`).
+**The easy way:** open [`data/PLAN_MY_WEEK.md`](data/PLAN_MY_WEEK.md), set the dinner count at the top, and paste it into a Claude chat (ideally Claude Code opened in this folder). Claude reads the household rules, drafts the week, validates it, and publishes it.
+
+Under the hood, Harvest treats a week as a markdown file with a fenced JSON block (see `data/current-week.md` and `data/mealplans/`).
 
 ```bash
 # Optional: refresh markdown from the current JSON seed
@@ -138,6 +142,7 @@ npm run meal-plan:publish   # publish to the app (running or not)
 
 | File | Role |
 |---|---|
+| [`data/PLAN_MY_WEEK.md`](data/PLAN_MY_WEEK.md) | **Ready-to-paste weekly prompt** — generate + publish a new week with Claude |
 | [`data/diner-preferences.md`](data/diner-preferences.md) | Household rules (gluten-free, excluded proteins, red-meat cadence, calories, cooking time) |
 | [`data/companion-preferences.md`](data/companion-preferences.md) | Junk-list categories and rotation rules |
 | [`data/data_context.md`](data/data_context.md) | Trader Joe’s product guidance + quality rules |

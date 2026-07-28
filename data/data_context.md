@@ -424,18 +424,22 @@ The household makes **one grocery run per week**: Trader Joe's by default, occas
 Order categories to follow the **physical layout of the home Trader Joe's store**. The shopper walks through once and picks everything up in order.
 
 1. **Flowers** — Bouquets, flowers, floral items, small plants
-2. **Prepped Salads** — All chopped salad kits and refrigerated prepared salad mixes
-3. **Herbs** — Cilantro, parsley, basil, mint, dill, chives, thyme, rosemary, sage, other fresh herb packs
-4. **Vegetables** — Leafy greens, cucumbers, tomatoes, peppers, zucchini, broccoli, asparagus, kale, cabbage, mushrooms, fresh vegetable shortcuts
+2. **Vegetables** — Leafy greens, cucumbers, tomatoes, peppers, zucchini, broccoli, asparagus, kale, cabbage, mushrooms, fresh vegetable shortcuts
+3. **Roots** — Sweet potatoes, potatoes, carrots, beets, onions, shallots, fresh garlic, fresh ginger root
+4. **Herbs** — Cilantro, parsley, basil, mint, dill, chives, thyme, rosemary, sage, other fresh herb packs
 5. **Fruit** — Bananas, apples, berries, mango, lemons, limes, avocados, oranges, grapes, pears
-6. **Roots** — Sweet potatoes, potatoes, carrots, beets, onions, shallots, fresh garlic, fresh ginger root
-7. **Deli Meats & Cheeses** — Deli meats, turkey bacon, smoked salmon, Just Chicken, pulled chicken, chicken sausage, hummus, guacamole, tzatziki, feta, ricotta, string cheese, cream cheese, sliced/shredded cheeses
-8. **Dairy & Eggs** — Eggs, hard-boiled eggs, Greek yogurt, cottage cheese, milk, kefir, sour cream, butter
+6. **Prepped Salads** — All chopped salad kits and refrigerated prepared salad mixes
+7. **Meats & Seafood** — Fresh chicken, ground beef, butcher-counter proteins
+8. **Deli Meats & Cheeses** — Deli meats, Just Chicken, pulled chicken, chicken sausage, hummus, guacamole, tzatziki, feta, ricotta, string cheese, cream cheese, sliced/shredded cheeses
 9. **Vegan Items** — Refrigerated vegan/plant-based section only: tofu, tempeh, plant-based meat-style items, refrigerated vegan dips and dressings
-10. **Pantry Items** — Sauces, condiments, dry grains, oats, pasta, canned beans, canned tomatoes, jarred vegetables, nuts, seeds, nut butters, crackers, crispbread, oils, vinegars, spices, broth, coconut milk, snacks
-11. **Frozen Food** — Frozen proteins, frozen grains, frozen vegetables, frozen complete entrees, cauliflower gnocchi, frozen treats
-12. **Meats & Seafood** — Fresh chicken, ground beef, butcher-counter proteins
-13. **Bread & Tortillas** — Lavash, tortillas, English muffins, sprouted bread, pita, baguette, bagels, crumpets, naan, rolls
+10. **Bread & Tortillas** — Lavash, tortillas, English muffins, sprouted bread, pita, baguette, bagels, crumpets, naan, rolls
+11. **Chips** — Potato chips, tortilla chips, pita chips, rolled corn snacks, plantain chips
+12. **Dairy & Eggs** — Eggs, hard-boiled eggs, Greek yogurt, cottage cheese, milk, kefir, sour cream, butter
+13. **Pantry Items** — Sauces, condiments, dry grains, oats, pasta, canned beans, canned tomatoes, jarred vegetables, nuts, seeds, nut butters, crackers, crispbread, oils, vinegars, spices, broth, coconut milk, snacks
+14. **Frozen Food** — Frozen proteins, frozen grains, frozen vegetables, frozen complete entrees, cauliflower gnocchi, frozen treats
+15. **Sweets** — Candy, chocolate, caramels, cookies, boxed sweets, shelf-stable desserts
+16. **Beverages** — Sparkling water, seltzer, lemonade, juice, kombucha, sodas, shelf-stable drinks
+17. **Beer/Wine** — Beer, cider, wine; last stop in the walk
 
 ### Hy-Vee walk order (Hy-Vee weeks)
 

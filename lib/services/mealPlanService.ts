@@ -8,7 +8,15 @@ import {
   mealInputToRow,
   mealMatches as mealMatchesFn,
   serializePlanData as serializePlanDataFn,
+  toMealInput,
 } from "@/lib/domain/mealMappers";
+import { listMeals } from "@/lib/services/mealService";
+import {
+  DEFAULT_DINNERS_PER_WEEK,
+  MAX_DINNERS_PER_WEEK,
+  MIN_DINNERS_PER_WEEK,
+  PLANNED_MEAL_TYPE,
+} from "@/lib/constants";
 import { deriveShoppingListFromMeals } from "@/lib/domain/shoppingListDerivation";
 import { normalizeWeekDataBuildArrays } from "@/lib/mealPlanMarkdown";
 import {
@@ -625,4 +633,141 @@ export async function saveJunkHeart(input: {
       updatedAt: feedback.updated_at.toISOString(),
     };
   });
+}
+const DAY_MS = 24 * 60 * 60 * 1000;
+const RECENTLY_SERVED_DAYS = 7;
+const RED_MEAT_COOLDOWN_DAYS = 10;
+const RED_MEAT_PATTERN =
+  /\b(beef|steak|pork|lamb|carnitas|bacon|prosciutto|salami|chorizo|ham|birria|bulgogi)\b/i;
+
+function isRedMeatMeal(meal: StoredMeal): boolean {
+  return meal.build.pro.some(
+    (pro) => RED_MEAT_PATTERN.test(pro) && !/\bsoy\b/i.test(pro)
+  );
+}
+
+function daysSinceServed(meal: StoredMeal, now: number): number {
+  if (!meal.lastServedAt) return Number.POSITIVE_INFINITY;
+  const servedAt = Date.parse(meal.lastServedAt);
+  return Number.isNaN(servedAt)
+    ? Number.POSITIVE_INFINITY
+    : (now - servedAt) / DAY_MS;
+}
+
+function shuffleArray<T>(items: T[]): T[] {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+/**
+ * Replace the current week's dinners with a fresh pick from the meal library.
+ * Honors the household rules that can be checked mechanically: red-meat
+ * cooldown, at most one red-meat dinner, and unique base/engine across the
+ * week. Prefers meals not served in the last week; relaxes that (and then
+ * base/engine uniqueness) only when the library is too small.
+ */
+export async function shuffleMealPlanDinners(dinnerCount?: number): Promise<{
+  mealPlan: StoredMealPlan;
+  requested: number;
+  picked: number;
+}> {
+  const currentPlan = await getLatestMealPlan();
+  if (!currentPlan) {
+    throw new Error("No meal plan exists yet — seed a week first.");
+  }
+
+  const requested = Math.min(
+    MAX_DINNERS_PER_WEEK,
+    Math.max(
+      MIN_DINNERS_PER_WEEK,
+      dinnerCount ?? currentPlan.meals.length ?? DEFAULT_DINNERS_PER_WEEK
+    )
+  );
+
+  const { meals: library } = await listMeals(
+    { type: PLANNED_MEAL_TYPE },
+    "lastServedAt",
+    "asc",
+    500
+  );
+
+  const now = Date.now();
+  const redMeatOnCooldown = library.some(
+    (meal) =>
+      isRedMeatMeal(meal) &&
+      daysSinceServed(meal, now) < RED_MEAT_COOLDOWN_DAYS
+  );
+
+  const fresh = library.filter(
+    (meal) => daysSinceServed(meal, now) >= RECENTLY_SERVED_DAYS
+  );
+  const recent = library.filter(
+    (meal) => daysSinceServed(meal, now) < RECENTLY_SERVED_DAYS
+  );
+  const ordered = [...shuffleArray(fresh), ...shuffleArray(recent)];
+
+  const picked: StoredMeal[] = [];
+  const usedBases = new Set<string>();
+  const usedEngines = new Set<string>();
+  let redMeatCount = 0;
+
+  const violatesRedMeatRules = (meal: StoredMeal) =>
+    isRedMeatMeal(meal) && (redMeatOnCooldown || redMeatCount >= 1);
+
+  const takeMeal = (meal: StoredMeal) => {
+    picked.push(meal);
+    meal.build.base.forEach((base) => usedBases.add(base.toLowerCase()));
+    meal.build.engine.forEach((engine) => usedEngines.add(engine.toLowerCase()));
+    if (isRedMeatMeal(meal)) redMeatCount += 1;
+  };
+
+  // Pass 1: enforce unique bases and engines across the week.
+  for (const meal of ordered) {
+    if (picked.length >= requested) break;
+    if (violatesRedMeatRules(meal)) continue;
+    const clashes =
+      meal.build.base.some((base) => usedBases.has(base.toLowerCase())) ||
+      meal.build.engine.some((engine) => usedEngines.has(engine.toLowerCase()));
+    if (clashes) continue;
+    takeMeal(meal);
+  }
+
+  // Pass 2: library too small for full variety — allow repeated bases/engines,
+  // but never bend the red-meat rules.
+  if (picked.length < requested) {
+    for (const meal of ordered) {
+      if (picked.length >= requested) break;
+      if (picked.includes(meal) || violatesRedMeatRules(meal)) continue;
+      takeMeal(meal);
+    }
+  }
+
+  if (picked.length === 0) {
+    throw new Error("No eligible dinners in the meal library to shuffle in.");
+  }
+
+  const weekData: WeekData = {
+    weekRange: currentPlan.weekRange,
+    meals: picked.map(toMealInput),
+    junkList: currentPlan.junkList.map((category) => ({
+      category: category.category,
+      items: category.items.map(({ n, q, pantry }) => ({ n, q, pantry })),
+    })),
+    householdGoods: currentPlan.householdGoods,
+  };
+
+  const mealPlan = await upsertMealPlan(weekData, {
+    source: "shuffle",
+    generationContext: {
+      shuffledAt: new Date().toISOString(),
+      requestedDinners: requested,
+      pickedDinners: picked.length,
+    },
+  });
+
+  return { mealPlan, requested, picked: picked.length };
 }

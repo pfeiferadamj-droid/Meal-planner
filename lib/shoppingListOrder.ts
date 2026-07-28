@@ -26,21 +26,21 @@ export function isShoppingStore(value: unknown): value is StoreId {
  */
 export const TRADER_JOES_STORE_ORDER = [
   'Flowers',
-  'Prepped Salads',
-  'Herbs',
   'Vegetables',
-  'Fruit',
   'Roots',
-  'Beverages',
+  'Herbs',
+  'Fruit',
+  'Prepped Salads',
+  'Meats & Seafood',
   'Deli Meats & Cheeses',
-  'Dairy & Eggs',
   'Vegan Items',
+  'Bread & Tortillas',
+  'Chips',
+  'Dairy & Eggs',
   'Pantry Items',
   'Frozen Food',
   'Sweets',
-  'Meats & Seafood',
-  'Bread & Tortillas',
-  'Chips',
+  'Beverages',
   'Beer/Wine'
 ] as const;
 

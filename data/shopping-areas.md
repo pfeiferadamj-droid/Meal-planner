@@ -13,21 +13,21 @@ The household makes **one grocery run per week**. Trader Joe's is the default st
 | Zone | What's Here |
 |---|---|
 | **Flowers** | Bouquets, flowers, floral items, small plants |
-| **Prepped Salads** | Chopped salad kits and refrigerated prepared salad mixes |
-| **Herbs** | Cilantro, parsley, basil, mint, dill, chives, thyme, rosemary, sage, other fresh herb packs |
 | **Vegetables** | Leafy greens, cucumbers, tomatoes, peppers, zucchini, broccoli, asparagus, kale, cabbage, mushrooms, butternut squash, riced cauliflower, fresh vegetable shortcuts |
-| **Fruit** | Bananas, apples, berries, mango, lemons, limes, avocados, oranges, grapes, pears |
 | **Roots** | Sweet potatoes, potatoes, carrots, beets, onions, shallots, fresh garlic, fresh ginger root |
-| **Beverages** | Sparkling water, seltzer, lemonade, juice, kombucha, sodas, shelf-stable drinks |
-| **Deli Meats & Cheeses** | Deli meats, turkey bacon, smoked salmon, Just Chicken, pulled chicken, grilled chicken strips, chicken sausage, hummus, guacamole, tzatziki, feta, ricotta, string cheese, cream cheese, sliced/shredded cheeses |
-| **Dairy & Eggs** | Eggs, hard-boiled eggs, Greek yogurt, cottage cheese, milk, kefir, sour cream, butter |
+| **Herbs** | Cilantro, parsley, basil, mint, dill, chives, thyme, rosemary, sage, other fresh herb packs |
+| **Fruit** | Bananas, apples, berries, mango, lemons, limes, avocados, oranges, grapes, pears |
+| **Prepped Salads** | Chopped salad kits and refrigerated prepared salad mixes |
+| **Meats & Seafood** | Fresh chicken, ground beef, butcher-counter proteins |
+| **Deli Meats & Cheeses** | Deli meats, Just Chicken, pulled chicken, grilled chicken strips, chicken sausage, hummus, guacamole, tzatziki, feta, ricotta, string cheese, cream cheese, sliced/shredded cheeses |
 | **Vegan Items** | Refrigerated vegan/plant-based section: tofu, tempeh, plant-based meat-style items, refrigerated vegan dips and dressings |
-| **Pantry Items** | Sauces, condiments, dry grains, oats, pasta, canned beans, canned tomatoes, jarred vegetables, nuts, seeds, nut butters, crackers, crispbread, oils, vinegars, spices, broth, coconut milk, snacks |
-| **Frozen Food** | Frozen proteins, frozen grains, frozen vegetables, frozen complete entrees, turkey meatballs, cauliflower gnocchi, frozen treats |
-| **Sweets** | Candy, chocolate, caramels, cookies, boxed sweets, shelf-stable desserts |
-| **Meats & Seafood** | Fresh chicken, ground turkey, ground beef, fresh salmon fillets, fresh seafood, butcher/fish-counter proteins |
 | **Bread & Tortillas** | Lavash, tortillas, English muffins, sprouted bread, pita, baguette, bagels, crumpets, naan, rolls |
 | **Chips** | Potato chips, tortilla chips, pita chips, rolled corn snacks, plantain chips |
+| **Dairy & Eggs** | Eggs, hard-boiled eggs, Greek yogurt, cottage cheese, milk, kefir, sour cream, butter |
+| **Pantry Items** | Sauces, condiments, dry grains, oats, pasta, canned beans, canned tomatoes, jarred vegetables, nuts, seeds, nut butters, crackers, crispbread, oils, vinegars, spices, broth, coconut milk, snacks |
+| **Frozen Food** | Frozen proteins, frozen grains, frozen vegetables, frozen complete entrees, cauliflower gnocchi, frozen treats |
+| **Sweets** | Candy, chocolate, caramels, cookies, boxed sweets, shelf-stable desserts |
+| **Beverages** | Sparkling water, seltzer, lemonade, juice, kombucha, sodas, shelf-stable drinks |
 | **Beer/Wine** | Beer, cider, wine, and other alcohol; last stop in the walk |
 
 ---
@@ -37,35 +37,35 @@ The household makes **one grocery run per week**. Trader Joe's is the default st
 ```
 1. Flowers
       ↓
-2. Prepped Salads
+2. Vegetables
       ↓
-3. Herbs
+3. Roots
       ↓
-4. Vegetables
+4. Herbs
       ↓
 5. Fruit
       ↓
-6. Roots
+6. Prepped Salads
       ↓
-7. Beverages
+7. Meats & Seafood
       ↓
 8. Deli Meats & Cheeses
       ↓
-9. Dairy & Eggs
+9. Vegan Items
       ↓
-10. Vegan Items
+10. Bread & Tortillas
       ↓
-11. Pantry Items
+11. Chips
       ↓
-12. Frozen Food
+12. Dairy & Eggs
       ↓
-13. Sweets
+13. Pantry Items
       ↓
-14. Meats & Seafood
+14. Frozen Food
       ↓
-15. Bread & Tortillas
+15. Sweets
       ↓
-16. Chips
+16. Beverages
       ↓
 17. Beer/Wine
 ```
