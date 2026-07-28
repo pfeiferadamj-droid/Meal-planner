@@ -1,16 +1,15 @@
-# Harvest
+# Harvest — Our Household Edition
 
 **A Trader Joe's–first meal planner that solves the question "What's for dinner?"**
 
-My wife and I shop at Trader Joe's every week. I used to do the shopping and I'd reach for my favorites like steak, spaghetti bolognese, burgers, nachos, with an occasional healthier option like salmon thrown in. On top of that, we go out to eat fairly often, so we weren't eating healthy enough. We also got bored of everything we made — pizzas, curries, fried rice — we'd cycle through phases of eating something, getting sick of it, and going out a lot instead. I wanted to meet my wife's need for an ever-changing variety of healthy, home-cooked meals from ingredients at Trader Joe's.
+This is a customized fork of [SGShuman/tjs-meal-planner](https://github.com/SGShuman/tjs-meal-planner), adapted for our household's rules:
 
-With that in mind, I figured I'd use Claude or similar to meal plan for us, but I quickly realized I wanted a scaffold around it. I thought about just building skills, but realized Cursor could build the frontend in like an hour. Once I had it built, customizing it for our exact preferences and our Trader Joe's layout was easy. After a couple rounds of shopping to work out the kinks, my wife now does the shopping and I make dinner. I can honestly say this app has done more to reduce stress in my marriage than anything else we've tried. We always know there's a healthy, easy dinner option in the fridge.
+- **Dinners only** — the week is a flat list of **4 dinners** (plus leftovers). No breakfast or lunch planning.
+- **Everything is gluten-free** — one of us is gluten-free and every dinner is shared, so 100% of planned meals are GF (bases, sauces, and salad-kit toppings all checked).
+- **No fish or seafood, no turkey, no tofu/tempeh** — ever.
+- **Red meat at most once every 10 days** — beef/pork/lamb shows up at most once a week, and only when the last red-meat dinner was 10+ days back.
 
-We've tried a ton of configurations, but what we settled on is 1 breakfast, 1 lunch, and 2 dinners, plus a section for household items and a section for junk food. Every week I launch an agent (I'm sure you could automate this) that reads the Fearless Flyer, builds a meal plan that meets our dietary restrictions and protein/fiber needs, and puts it in a shopping list ordered to match our store's layout. The main pitfalls: forcing a rigid schedule, and planning too many meals. Each breakfast/lunch gets 3-5 servings, plus 2 dinners plus leftovers — that's plenty for a week. The only other thing to mention is that there are no recipes, just ingredients for a meal. I'm a good cooks so this is plenty for me. I'll grill, fry bake and broil based on what I want that day. But now whatever I make is meeting all of our health and dietary needs every time I cook.
-
-A year ago I could never have built anything like this. Now my marriage is a little lighter, because dinner stopped being one more thing we had to figure out every day.
-
-Repo: https://github.com/SGShuman/tjs-meal-planner.git
+The planning rules live in `data/diner-preferences.md` (dietary hard rules and week validation), `data/companion-preferences.md` (the junk/snack list, GF-aware), and `data/data_context.md` (Trader Joe's product guidance with gluten callouts). Point an AI assistant at those files to draft a week, then validate and publish it with the built-in tooling.
 
 ![Harvest menu on mobile](docs/menu.png)
 
@@ -28,7 +27,7 @@ Repo: https://github.com/SGShuman/tjs-meal-planner.git
 
 Most meal apps optimize for recipes. Harvest optimizes for **one weekly shop at Trader Joe's**:
 
-- A flat menu of **1 breakfast, 1 lunch, and 2 dinners** (no day grid to babysit)
+- A flat menu of **4 dinners** (no day grid to babysit)
 - Macros that matter in practice — **calories, protein, carbs, fat, and fiber**
 - A shopping list ordered for how you actually walk the store
 - A companion “junk” list and household goods list beside the meals
@@ -61,8 +60,8 @@ The happy path: one Compose file, one browser tab.
 ### 1. Clone and configure
 
 ```bash
-git clone https://github.com/<you>/harvest.git
-cd harvest
+git clone https://github.com/pfeiferadamj-droid/Meal-planner.git
+cd Meal-planner
 cp .env.example .env
 ```
 
@@ -117,7 +116,7 @@ npm run test:meal-plan-tools
 
 ## Using the app
 
-1. **Menu** — browse Breakfast / Lunch / Dinner; heart, swap, or remove meals; add from the library.
+1. **Menu** — browse the week's Dinners; heart, swap, or remove meals; add from the library.
 2. **Junk / Household tabs** — manage the companion snack list and household staples for the week.
 3. **Shop** — check items off while you walk the store (works better after a visit so the service worker can cache the week).
 4. **Explore** — find past meals by type, protein, or search; open a meal for full ingredient + macro detail.
@@ -140,7 +139,7 @@ npm run meal-plan:publish   # upsert into Postgres (dev stack / reachable DB)
 
 | File | Role |
 |---|---|
-| [`data/diner-preferences.md`](data/diner-preferences.md) | Primary diner rules (calories, cooking time, proteins, acid-reflux constraints) |
+| [`data/diner-preferences.md`](data/diner-preferences.md) | Household rules (gluten-free, excluded proteins, red-meat cadence, calories, cooking time) |
 | [`data/companion-preferences.md`](data/companion-preferences.md) | Junk-list categories and rotation rules |
 | [`data/data_context.md`](data/data_context.md) | Trader Joe’s product guidance + quality rules |
 | [`data/meal-plan-skill.md`](data/meal-plan-skill.md) | AI/CLI week-authoring skill + JSON scaffold |
@@ -203,7 +202,7 @@ Host-side DB scripts expect `DATABASE_URL` (see `.env.example`). Use the **dev**
 
 ## Contributing
 
-Issues and PRs are welcome. For behavior changes, keep the week shape (1 breakfast / 1 lunch / 2 dinners) and the shopping-list derivation tests green:
+Issues and PRs are welcome. For behavior changes, keep the week shape (4 dinners) and the shopping-list derivation tests green:
 
 ```bash
 npm run lint

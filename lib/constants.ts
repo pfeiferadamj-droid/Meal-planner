@@ -6,10 +6,9 @@
 import type { MealType } from "@/lib/types";
 
 // Week shape — single source of truth for meal counts per type
+// This household plans dinners only: 4 dinners (plus leftovers) covers the week.
 export const EXPECTED_MEAL_COUNTS = {
-  Breakfast: 1,
-  Lunch: 1,
-  Dinner: 2,
+  Dinner: 4,
 } as const;
 
 export const EXPECTED_MEAL_TOTAL = Object.values(EXPECTED_MEAL_COUNTS).reduce(
@@ -39,19 +38,14 @@ export const STORE_CATEGORY_ORDER = [
   "Beer/Wine"
 ] as const;
 
-// Meal Type Ordering
-export const MEAL_TYPES = [
-  "Breakfast",
-  "Lunch",
-  "Dinner",
-  "Snack"
-] as const satisfies readonly MealType[];
+// Meal Type Ordering — dinner-only household; the MealType union in
+// lib/types.ts keeps the other values for schema compatibility.
+export const MEAL_TYPES: readonly MealType[] = [
+  "Dinner"
+];
 
 export const MEAL_TYPE_ORDER = [
-  "breakfast",
-  "lunch",
-  "dinner",
-  "snack"
+  "dinner"
 ] as const;
 
 export const HOUSEHOLD_GOODS_SECTION = "Household Goods" as const;

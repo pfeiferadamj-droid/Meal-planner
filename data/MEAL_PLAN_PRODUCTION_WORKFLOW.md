@@ -10,11 +10,9 @@ Step-by-step procedure for generating and publishing a new weekly meal plan loca
 
 A standard week is **4 meals total**, stored as a flat `meals` array (no days / timeslots):
 
-- 1 Breakfast
-- 1 Lunch
-- 2 Dinners
+- 4 Dinners (dinners only — no breakfasts, lunches, or snacks)
 
-Read `data/diner-preferences.md` before editing. All meals target **450–550 kcal** loosely. Fiber is first-class. Full validation checklist (acid-reflux rules, cuisine rotation, etc.) lives in that file.
+Read `data/diner-preferences.md` before editing. All meals target **450–550 kcal** loosely and must be **gluten-free**. Fiber is first-class. Full validation checklist (hard dietary rules, red-meat cadence, cuisine rotation, etc.) lives in that file.
 
 ---
 
@@ -71,9 +69,10 @@ Confirm in the app at http://localhost:3000/menu.
 ## Checklist
 
 - [ ] Read diner + companion preference docs
-- [ ] 1 breakfast, 1 lunch, 2 dinners
+- [ ] 4 dinners, nothing else
+- [ ] Every meal gluten-free; no fish/seafood, turkey, or tofu/tempeh
+- [ ] ≤1 red-meat dinner, and none if red meat was served in the last 10 days
 - [ ] Macros / fiber present; ~450–550 kcal per meal
-- [ ] Acid-reflux rules respected (no trigger stacking; ≤1 flagged meal)
 - [ ] Junk list has all seven categories filled
 - [ ] Sync + publish succeeded
 - [ ] UI shows the new week

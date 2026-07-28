@@ -17,8 +17,6 @@ import { sectionLabelColorClass } from "@/lib/uiClasses";
 import { buildHref } from "@/lib/urlState";
 
 const MENU_GROUPS: { type: MealType; label: string }[] = [
-  { type: "Breakfast", label: "Breakfasts" },
-  { type: "Lunch", label: "Lunches" },
   { type: "Dinner", label: "Dinners" },
 ];
 

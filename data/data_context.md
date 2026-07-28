@@ -10,20 +10,20 @@ This file is your complete system context. Everything you need to produce, valid
 
 ## 🧍 User Profiles
 
-### Primary diner (meals)
+### The household (meals — both diners eat every meal)
 - **Source of truth:** `data/diner-preferences.md` — read fully at the start of every planning session.
-- Eats and cooks the 4 meals. A companion sometimes eats them but meals are planned for the primary diner first.
-- **Calories:** all meals loosely **450–550 kcal** (uniform — no tiered breakfast/lunch/dinner ranges).
-- **Cooking:** 20–30 minutes, up to two pans; sear, sauté, boil, roast, assemble. Frozen grains/veg freely; frozen entrées **≤1–2/week**.
-- **Proteins:** rotate roster in doc (thighs over breast, seafood, eggs, legumes, tofu/tempeh, meat subs). **≥3 types/week.** **Hard no: pineapple.**
-- **Vegetarian:** welcome when it fits the week; make protein-complete builds when included.
+- Two diners share every dinner, so every rule applies to every meal. The week is **4 dinners — dinners only**.
+- **HARD RULE — gluten-free:** one diner is gluten-free; **every meal must be 100% gluten-free** (no wheat/barley/rye; no soy sauce/Soyaki/hoisin — tamari or coconut aminos only; GF bases only; verify sauces).
+- **HARD RULE — excluded proteins:** no fish or seafood, no turkey, no tofu/tempeh/seitan — ever, in any form.
+- **HARD RULE — red meat cadence:** beef/pork/lamb at most **once every 10 days** — never more than 1 red-meat dinner per week, and none if red meat appeared in the previous 10 days (`last_served_at`).
+- **Calories:** all meals loosely **450–550 kcal per serving**; dinners scale to 2 servings plus leftovers.
+- **Cooking:** 20–30 minutes, up to two pans; sear, sauté, boil, roast, grill, assemble. Frozen grains/veg freely; frozen entrées **≤1–2/week** (GF only).
+- **Proteins:** rotate roster in doc (chicken thighs over breast, chicken sausage, ground chicken, eggs, legumes; occasional red meat within cadence). **≥3 types/week.**
+- **Vegetarian:** welcome when it fits the week; protein-complete via legumes, eggs, and cheese (no tofu/tempeh).
 - **Cuisine:** bold, globally inspired; rotate profiles — no same cuisine twice in one week.
-- **Breakfasts:** mix savory and sweet-substantial; not both sweet or both oat-heavy same week.
-- **Lunches:** assemble only — no cooking; really easy prep.
-- **Fiber:** first-class on every card; legumes, whole grains, veg, seeds. acid-reflux management is a driver.
-- **Acid reflux:** no trigger stacking within a meal; **≤1 flagged acid-reflux-risk meal/week** (see doc for triggers and flag format).
-- **Engines:** widely vary TJ's sauces, dressings, seasonings, and salad kits — check [traderjoes.com](https://www.traderjoes.com) and the Fearless Flyer for new options; **no duplicate engine across the week.** Choose acid-reflux-aware pairings per doc.
-- **Avoids:** boring salads, bland proteins, repetitive weeks, product-catalogue meals, pineapple, trigger stacking.
+- **Fiber:** first-class on every card; legumes, GF whole grains, veg, seeds.
+- **Engines:** widely vary TJ's sauces, dressings, seasonings, and salad kits — check [traderjoes.com](https://www.traderjoes.com) and the Fearless Flyer for new options; **no duplicate engine across the week; every engine must be gluten-free.**
+- **Avoids:** boring salads, bland proteins, repetitive weeks, product-catalogue meals, hidden gluten in sauces or toppings.
 
 ### Companion (Secondary User — Junk List Only)
 - **Source of truth:** `data/companion-preferences.md`
@@ -43,7 +43,7 @@ TJ's is the shopping destination, not the identity of every ingredient. The meal
 
 | Use TJ's branding | Use generic names |
 |---|---|
-| Signature engines & sauces (Chili Onion Crunch, Soyaki, Bomba, Zhoug, EBTB Seasoning, Green Goddess Dressing, etc.) | Basic proteins: "chicken breasts," "salmon fillet," "ground turkey," "shrimp," "eggs" |
+| Signature engines & sauces (Chili Onion Crunch, Bomba, Zhoug, EBTB Seasoning, Green Goddess Dressing, etc. — GF only) | Basic proteins: "chicken breasts," "chicken thighs," "ground beef," "eggs" |
 | Specialty or unique items the shopper goes to TJ's specifically for (Elote Chopped Salad Kit, Norwegian Crispbread, Cauliflower Gnocchi, Frozen Gingery Green Beans with Shiitake, etc.) | Fresh produce: "avocado," "zucchini," "cucumber," "cherry tomatoes," "baby spinach," "banana" |
 | Branded dairy where the specific product matters (Non-Fat Plain Greek Yogurt, Low-Fat Cottage Cheese) | Commodity starches used as basic ingredients: "brown rice," "rolled oats," "lentils," "quinoa," "chickpeas" |
 | Items that would be confusing or inferior if substituted (Mandarin Orange Chicken, Beef Bulgogi, Palak Paneer) | Basic breads and wraps: "sprouted bread," "lavash," "pita" |
@@ -83,23 +83,17 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 | Chicken sausage | Trader Joe's Chicken Sausage — Roasted Garlic | Refrigerated, fully cooked | Mild, versatile |
 | Ground chicken | Ground chicken (from TJ's butcher section) | Fresh | Generic name fine |
 
-#### If you need beef or pork
+#### If you need red meat (beef / pork / lamb — max once every 10 days)
+
+**Red-meat cadence is a hard rule: at most 1 red-meat dinner per week, and only if the last one was 10+ days ago.**
 
 | Ingredient | TJ's Product | Format | Notes |
 |---|---|---|---|
-| Korean BBQ beef | Trader Joe's Frozen Beef Bulgogi | Frozen | Restaurant-quality; great in lettuce wraps or rice bowls |
-| Braised beef for tacos/bowls | Trader Joe's Frozen Beef Birria | Frozen | Rich, stew-braised; excellent with corn tortillas |
-| Turkey bacon | Trader Joe's Uncured Turkey Bacon | Refrigerated | For breakfast builds |
-| Ground beef / ground turkey | Ground beef or ground turkey (TJ's butcher section) | Fresh | Generic names fine |
+| Ground beef | Grass-fed ground beef (TJ's butcher section) | Fresh | Generic name fine |
+| Braised beef for tacos/bowls | Trader Joe's Frozen Beef Birria | Frozen | Rich, stew-braised; excellent with corn tortillas; verify GF label |
+| Pork tenderloin | Pork tenderloin (TJ's butcher section) | Fresh | Quick-roasting cut that fits the 30-min window |
 
-#### If you need seafood
-
-| Ingredient | TJ's Product | Format | Notes |
-|---|---|---|---|
-| Salmon fillet | Fresh Atlantic salmon fillets | Fresh (fish counter) | Reliable, always in stock; "salmon fillet" in builds |
-| Salmon, smoked | Trader Joe's Smoked Salmon | Refrigerated | Lox-style; great for breakfasts and grain bowls |
-| Salmon, frozen portion | Trader Joe's Frozen Wild-Caught Salmon | Frozen | Individually wrapped; good backup to fresh |
-| Shrimp | Shrimp (TJ's frozen) | Frozen | "Shrimp, peeled and deveined" — generic fine; TJ's carries 16/20 count tail-off |
+**Never plan:** fish or seafood (salmon, white fish, shrimp, smoked salmon), turkey in any form (ground turkey, deli turkey, turkey bacon), or Beef Bulgogi (soy-sauce marinade contains wheat).
 
 #### If you need eggs or dairy protein
 
@@ -113,32 +107,31 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 | Feta | Trader Joe's Crumbled Feta Cheese | Refrigerated tub | For salads, bowls, snack plates |
 | Ricotta | Trader Joe's Part-Skim Ricotta | Refrigerated | For pasta builds |
 
-#### If you need plant-based protein
+#### If you need plant-based protein (no tofu, no tempeh — legumes and eggs only)
 
 | Ingredient | TJ's Product | Format | Notes |
 |---|---|---|---|
-| Tofu, ready to eat | Trader Joe's Baked Sriracha Flavored Tofu | Refrigerated | Marinated, firm, no press needed |
-| Tofu, raw block | Extra firm tofu (TJ's) | Refrigerated | Press and cube or crumble; "extra firm tofu" in builds |
-| Tempeh | Organic tempeh (TJ's) | Refrigerated | Slice and pan-fry; nutty, firm |
 | Lentils, cooked | Green lentils (TJ's canned) | Canned | Rinse and use; "lentils" in builds |
 | Black beans | Black beans (TJ's canned) | Canned | "black beans" in builds |
 | Chickpeas | Chickpeas (TJ's canned) | Canned | "chickpeas" in builds |
 | Cannellini beans | Cannellini beans (TJ's canned) | Canned | "white beans" in builds |
 | Edamame | Organic edamame, shelled (TJ's frozen) | Frozen | Great as snack or bowl protein |
 
-#### If you need a complete frozen protein entrée (use ≤2/week)
+#### If you need a complete frozen protein entrée (use ≤2/week, gluten-free only)
 
 | Ingredient | TJ's Product | Format | Notes |
 |---|---|---|---|
-| Indian chicken curry | Trader Joe's Frozen Butter Chicken with Basmati Rice | Frozen, complete meal | Self-contained — rice already included; don't add extra base |
-| Indian chicken curry | Trader Joe's Frozen Chicken Tikka Masala | Frozen | Pair with a fresh vegetable |
-| Paneer in spinach sauce | Trader Joe's Frozen Palak Paneer | Frozen | Plant-rich, high protein for frozen Indian |
-| Korean BBQ beef | Trader Joe's Frozen Beef Bulgogi | Frozen | See beef section above |
-| Classic orange chicken | Trader Joe's Mandarin Orange Chicken | Frozen | Fan favorite; use as protein component with a fresh veg |
+| Indian chicken curry | Trader Joe's Frozen Butter Chicken with Basmati Rice | Frozen, complete meal | GF-labeled; self-contained — rice already included; don't add extra base |
+| Indian chicken curry | Trader Joe's Frozen Chicken Tikka Masala | Frozen | GF-labeled; pair with a fresh vegetable |
+| Paneer in spinach sauce | Trader Joe's Frozen Palak Paneer | Frozen | Plant-rich, high protein for frozen Indian; verify GF label |
+
+**Never plan:** Mandarin Orange Chicken and Beef Bulgogi (both contain wheat), any breaded/battered entrée, anything with soy sauce that isn't tamari-based.
 
 ---
 
-### 🌾 BASES & STARCHES
+### 🌾 BASES & STARCHES (gluten-free only)
+
+**Every base must be gluten-free. Never use: farro, orzo, couscous, regular pasta, wheat bread/tortillas/pita/naan/lavash, English muffins, crispbread, or any grain blend containing orzo or couscous (Harvest Grains, Ancient Grains).**
 
 #### If you need a grain — frozen (fastest)
 
@@ -146,48 +139,39 @@ This catalog is organized **ingredient-first** — start with what you're buildi
 |---|---|---|
 | Brown rice | Trader Joe's Frozen Organic Brown Rice | Microwaves in ~3 min; universal bowl base |
 | Jasmine rice | Trader Joe's Frozen Organic Jasmine Rice | Lighter, fluffier than brown |
-| Mixed ancient grains | Trader Joe's Frozen Ancient Grains Blend | Rice, red rice, quinoa, orzo — complex and interesting |
-| Mixed harvest grains | Trader Joe's Frozen Harvest Grains Blend | Israeli couscous, red quinoa, orzo, split peas; great texture |
 | Cauliflower rice | Trader Joe's Frozen Riced Cauliflower | Low-carb base, pairs with everything |
 
 #### If you need a grain — dry / stovetop
 
 | Ingredient | TJ's Product | Notes |
 |---|---|---|
-| Farro | Trader Joe's Organic Farro | Nutty, chewy, excellent macro profile; cook stovetop |
 | Quinoa | Quinoa (TJ's organic) | Complete protein, fast cooking; "quinoa" in builds |
-| Rolled oats | Rolled oats (TJ's) | Breakfast base; "rolled oats" in builds |
-| Steel cut oats | Steel cut oats (TJ's) | Slower cook, richer texture |
 | Brown rice | Brown rice (TJ's dry) | Dry shelf-stable; "brown rice" in builds |
 | Lentils | Green lentils (TJ's dry) | Cook stovetop; "lentils" in builds |
+| White rice / basmati | White or basmati rice (TJ's dry) | "basmati rice" in builds |
 
 #### If you need a specialty starch
 
 | Ingredient | TJ's Product | Notes |
 |---|---|---|
-| Cauliflower gnocchi | Trader Joe's Cauliflower Gnocchi | 75% cauliflower; air fry for crispy, pan-fry for soft |
-| Sweet potato gnocchi | Trader Joe's Frozen Sweet Potato Gnocchi | Seasonal; richer flavor than cauliflower version |
+| Cauliflower gnocchi | Trader Joe's Cauliflower Gnocchi | Cassava-based, gluten-free; air fry for crispy, pan-fry for soft |
+| Potatoes / sweet potatoes | Baby potatoes, russets, sweet potatoes (fresh) | Generic names fine; roast or hash within the time window |
+| Polenta | Trader Joe's Organic Polenta (shelf-stable tube) | Sear in rounds; naturally GF |
+| Rice noodles | Rice noodles (TJ's) | For stir-fries and noodle bowls; "rice noodles" in builds |
 
-#### If you need bread or a wrap
+#### If you need bread or a wrap (gluten-free options only)
 
 | Ingredient | TJ's Product | Notes |
 |---|---|---|
-| Lavash / flatbread wrap | Lavash (TJ's) | Best low-cal wrap; "lavash" in builds |
-| Flour tortilla | Flour tortillas (TJ's) | "tortillas" in builds |
-| Whole wheat tortilla | Whole wheat tortillas (TJ's) | "whole wheat tortillas" in builds |
-| English muffin | Trader Joe's Whole Wheat English Muffins | Excellent breakfast base |
-| Sprouted bread | Sprouted bread (TJ's) | "sprouted bread" in builds |
-| Crispbread | Trader Joe's Norwegian Crispbread | Seedy, sturdy; keep as TJ's brand — this one's specific |
-| Pita | Pita bread (TJ's) | "pita" in builds |
-| Baguette | Baguette (TJ's bakery) | "baguette" in builds |
+| Corn tortillas | Corn tortillas (TJ's) | Naturally GF; tacos, tostadas, quick quesadillas |
+| GF bread | Trader Joe's Gluten Free Whole Grain Bread | For the rare bread-based dinner |
 
 #### If you need pasta
 
 | Ingredient | TJ's Product | Notes |
 |---|---|---|
-| Spaghetti | Organic spaghetti (TJ's) | "spaghetti" in builds |
-| Penne | Organic penne (TJ's) | "penne" in builds |
-| Brown rice pasta | Brown rice pasta (TJ's) | Gluten-free option |
+| Brown rice pasta | Trader Joe's Brown Rice Pasta | The only pasta in scope — gluten-free |
+| Red lentil pasta | Trader Joe's Organic Red Lentil Sedanini | GF and high protein/fiber |
 
 ---
 
@@ -253,18 +237,18 @@ These are grocery staples. Never brand-prefix produce unless it's a specific TJ'
 
 ### 🔥 FLAVOR ENGINES & SAUCES
 
-**Every meal must include one engine. Always use the full TJ's brand name for engines — this is non-negotiable. These are the differentiators.**
+**Every meal must include one engine. Always use the full TJ's brand name for engines — this is non-negotiable. These are the differentiators. Every engine must be gluten-free — check the label; wheat hides in soy-sauce-based and malt-based products.**
 
 #### Signature TJ's Condiments (The Core Engines)
 
 | Engine | Flavor Profile | Best Used On |
 |---|---|---|
-| Trader Joe's Chili Onion Crunch | Umami-forward, crunchy chili oil | Eggs, bowls, proteins, pizza, rice |
-| Trader Joe's Soyaki | Teriyaki-style, sweet-savory | Marinades, stir-fry sauces, bowl dressings |
-| Trader Joe's Bomba Sauce | Italian hot pepper, bold and complex | Pasta, proteins, wraps, grain bowls |
-| Trader Joe's Zhoug Sauce | Yemeni green herb chili, herbaceous heat | Eggs, salmon, grain bowls, chicken |
+| Trader Joe's Chili Onion Crunch | Umami-forward, crunchy chili oil | Eggs, bowls, proteins, rice |
+| Trader Joe's Coconut Aminos | Soy-sauce stand-in, sweet-savory, GF | Marinades, stir-fry sauces, bowl dressings |
+| Trader Joe's Bomba Sauce | Italian hot pepper, bold and complex | GF pasta, proteins, grain bowls |
+| Trader Joe's Zhoug Sauce | Yemeni green herb chili, herbaceous heat | Eggs, grain bowls, chicken |
 | Trader Joe's Green Dragon Hot Sauce | Jalapeño-based, vinegar-forward everyday heat | Everything — the everyday hot sauce |
-| Trader Joe's Everything But the Bagel Seasoning | Sesame, poppy, onion, garlic finishing crunch | Eggs, salmon, avocado, bowls — use as crust or topping |
+| Trader Joe's Everything But the Bagel Seasoning | Sesame, poppy, onion, garlic finishing crunch | Eggs, avocado, bowls — use as crust or topping |
 | Trader Joe's Garlic Spread & Dip | Creamy, spreadable roasted garlic | Lavash, bowl base, marinade |
 | Trader Joe's Red Pepper Spread | Sweet-smoky pepper | Wraps, eggs, grain bowls |
 | Trader Joe's Eggplant Garlic Spread | Thick, savory | Pasta sauce alternative or spread on crackers |
@@ -281,26 +265,23 @@ These are grocery staples. Never brand-prefix produce unless it's a specific TJ'
 | Trader Joe's Green Goddess Dressing | Creamy, herby, versatile | Dressing, dip, or marinade |
 | Trader Joe's Champagne Vinaigrette | Light, tangy | Grain bowls and salads |
 | Trader Joe's Goddess Dressing | Tahini-based (different from Green Goddess) | Grain bowls |
-| Trader Joe's Vegan Caesar Dressing | Tofu-based, miso and mushroom powder, 70 cal/2 tbsp | Salads, grain bowls |
-| Trader Joe's Cilantro Dressing | Mayo-based, herbaceous | Pairs well with salmon |
+| Trader Joe's Cilantro Dressing | Mayo-based, herbaceous | Chicken and grain bowls |
 | Trader Joe's Avocado Ranch Dressing | Creamy, avocado-forward | Kits or bowls |
 
 #### Salad Kits (Complete Flavor Engines + Built-In Base)
 
 *These are complete flavor systems — greens + toppings + dressing in one bag. Add protein and done. Use the full TJ's name always.*
 
-| Kit | What's Inside | Protein Pairings |
-|---|---|---|
-| Trader Joe's Elote Chopped Salad Kit | Cruciferous mix, cotija, cornbread crumbles, creamy-spicy elote dressing | Chicken, shrimp, steak |
-| Trader Joe's Cruciferous Crunch Salad Kit | Sweet chili Thai dressing; also excellent cooked in a wok | Tofu, chicken, shrimp |
-| Trader Joe's Avocado Ranch Chopped Salad Kit | Shredded greens, cheddar, corn chips, avocado ranch dressing | Grilled chicken, black beans |
-| Trader Joe's Southwestern Chopped Salad Kit | Cabbage, romaine, radish, cotija, pepitas, tortilla strips, spicy avocado dressing | Chicken, black beans |
-| Trader Joe's Mediterranean Style Salad Kit | Romaine, radicchio, broccoli stalks, feta, roasted chickpeas, flatbread strips, red wine vinaigrette | Tofu, salmon, chicken |
-| Trader Joe's Sweet Onion Chopped Salad Kit | Romaine, kale, radicchio, white cheddar, fried onions, garlic croutons, sweet onion vinaigrette | Chicken, turkey |
-| Trader Joe's Dill-icious Chopped Salad Kit | Cauliflower, cabbage, kale, dill potato chips, dill cucumber ranch | Salmon, shrimp |
-| Trader Joe's Sweet Chili Mango Salad Kit | Cabbage, kale, Brussels, radicchio, dried mango, sweet chili dressing | Shrimp, tofu |
-| Trader Joe's BBQ & Black Pepper Toscano Chopped Salad Kit | Cabbage, carrots, broccoli, kale, cornbread croutons, sweet onion BBQ dressing | Pulled chicken, steak |
-| Trader Joe's Pizza Ranch Salad Kit | Romaine, cabbage, flatbread strips, four-cheese crisps, pizza ranch dressing | Chicken sausage |
+**⚠️ Gluten check required on every kit.** Many kits hide wheat in croutons, cornbread crumbles, flatbread strips, or crispy toppings. Only use a kit if the label is GF or the gluten topping comes in a separate packet you leave out (note that in the build).
+
+| Kit | What's Inside | Protein Pairings | Gluten notes |
+|---|---|---|---|
+| Trader Joe's Cruciferous Crunch Salad Kit | Sweet chili Thai dressing; also excellent cooked in a wok | Chicken, chicken sausage | Verify current label |
+| Trader Joe's Avocado Ranch Chopped Salad Kit | Shredded greens, cheddar, corn chips, avocado ranch dressing | Grilled chicken, black beans | Corn chips — verify label |
+| Trader Joe's Southwestern Chopped Salad Kit | Cabbage, romaine, radish, cotija, pepitas, tortilla strips, spicy avocado dressing | Chicken, black beans | Corn tortilla strips — verify label |
+| Trader Joe's Sweet Chili Mango Salad Kit | Cabbage, kale, Brussels, radicchio, dried mango, sweet chili dressing | Chicken | Verify current label |
+
+**Skip (wheat toppings baked in):** Elote Chopped (cornbread crumbles), Mediterranean Style (flatbread strips), Sweet Onion Chopped (croutons), BBQ & Black Pepper Toscano (cornbread croutons), Pizza Ranch (flatbread strips), Dill-icious (check — dill potato chips vary).
 
 #### Other Sauces & Pantry Flavor
 
@@ -308,12 +289,12 @@ These are grocery staples. Never brand-prefix produce unless it's a specific TJ'
 |---|---|
 | Trader Joe's Roasted Garlic Marinara | $2 jar, excellent quality; "marinara" in builds is fine |
 | Trader Joe's Arrabiata Sauce | Spicy marinara |
-| Trader Joe's Red Curry Sauce (jarred) | For curry builds |
+| Trader Joe's Red Curry Sauce (jarred) | For curry builds; verify GF label |
 | Trader Joe's Organic Coconut Milk (canned) | For curries and soups |
 | Pesto (TJ's) | "pesto" in builds — TJ's carries a solid Genovese version |
-| Soy sauce / tamari (TJ's) | "soy sauce" or "tamari" in builds |
+| Gluten-free tamari (TJ's) | The only "soy sauce" in scope — **never regular soy sauce** |
 | Sesame oil, toasted (TJ's) | "toasted sesame oil" in builds |
-| Rice vinegar (TJ's) | Pantry staple |
+| Rice vinegar (TJ's) | Pantry staple (never malt vinegar) |
 | Apple cider vinegar (TJ's organic) | For dressings |
 
 ---
@@ -335,17 +316,16 @@ These are grocery staples. Never brand-prefix produce unless it's a specific TJ'
 
 ### 🍿 SNACKS
 
-#### Snack ideas (NOT part of the standard 4-meal week — reference only)
-*The week is 1 breakfast, 1 lunch, 2 dinners. These are kept as a reference library; don't add a snack to fill out the week.*
+#### Snack ideas (NOT part of the standard 4-dinner week — reference only)
+*The week is 4 dinners. These are kept as a reference library; don't add a snack to fill out the week. All GF.*
 
 | Snack | Protein | Cal |
 |---|---|---|
-| Trader Joe's Low-Fat String Cheese + crispbread + cherry tomatoes | ~8–12g | ~150–190 |
 | Trader Joe's Cage Free Hard Boiled Eggs (2) + hummus + cucumber | ~13g | ~200 |
 | Trader Joe's Non-Fat Plain Greek Yogurt (¾ cup) + almonds + banana | ~10g | ~155 |
-| Trader Joe's Low-Fat Cottage Cheese + crispbread + cherry tomatoes | ~14g | ~180 |
+| Trader Joe's Low-Fat Cottage Cheese + corn tortilla chips + salsa | ~14g | ~200 |
 | Edamame (shelled, frozen, microwaved) + sea salt + furikake | ~15g | ~195 |
-| Trader Joe's Crumbled Feta + crispbread + cherry tomatoes + balsamic | ~12g | ~190 |
+| Trader Joe's Crumbled Feta + cherry tomatoes + balsamic + rice crackers | ~12g | ~190 |
 
 #### the companion junk snacks (see `data/companion-preferences.md`)
 
@@ -365,11 +345,11 @@ fiber: required on every card; higher is better
 carbs/fat: no specific targets
 ```
 
-Full rules, acid-reflux constraints, and the week validation checklist are in `data/diner-preferences.md`. Do not duplicate them here.
+Full rules, the hard dietary rules (gluten-free, excluded proteins, red-meat cadence), and the week validation checklist are in `data/diner-preferences.md`. Do not duplicate them here.
 
 ### Macro Calculation Rules
 - **Every `macros` object includes `fiber`** (per ingredient AND per meal). The meal's fiber equals the sum of its ingredients' fiber.
-- **Always calculate from real portion sizes** — 3oz of Just Chicken ≈ 21g protein; 5oz ≈ 35g; a 6oz salmon fillet ≈ 34g protein
+- **Always calculate from real portion sizes** — 3oz of Just Chicken ≈ 21g protein; 5oz ≈ 35g; 5oz of 90/10 ground beef ≈ 28g protein
 - **Never round aggressively** — 23g protein is not "about 25g"
 - **Lean into fiber** — choose legumes, whole grains, and vegetables when you can; it is the headline nutrient on every meal card
 - **Fully frozen complete entrées** (Butter Chicken with Basmati, etc.) already include a starch — do not add a separate base or you will double-count carbs and calories
@@ -379,26 +359,26 @@ Full rules, acid-reflux constraints, and the week validation checklist are in `d
 ## 🗓️ Meal Plan Structure
 
 ### Week Format
-- A flat list of **4 meals**: **1 Breakfast, 1 Lunch, 2 Dinners** — no days, no timeslots, no snack slot.
-- The app's "The Menu" view groups these 4 meals by type.
+- A flat list of **4 meals**: **4 Dinners** — no breakfasts, lunches, or snacks; no days, no timeslots.
+- The app's "The Menu" view shows them under Dinners.
 
 ### Meal Variety Rules
 Follow `data/diner-preferences.md` for the full validation checklist. Key rules:
+- **Gluten-free**: every meal, every ingredient, every engine — no exceptions
+- **Excluded proteins**: no fish/seafood, no turkey, no tofu/tempeh/seitan
+- **Red meat cadence**: ≤1 red-meat dinner per week, and only if the last was 10+ days ago (`last_served_at`)
 - **Protein rotation**: ≥3 different protein types across the week
-- **Vegetarian**: welcome when it fits the week; make protein-complete builds when included
+- **Vegetarian**: welcome when it fits the week; protein-complete via legumes, eggs, cheese
 - **No repeat meals** within the same week; skip meals served in the last ~7 days (`last_served_at`)
 - **No duplicate engine or base across the week** (also none within a single meal)
 - **Cuisine rotation**: no repeated cuisine profile in the same week
-- **Breakfast variety**: not both sweet or both oat-heavy same week
-- **Acid reflux**: no trigger stacking within a meal; ≤1 flagged acid-reflux-risk meal per week
-- **Hard no**: pineapple
 - **High heart_count** meals should anchor each week; **high appearance_count** meals rotated out periodically
 
 ### Meal Build Format
 
 Every meal has **4 pillars**, and each pillar can contain **1–3 items** (as a string or an array of strings). This is how you get **4–7 build pills total**, with most meals landing at **4–5**.
 
-- **pro**: The protein. Use a generic ingredient name when it's a grocery staple ("salmon fillet, pan-seared," "chicken breasts, sliced," "ground turkey, browned"). Use a TJ's product name when the product is the point ("Trader Joe's Just Chicken," "Trader Joe's Smoked Salmon," "Trader Joe's Hardwood Smoked Pulled Chicken"). Always include a brief prep note — cooking method or how it's used.
+- **pro**: The protein. Use a generic ingredient name when it's a grocery staple ("chicken thighs, seared," "chicken breasts, sliced," "ground beef, browned"). Use a TJ's product name when the product is the point ("Trader Joe's Just Chicken," "Trader Joe's Hardwood Smoked Pulled Chicken"). Always include a brief prep note — cooking method or how it's used.
 - **base**: The carb/grain/starch. Generic for commodities ("brown rice," "quinoa," "rolled oats"). TJ's brand for specialty items ("Trader Joe's Cauliflower Gnocchi," "Trader Joe's Norwegian Crispbread," "Trader Joe's Frozen Harvest Grains Blend").
 - **veg**: The vegetable. Generic names default ("zucchini, sautéed," "baby spinach," "Persian cucumbers"). TJ's prefix only for specific formats ("Trader Joe's Cruciferous Crunch Collection," "Trader Joe's Frozen Gingery Green Beans with Shiitake").
 - **engine**: The flavor anchor. **Always a named TJ's sauce, seasoning, dressing, or salad kit — full brand name, no exceptions.** This is where the TJ's identity lives.
@@ -476,8 +456,8 @@ LIMIT 300
 ### Step 2 — Filter Recent Meals
 Exclude any meal where `last_served_at` is within the past 7 days.
 
-### Step 3 — Segment by Meal Type
-Split into: Breakfast candidates / Lunch candidates / Dinner candidates / Snack candidates
+### Step 3 — Filter to Dinner Candidates
+Only Dinner-type meals are planned. Also flag any red-meat meal served in the last 10 days — if one exists, this week gets zero red-meat dinners.
 
 ### Step 4 — Select Using Priority Rules
 1. **High heart_count + not recently served** → Use first; these are proven winners
@@ -507,19 +487,19 @@ Never serve a disliked meal unless feedback is >60 days old and the reason no lo
 
 ### Step 2: Week Architecture
 Read `data/diner-preferences.md` first, then:
-- Choose a protein arc with ≥3 types
+- Confirm every candidate is gluten-free and contains no fish/seafood, turkey, or tofu/tempeh
+- Decide red meat: at most 1 red-meat dinner, and only if none in the last 10 days
+- Choose a protein arc with ≥3 types (chicken, eggs, legumes carry most weeks)
 - Assign distinct cuisine profiles — no repeats in the same week
-- Ensure breakfast variety (not both sweet, not both oat-heavy)
 - Give each meal a unique engine and base (no duplicates across the week)
-- Plan 20–30 min cooks; no more than 2 fully frozen entrées
-- Reserve ≤1 acid-reflux-flagged meal if needed; never stack triggers in one meal
+- Plan 20–30 min cooks; no more than 2 fully frozen entrées (GF only)
 
 ### Step 3: Build Each Meal
-1. Assign meals from candidate lists (1 breakfast, 1 lunch, 2 dinners)
+1. Assign meals from the dinner candidate list (4 dinners)
 2. Calculate each meal's macros from ingredient portions — **including fiber**
 3. Target **450–550 kcal** loosely; favor fiber-rich builds
 4. Confirm the meal's `macros.fiber` equals the sum of ingredient fiber
-5. Prefer chicken thighs over breast when either works; never use pineapple
+5. Prefer chicken thighs over breast when either works; double-check every sauce and topping for gluten
 
 ### Step 4: Ingredient Completeness
 1. Walk through every meal and ensure `ingredients` contains every buyable component
@@ -533,13 +513,15 @@ Follow `data/companion-preferences.md` end to end (dislikes, per-category counts
 
 ### Step 6: Validate
 Use the checklist in `data/diner-preferences.md`, plus:
-- ✅ Exactly 4 meals: 1 Breakfast, 1 Lunch, 2 Dinners
+- ✅ Exactly 4 meals: 4 Dinners
+- ✅ Every meal 100% gluten-free (bases, engines, toppings, hidden sources)
+- ✅ No fish/seafood, turkey, or tofu/tempeh/seitan anywhere
+- ✅ ≤1 red-meat dinner, and none if red meat was served in the last 10 days
 - ✅ Every meal and ingredient carries a `fiber` macro (grams)
 - ✅ All meals loosely 450–550 kcal
-- ✅ ≥3 protein types; no pineapple
+- ✅ ≥3 protein types
 - ✅ No duplicate engine or base across the week
-- ✅ acid-reflux rules respected (no trigger stacking; ≤1 flagged meal)
-- ✅ No more than 2 fully frozen ready-to-eat entrées
+- ✅ No more than 2 fully frozen ready-to-eat entrées (GF only)
 - ✅ All items are real TJ's products (web search to verify uncertain items)
 - ✅ Meal ingredients complete; derived shopping list in store walk order
 - ✅ JSON matches WeekData schema; all numbers are numbers, not strings
@@ -560,9 +542,9 @@ interface Macros {
 
 interface WeekData {
   weekRange: string,          // "Apr 28 – May 2"
-  // A FLAT list of 4 meals (1 Breakfast, 1 Lunch, 2 Dinner). No days, no timeslots.
+  // A FLAT list of 4 meals (4 Dinners). No days, no timeslots.
   meals: Array<{
-    type: "Breakfast" | "Lunch" | "Dinner" | "Snack",
+    type: "Dinner",           // union keeps "Breakfast" | "Lunch" | "Snack" for schema compat, but only Dinner is planned
     name: string,
     build: {
       // Each pillar can be a string or an array of strings to support 4–7 build pills.
@@ -639,16 +621,14 @@ npm run seed:meal-plan                 # Seed database from JSON (recovery only)
 Meal names should sound like something you'd order at a good fast-casual spot — or cook on a Tuesday because you actually feel like it. Not "Protein Bowl Option A." Not "TJ's Product + TJ's Product Bowl."
 
 **Target style:**
-- "Crunchy Salmon Bowl"
 - "Zhoug Herb Chicken"
-- "Pesto Salmon Pasta"
-- "Everything Bagel Smash"
-- "Soyaki Shrimp Stir Fry"
-- "Chili Crunch Salmon with Cauliflower Rice"
-- "Bomba Chicken & Farro Plate"
+- "Chimichurri Beef & Potato Skillet"
+- "Chili Crunch Chicken with Cauliflower Rice"
+- "Bomba Chicken & Quinoa Plate"
 - "Lentil Feta Power Bowl"
 - "Green Goddess Egg Bowl"
-- "Elote Chopped Salad with Chicken"
+- "Sweet Chili Chicken Jasmine Rice Bowl"
+- "Smoky Chickpea Sweet Potato Hash"
 
 When seen by a real person, the plan should make them think: *"I actually want to make this tonight."*
 
@@ -658,12 +638,12 @@ When seen by a real person, the plan should make them think: *"I actually want t
 
 - **Over-branding basics** — "eggs" in a build reads better than "Trader Joe's Cage Free Large Eggs." Use shopping-ready specificity in `ingredients[].name` when it matters.
 - **Full frozen entrée overload** — If 3+ dinners are a fully frozen ready-to-eat bag, the week feels like meal prep for someone who doesn't cook. Cap at 2 per week. Balance with real proteins that get cooked.
-- **Forgetting small cooking steps** — "salmon fillet, pan-seared" is more satisfying than "frozen salmon, microwaved." Even a 5-minute sear changes the meal's character. Use prep notes that imply real cooking when the meal calls for it.
+- **Forgetting small cooking steps** — "chicken thighs, pan-seared" is more satisfying than "frozen chicken, microwaved." Even a 5-minute sear changes the meal's character. Use prep notes that imply real cooking when the meal calls for it.
 - **Every meal feeling like a product demo** — The meal plan is for a person, not a TJ's marketing deck. If reading the build feels like scrolling a product catalogue, rewrite it in food language.
 - **Double-base on frozen complete entrées** — Butter Chicken with Basmati already includes rice. Adding a grain base separately double-counts the starch and breaks the macros.
 - **Inventing TJ's products** — "Trader Joe's Chipotle Lime Crema" may not exist. Verify everything uncertain with a web search.
-- **Ignoring the primary diner's preferences** — Read `data/diner-preferences.md` every session: 450–550 kcal, no pineapple, no duplicate engine/base across the week, acid-reflux rules.
-- **acid-reflux trigger stacking** — Never combine multiple triggers in one meal; max one flagged meal per week.
+- **Ignoring the household preferences** — Read `data/diner-preferences.md` every session: gluten-free everything, no fish/turkey/tofu, red meat ≤ once per 10 days, 450–550 kcal, no duplicate engine/base across the week.
+- **Hidden gluten** — Soy sauce, Soyaki, hoisin, malt vinegar, croutons/crumbles in salad kits, breaded proteins, and grain blends with orzo/couscous all contain wheat. When a label is uncertain, verify or swap.
 - **Repeating the same engine across the week** — Each meal needs a distinct engine and base.
 - **Vague ingredient quantities** — meal ingredients should have useful per-meal amounts like "6 oz" or "1 cup".
 - **Publishing without validating macros** — Sum every day manually before publishing.
@@ -679,10 +659,10 @@ Use this table when calibrating meal build language:
 
 | Dimension | Target style | Avoid |
 |---|---|---|
-| Basic protein naming | "salmon fillet, pan-seared" / "ground turkey, browned" / "chicken breasts, sliced" | "Trader Joe's Frozen Grilled Chicken Strips" for everything |
+| Basic protein naming | "chicken thighs, seared" / "ground beef, browned" / "chicken breasts, sliced" | "Trader Joe's Frozen Grilled Chicken Strips" for everything |
 | Produce naming | "zucchini, sautéed" / "baby spinach" / "avocado" | "Trader Joe's Organic Baby Spinach" in the build card |
 | Engine naming | Always full TJ's brand: "Trader Joe's Chili Onion Crunch" | "chili oil" / "hot sauce" / any generic |
 | Specialty item naming | Always full TJ's brand: "Trader Joe's Cauliflower Gnocchi" / "Trader Joe's Norwegian Crispbread" | Generic substitutes that lose the TJ's-specific item |
 | Build feel | 10–20 min real cooking implied | Pure microwave assembly every day |
 | Frozen items | Grains + veg freely; full entrées ≤2/week | Full entrées as the default protein across most of the week |
-| Meal names | "Crunchy Salmon Bowl" / "Zhoug Herb Chicken" | "Butter Chicken with Basmati" (just the product name) |
+| Meal names | "Chimichurri Beef & Potato Skillet" / "Zhoug Herb Chicken" | "Butter Chicken with Basmati" (just the product name) |

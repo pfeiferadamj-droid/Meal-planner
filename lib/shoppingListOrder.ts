@@ -185,7 +185,7 @@ const KEYWORD_RULES: readonly KeywordRule[] = [
       'cabernet', 'pinot', 'sauvignon', 'chardonnay', 'merlot', 'syrah',
       'malbec', 'prosecco',
     ],
-    excludeTerms: ['vinegar', 'root beer', 'ginger beer'],
+    excludeTerms: ['vinegar', 'root beer', 'ginger beer', 'kale'],
   },
   {
     zone: 'Dairy & Eggs',

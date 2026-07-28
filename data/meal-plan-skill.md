@@ -11,20 +11,20 @@
 You are operating the Harvest meal planning engine for Trader Joe's weeks.
 
 ✅ WEEK SHAPE (the unit we plan and shop for):
-- A week is a FLAT list of 4 meals: 1 breakfast, 1 lunch, and 2 dinners.
+- A week is a FLAT list of 4 meals: 4 DINNERS. Dinners only — no breakfasts, lunches, or snacks.
 - There are NO days and NO timeslots. Do not assign meals to Monday/Tuesday.
 - The app stores `meals` as a flat array; the Menu view groups them by meal type.
-- The 4-meal mix exists because it is a convenient one-trip shop.
+- 4 dinners (2 servings each, plus leftovers) is a convenient one-trip shop for two people.
 
-✅ PRIMARY DINER MEALS (read `data/diner-preferences.md` every session — source of truth):
-- All meals loosely 450–550 kcal. Fiber first-class on every ingredient and meal.
-- 20–30 min cooks, up to two pans. Frozen entrées ≤1–2/week.
-- ≥3 protein types/week. Vegetarian meals are fine when they fit the week, but not required.
-- Hard no: pineapple. No duplicate engine or base across the week.
-- No repeated cuisine profile in the same week. Vary breakfast style (not both sweet, not both oat-heavy).
-- Lunch: assemble only — no cooking.
-- Acid-reflux aware: no trigger stacking within a meal; ≤1 flagged risk meal/week.
-- Engines: widely vary TJ's sauces/seasonings/dressings; check traderjoes.com and Fearless Flyer; no duplicate engine across week.
+✅ HOUSEHOLD MEALS (read `data/diner-preferences.md` every session — source of truth):
+- HARD RULES: every meal 100% gluten-free (no wheat/barley/rye; no soy sauce/Soyaki — use tamari or coconut aminos; GF bases only).
+- HARD RULES: no fish or seafood, no turkey, no tofu/tempeh/seitan — ever.
+- HARD RULE: red meat (beef/pork/lamb) at most once every 10 days — never more than 1 red-meat dinner per week, and none if red meat appeared in the last 10 days.
+- All meals loosely 450–550 kcal/serving. Fiber first-class on every ingredient and meal.
+- 20–30 min cooks, up to two pans. Frozen entrées ≤1–2/week (GF only).
+- ≥3 protein types/week (chicken, eggs, legumes carry most weeks). Vegetarian meals welcome.
+- No duplicate engine or base across the week. No repeated cuisine profile in the same week.
+- Engines: widely vary TJ's sauces/seasonings/dressings; every engine must be gluten-free; check traderjoes.com and Fearless Flyer; no duplicate engine across week.
 
 ✅ MACROS ARE A GUIDE, NOT A GATE:
 - Per-meal targets in `data/diner-preferences.md`. No hard daily targets or macro warnings.
@@ -99,7 +99,7 @@ Read the preference files at the start of every planning session. Do not duplica
 
 | Command | Description |
 |---|---|
-| `/meal-plan new [YYYY-MM-DD]` | Scaffold a new week markdown file in `data/mealplans/` (1 breakfast / 1 lunch / 2 dinners) |
+| `/meal-plan new [YYYY-MM-DD]` | Scaffold a new week markdown file in `data/mealplans/` (4 dinners) |
 | `/meal-plan generate` | Scaffold a week plan ready to fill in |
 | `/meal-plan validate [file]` | Validate meal shape, fiber, macro totals, duplicate bases/engines, junk categories, shopping order |
 | `/meal-plan publish [file]` | Copy draft to `current-week.md` and run local sync + publish (reachable DB) |
@@ -125,12 +125,12 @@ Host-side DB scripts need `DATABASE_URL` (see `.env.example`). Use `docker-compo
 
 ## Output Template
 
-File: `data/mealplans/mealplan-week-YYYY-MM-DD.md`. The week is a flat list of 4 meals (1 breakfast, 1 lunch, 2 dinners) — no days, no timeslots. `build` values are arrays. Per-ingredient `macros` (including `fiber`) should sum to the meal `macros`. Do not author `shoppingList` — it is derived from `ingredients`.
+File: `data/mealplans/mealplan-week-YYYY-MM-DD.md`. The week is a flat list of 4 meals (4 dinners) — no days, no timeslots. `build` values are arrays. Per-ingredient `macros` (including `fiber`) should sum to the meal `macros`. Do not author `shoppingList` — it is derived from `ingredients`.
 
 ```markdown
 # Current Week Plan: [Month] [Day] — [Month] [Day]
 
-Active week of food: one breakfast, one lunch, and two dinners — a full week shopped in one trip. There are no days or timeslots; `meals` is a flat list grouped by type in the app's Menu view. Fiber is a first-class macro on every ingredient and meal.
+Active week of food: four dinners — a full week shopped in one trip. There are no days or timeslots; `meals` is a flat list shown in the app's Menu view. Every meal is gluten-free. Fiber is a first-class macro on every ingredient and meal.
 
 ## Canonical JSON
 ```json
@@ -138,20 +138,20 @@ Active week of food: one breakfast, one lunch, and two dinners — a full week s
   "weekRange": "[start] — [end]",
   "meals": [
     {
-      "type": "Breakfast",
+      "type": "Dinner",
       "name": "[Cafe-style Meal Name]",
       "build": {
-        "pro": ["[TJ's Protein]"],
-        "base": ["[TJ's Base]"],
+        "pro": ["[GF Protein]"],
+        "base": ["[GF Base]"],
         "veg": ["[Veg]"],
-        "engine": ["[TJ's Flavor Engine]"]
+        "engine": ["[GF TJ's Flavor Engine]"]
       },
       "ingredients": [
         { "name": "[item]", "quantity": "[amount]", "category": "pro", "macros": { "cal": 0, "p": 0, "c": 0, "f": 0, "fiber": 0 } }
       ],
       "macros": { "cal": 0, "p": 0, "c": 0, "f": 0, "fiber": 0 }
     },
-    { "type": "Lunch",     "name": "...", "build": { "pro": [], "base": [], "veg": [], "engine": [] }, "ingredients": [], "macros": { "cal": 0, "p": 0, "c": 0, "f": 0, "fiber": 0 } },
+    { "type": "Dinner",    "name": "...", "build": { "pro": [], "base": [], "veg": [], "engine": [] }, "ingredients": [], "macros": { "cal": 0, "p": 0, "c": 0, "f": 0, "fiber": 0 } },
     { "type": "Dinner",    "name": "...", "build": { "pro": [], "base": [], "veg": [], "engine": [] }, "ingredients": [], "macros": { "cal": 0, "p": 0, "c": 0, "f": 0, "fiber": 0 } },
     { "type": "Dinner",    "name": "...", "build": { "pro": [], "base": [], "veg": [], "engine": [] }, "ingredients": [], "macros": { "cal": 0, "p": 0, "c": 0, "f": 0, "fiber": 0 } }
   ],

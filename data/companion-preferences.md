@@ -1,8 +1,10 @@
-# Companion Junk List — AI Planning Instructions
+# Household Junk List — AI Planning Instructions
 
 > Referenced by: `data/data_context.md`, `data/MEAL_PLAN_PRODUCTION_WORKFLOW.md`
 
-Demo preferences for a secondary household shopper. The junk list is published alongside each week's meal plan: beer/wine, chips, a weekly sweet, quick frozen meals, a weekend frozen treat, biweekly coffee, weekly seasonal creamer, and flavored unsweetened sparkling water — with variety and a flyer-first mindset.
+Preferences for the household's fun list, published alongside each week's meal plan: beer/wine, chips, a weekly sweet, quick frozen meals, a weekend frozen treat, biweekly coffee, weekly seasonal creamer, and flavored unsweetened sparkling water — with variety and a flyer-first mindset.
+
+**Gluten-free awareness:** one member of the household is gluten-free. Anything meant to be shared (chips, sweets, frozen food, frozen treats) should default to gluten-free options — corn tortilla chips, chocolate, GF-labeled frozen meals. Beer is the exception: it's for the non-GF half of the house, so regular (non-wheat) beer is fine; wine and cider work for both.
 
 ---
 
@@ -58,35 +60,35 @@ Use these exact category strings, in this order:
 
 ### Chips
 
-Rotate freely (1 bag). Example pool:
+Rotate freely (1 bag). Default to gluten-free picks so the bag can be shared. Example pool:
 
 - Quinoa & Black Bean Infused Tortilla Chips
 - Restaurant-Style Tortilla Chips
-- Peanut Butter Filled Pretzel Nuggets
 - Organic Elote Corn Chip Dippers
 - Sea Salted Saddle Potato Crisps
 - Ridge Cut Kettle Cooked Potato Chips
 - Ode to the Classic Potato Chip
+- Plantain Chips
 
-Flyer wildcards welcome.
+Flyer wildcards welcome (skip pretzels and wheat-based crackers).
 
 ---
 
 ### Sweets
 
-Pick **1 item per week**. Mix chocolate and non-chocolate. Avoid licorice/anise/fennel and artificial diet sweets. Check the flyer before defaulting to the standing pool (PB cups, Joe-Joe's, Cookie Butter, Speculoos, Pound Plus, dried mango, mochi, etc.).
+Pick **1 item per week**. Mix chocolate and non-chocolate. Avoid licorice/anise/fennel and artificial diet sweets. Default gluten-free so it can be shared (PB cups, Pound Plus chocolate, dried mango, most mochi); Joe-Joe's / Cookie Butter / Speculoos contain wheat — only as an occasional non-shared pick.
 
 ---
 
 ### Frozen Food
 
-Pick **1–2** quick heat-and-eat Mexican or Indian frozen meals. Lean Mexican more often than not; still mix in Indian. No Mandarin Orange Chicken or Cauliflower Crust Pizza.
+Pick **1–2** quick heat-and-eat Mexican or Indian frozen meals — **gluten-free labeled** (many TJ's Indian entrées like Butter Chicken and Chicken Tikka Masala qualify; corn-tortilla Mexican items often do). No Mandarin Orange Chicken (wheat) or Cauliflower Crust Pizza. No turkey- or fish-based entrées.
 
 ---
 
 ### Frozen Treats
 
-Pick 1 weekend item. Default to **savory** (bulgogi, pulled pork, spinach artichoke dip, mac & cheese with pepperoni); dessert is an occasional swap.
+Pick 1 weekend item, gluten-free by default (sweet potato fries, GF dips, ice cream/gelato without cookie pieces); savory or dessert both fine. Skip bulgogi (soy-sauce marinade), mac & cheese, and anything breaded.
 
 ---
 

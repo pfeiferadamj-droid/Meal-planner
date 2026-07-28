@@ -4,7 +4,7 @@ import { validateMealPlanFile } from "./mealPlanValidation";
 
 // Re-add published meal-plan fixtures here once they match EXPECTED_MEAL_COUNTS in lib/constants.ts.
 const fixturePaths: string[] = [
-  // "data/mealplans/mealplan-week-YYYY-MM-DD.md",
+  "data/mealplans/mealplan-week-2026-07-27.md",
 ];
 
 for (const fixturePath of fixturePaths) {
