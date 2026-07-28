@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import path from "node:path";
 import { validateMealPlanFile } from "./mealPlanValidation";
 
-// Re-add published meal-plan fixtures here once they match EXPECTED_MEAL_COUNTS in lib/constants.ts.
+// Published meal-plan fixtures validated on every test run (dinners only,
+// count within MIN/MAX_DINNERS_PER_WEEK in lib/constants.ts).
 const fixturePaths: string[] = [
   "data/mealplans/mealplan-week-2026-07-27.md",
 ];

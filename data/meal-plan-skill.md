@@ -11,10 +11,11 @@
 You are operating the Harvest meal planning engine for Trader Joe's weeks.
 
 ✅ WEEK SHAPE (the unit we plan and shop for):
-- A week is a FLAT list of 4 meals: 4 DINNERS. Dinners only — no breakfasts, lunches, or snacks.
+- A week is a FLAT list of DINNERS ONLY — no breakfasts, lunches, or snacks.
+- THE DINNER COUNT IS CHOSEN PER WEEK: the request says how many (e.g. "plan 6 dinners"). If unspecified, ask — or default to 4. Valid range 1–7.
 - There are NO days and NO timeslots. Do not assign meals to Monday/Tuesday.
 - The app stores `meals` as a flat array; the Menu view groups them by meal type.
-- 4 dinners (2 servings each, plus leftovers) is a convenient one-trip shop for two people.
+- Each dinner is 2 servings; on 4-dinner weeks leftovers cover the remaining nights.
 
 ✅ HOUSEHOLD MEALS (read `data/diner-preferences.md` every session — source of truth):
 - HARD RULES: every meal 100% gluten-free (no wheat/barley/rye; no soy sauce/Soyaki — use tamari or coconut aminos; GF bases only).
@@ -99,7 +100,7 @@ Read the preference files at the start of every planning session. Do not duplica
 
 | Command | Description |
 |---|---|
-| `/meal-plan new [YYYY-MM-DD]` | Scaffold a new week markdown file in `data/mealplans/` (4 dinners) |
+| `/meal-plan new [YYYY-MM-DD] [dinners]` | Scaffold a new week markdown file in `data/mealplans/` (dinner count optional, default 4, max 7) |
 | `/meal-plan generate` | Scaffold a week plan ready to fill in |
 | `/meal-plan validate [file]` | Validate meal shape, fiber, macro totals, duplicate bases/engines, junk categories, shopping order |
 | `/meal-plan publish [file]` | Copy draft to `current-week.md` and run local sync + publish (reachable DB) |
@@ -125,7 +126,7 @@ Scripts use the embedded database automatically — publishing goes through the 
 
 ## Output Template
 
-File: `data/mealplans/mealplan-week-YYYY-MM-DD.md`. The week is a flat list of 4 meals (4 dinners) — no days, no timeslots. `build` values are arrays. Per-ingredient `macros` (including `fiber`) should sum to the meal `macros`. Do not author `shoppingList` — it is derived from `ingredients`.
+File: `data/mealplans/mealplan-week-YYYY-MM-DD.md`. The week is a flat list of dinners — as many as were requested for the week (template shows 4) — no days, no timeslots. `build` values are arrays. Per-ingredient `macros` (including `fiber`) should sum to the meal `macros`. Do not author `shoppingList` — it is derived from `ingredients`.
 
 ```markdown
 # Current Week Plan: [Month] [Day] — [Month] [Day]

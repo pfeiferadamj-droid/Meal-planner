@@ -5,16 +5,14 @@
 
 import type { MealType } from "@/lib/types";
 
-// Week shape — single source of truth for meal counts per type
-// This household plans dinners only: 4 dinners (plus leftovers) covers the week.
-export const EXPECTED_MEAL_COUNTS = {
-  Dinner: 4,
-} as const;
-
-export const EXPECTED_MEAL_TOTAL = Object.values(EXPECTED_MEAL_COUNTS).reduce(
-  (sum, count) => sum + count,
-  0
-);
+// Week shape — single source of truth. This household plans dinners only;
+// the number of dinners is chosen per week at planning time (4 on a
+// leftovers-heavy week, up to 7 for a dinner every night). Validation
+// accepts any count within these bounds.
+export const PLANNED_MEAL_TYPE = "Dinner" as const;
+export const MIN_DINNERS_PER_WEEK = 1;
+export const MAX_DINNERS_PER_WEEK = 7;
+export const DEFAULT_DINNERS_PER_WEEK = 4;
 
 // Trader Joe's home-store layout category order
 // Keep aligned with lib/shoppingListOrder.ts.

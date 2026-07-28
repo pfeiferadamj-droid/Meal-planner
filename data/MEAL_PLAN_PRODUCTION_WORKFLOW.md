@@ -8,9 +8,9 @@ Step-by-step procedure for generating and publishing a new weekly meal plan loca
 
 ## Week shape
 
-A standard week is **4 meals total**, stored as a flat `meals` array (no days / timeslots):
+A week is a flat `meals` array of **dinners only** (no days / timeslots, no breakfasts/lunches/snacks).
 
-- 4 Dinners (dinners only — no breakfasts, lunches, or snacks)
+**Pick the dinner count when you start the week** — typically 4, sometimes 6 or 7. Default to 4 if nobody says otherwise; the validator accepts 1–7.
 
 Read `data/diner-preferences.md` before editing. All meals target **450–550 kcal** loosely and must be **gluten-free**. Fiber is first-class. Full validation checklist (hard dietary rules, red-meat cadence, cuisine rotation, etc.) lives in that file.
 
@@ -69,7 +69,8 @@ Confirm in the app at http://localhost:3000/menu.
 ## Checklist
 
 - [ ] Read diner + companion preference docs
-- [ ] 4 dinners, nothing else
+- [ ] Confirmed this week's dinner count (default 4, max 7)
+- [ ] All meals are dinners, nothing else
 - [ ] Every meal gluten-free; no fish/seafood, turkey, or tofu/tempeh
 - [ ] ≤1 red-meat dinner, and none if red meat was served in the last 10 days
 - [ ] Macros / fiber present; ~450–550 kcal per meal

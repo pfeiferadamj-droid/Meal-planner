@@ -17,6 +17,11 @@ import {
   printMealPlanValidationResult,
   validateMealPlanFile,
 } from "./mealPlanValidation";
+import {
+  DEFAULT_DINNERS_PER_WEEK,
+  MAX_DINNERS_PER_WEEK,
+  MIN_DINNERS_PER_WEEK,
+} from "@/lib/constants";
 
 const MEALPLANS_DIR = path.join(process.cwd(), 'data', 'mealplans');
 const CURRENT_WEEK_FILE = path.join(process.cwd(), 'data', 'current-week.md');
@@ -29,7 +34,8 @@ USAGE:
   npm run meal-plan [command] [options]
 
 COMMANDS:
-  new [date]       Create a new week plan (date = Monday start YYYY-MM-DD)
+  new [date] [n]   Create a new week plan (date = Monday start YYYY-MM-DD,
+                   n = number of dinners, default ${DEFAULT_DINNERS_PER_WEEK})
   generate         Generate complete valid meal plan
   validate [file]  Validate existing meal plan
   publish [file]   Publish draft plan to current week
@@ -43,7 +49,22 @@ function getMondayDate(inputDate?: string): Date {
   return new Date(date.setDate(diff));
 }
 
-function createNewPlan(startDate: Date) {
+function parseDinnerCount(raw?: string): number {
+  if (!raw) return DEFAULT_DINNERS_PER_WEEK;
+  const count = Number.parseInt(raw, 10);
+  if (
+    Number.isNaN(count) ||
+    count < MIN_DINNERS_PER_WEEK ||
+    count > MAX_DINNERS_PER_WEEK
+  ) {
+    throw new Error(
+      `Dinner count must be a number between ${MIN_DINNERS_PER_WEEK} and ${MAX_DINNERS_PER_WEEK}; got "${raw}".`
+    );
+  }
+  return count;
+}
+
+function createNewPlan(startDate: Date, dinnerCount = DEFAULT_DINNERS_PER_WEEK) {
   const dateStr = startDate.toISOString().split('T')[0];
   const endDate = new Date(startDate);
   endDate.setDate(endDate.getDate() + 6);
@@ -65,18 +86,28 @@ function createNewPlan(startDate: Date) {
   // Use the last fenced json block (Output Template), not earlier prose mentions.
   const jsonSection = jsonParts[jsonParts.length - 1].split('```')[0];
 
+  // Resize the template's meals array to the requested number of dinners.
+  const templateWeek = JSON.parse(jsonSection) as { meals: unknown[] };
+  const detailedSlot = templateWeek.meals[0];
+  const compactSlot = templateWeek.meals[templateWeek.meals.length - 1];
+  templateWeek.meals = [
+    detailedSlot,
+    ...Array.from({ length: dinnerCount - 1 }, () => compactSlot),
+  ];
+  const resizedJson = JSON.stringify(templateWeek, null, 2);
+
   const content = `# Current Week Plan: ${startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} — ${endDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}
 
 Active meal plan for the current week.
 
 ## Canonical JSON
 \`\`\`json
-${jsonSection.replace('[start] — [end]', `${startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} — ${endDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`)}
+${resizedJson.replace('[start] — [end]', `${startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} — ${endDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`)}
 \`\`\`
 `;
 
   fs.writeFileSync(filepath, content);
-  console.log(`✅ Created new meal plan: ${filename}`);
+  console.log(`✅ Created new meal plan (${dinnerCount} dinners): ${filename}`);
   return filepath;
 }
 
@@ -113,7 +144,7 @@ const command = args[0];
 
 switch (command) {
   case 'new':
-    createNewPlan(getMondayDate(args[1]));
+    createNewPlan(getMondayDate(args[1]), parseDinnerCount(args[2]));
     break;
   case 'validate':
     validatePlan(args[1]);

@@ -12,7 +12,7 @@ This file is your complete system context. Everything you need to produce, valid
 
 ### The household (meals — both diners eat every meal)
 - **Source of truth:** `data/diner-preferences.md` — read fully at the start of every planning session.
-- Two diners share every dinner, so every rule applies to every meal. The week is **4 dinners — dinners only**.
+- Two diners share every dinner, so every rule applies to every meal. The week is **dinners only**; the **count is chosen per week** (typically 4, up to 7 — ask if unspecified, default 4).
 - **HARD RULE — gluten-free:** one diner is gluten-free; **every meal must be 100% gluten-free** (no wheat/barley/rye; no soy sauce/Soyaki/hoisin — tamari or coconut aminos only; GF bases only; verify sauces).
 - **HARD RULE — excluded proteins:** no fish or seafood, no turkey, no tofu/tempeh/seitan — ever, in any form.
 - **HARD RULE — red meat cadence:** beef/pork/lamb at most **once every 10 days** — never more than 1 red-meat dinner per week, and none if red meat appeared in the previous 10 days (`last_served_at`).
@@ -359,7 +359,8 @@ Full rules, the hard dietary rules (gluten-free, excluded proteins, red-meat cad
 ## 🗓️ Meal Plan Structure
 
 ### Week Format
-- A flat list of **4 meals**: **4 Dinners** — no breakfasts, lunches, or snacks; no days, no timeslots.
+- A flat list of **Dinners only** — no breakfasts, lunches, or snacks; no days, no timeslots.
+- **Dinner count is per-week input** (typically 4, up to 7; default 4 when unspecified).
 - The app's "The Menu" view shows them under Dinners.
 
 ### Meal Variety Rules
@@ -495,7 +496,7 @@ Read `data/diner-preferences.md` first, then:
 - Plan 20–30 min cooks; no more than 2 fully frozen entrées (GF only)
 
 ### Step 3: Build Each Meal
-1. Assign meals from the dinner candidate list (4 dinners)
+1. Assign meals from the dinner candidate list (as many dinners as requested for the week)
 2. Calculate each meal's macros from ingredient portions — **including fiber**
 3. Target **450–550 kcal** loosely; favor fiber-rich builds
 4. Confirm the meal's `macros.fiber` equals the sum of ingredient fiber
@@ -513,7 +514,7 @@ Follow `data/companion-preferences.md` end to end (dislikes, per-category counts
 
 ### Step 6: Validate
 Use the checklist in `data/diner-preferences.md`, plus:
-- ✅ Exactly 4 meals: 4 Dinners
+- ✅ All meals are Dinners, and the count matches the week's request (default 4, max 7)
 - ✅ Every meal 100% gluten-free (bases, engines, toppings, hidden sources)
 - ✅ No fish/seafood, turkey, or tofu/tempeh/seitan anywhere
 - ✅ ≤1 red-meat dinner, and none if red meat was served in the last 10 days
@@ -542,7 +543,7 @@ interface Macros {
 
 interface WeekData {
   weekRange: string,          // "Apr 28 – May 2"
-  // A FLAT list of 4 meals (4 Dinners). No days, no timeslots.
+  // A FLAT list of Dinners (count chosen per week, default 4, max 7). No days, no timeslots.
   meals: Array<{
     type: "Dinner",           // union keeps "Breakfast" | "Lunch" | "Snack" for schema compat, but only Dinner is planned
     name: string,

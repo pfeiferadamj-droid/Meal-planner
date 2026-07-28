@@ -8,8 +8,9 @@ Preferences for the two people who eat every planned meal. Both diners eat every
 
 ## Week Shape
 
-**4 dinners per week. Dinners only** — no breakfasts, no lunches, no snacks.
-No day scheduling. No daily calorie targets. Meals are a flat list; 4 dinners plus leftovers covers the week.
+**Dinners only** — no breakfasts, no lunches, no snacks.
+**The number of dinners is chosen each week** when the plan is requested: typically **4** (leftovers-heavy week) up to **7** (a dinner every night). If no number is given, ask — or default to **4**.
+No day scheduling. No daily calorie targets. Meals are a flat list.
 
 ---
 
@@ -122,7 +123,7 @@ Vary engines every meal. Check [traderjoes.com](https://www.traderjoes.com) and 
 
 ## Week Validation Rules
 
-- [ ] Exactly 4 dinners (no other meal types)
+- [ ] All meals are dinners (no other meal types), and the count matches what was requested this week (default 4, max 7)
 - [ ] Every meal 100% gluten-free (bases, engines, and hidden sources checked)
 - [ ] No fish, shellfish, turkey, tofu, tempeh, or seitan anywhere
 - [ ] ≤1 red-meat dinner, and none if red meat was served in the last 10 days

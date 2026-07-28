@@ -4,7 +4,7 @@
 
 This is a customized fork of [SGShuman/tjs-meal-planner](https://github.com/SGShuman/tjs-meal-planner), adapted for our household's rules:
 
-- **Dinners only** — the week is a flat list of **4 dinners** (plus leftovers). No breakfast or lunch planning.
+- **Dinners only** — the week is a flat list of dinners, and **you pick how many each week** (4 on a leftovers-heavy week, up to 7 for a dinner every night). No breakfast or lunch planning.
 - **Everything is gluten-free** — one of us is gluten-free and every dinner is shared, so 100% of planned meals are GF (bases, sauces, and salad-kit toppings all checked).
 - **No fish or seafood, no turkey, no tofu/tempeh** — ever.
 - **Red meat at most once every 10 days** — beef/pork/lamb shows up at most once a week, and only when the last red-meat dinner was 10+ days back.
@@ -27,7 +27,7 @@ The planning rules live in `data/diner-preferences.md` (dietary hard rules and w
 
 Most meal apps optimize for recipes. Harvest optimizes for **one weekly shop at Trader Joe's**:
 
-- A flat menu of **4 dinners** (no day grid to babysit)
+- A flat menu of **dinners — you choose how many per week** (no day grid to babysit)
 - Macros that matter in practice — **calories, protein, carbs, fat, and fiber**
 - A shopping list ordered for how you actually walk the store
 - A companion “junk” list and household goods list beside the meals
@@ -163,7 +163,7 @@ docs/                Screenshots and public assets for the README
 | `npm run meal-plan:sync` | Validate markdown → rewrite JSON |
 | `npm run meal-plan:publish` | Publish the synced week to the database |
 | `npm run meal-plan:bootstrap-markdown` | Rebuild `current-week.md` from JSON |
-| `npm run meal-plan` | CLI wrapper (`new` / `validate` / `publish`; scaffolds from `data/meal-plan-skill.md`) |
+| `npm run meal-plan` | CLI wrapper (`new [date] [dinners]` / `validate` / `publish`; scaffolds from `data/meal-plan-skill.md`) |
 | `npm run test:shopping` | Shopping-list order unit checks |
 | `npm run test:meal-plans` | Meal-plan fixture validation |
 | `npm run test:meal-plan-tools` | Run both test suites |
@@ -200,7 +200,7 @@ Scripts talk to the same embedded database as the app (or through the app's API 
 
 ## Contributing
 
-Issues and PRs are welcome. For behavior changes, keep the week shape (4 dinners) and the shopping-list derivation tests green:
+Issues and PRs are welcome. For behavior changes, keep the week shape (dinners only, count chosen per week) and the shopping-list derivation tests green:
 
 ```bash
 npm run lint

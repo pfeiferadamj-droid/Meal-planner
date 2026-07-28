@@ -4,7 +4,11 @@ import { extractWeekDataFromMarkdown } from "@/lib/mealPlanMarkdown";
 import { classifyShoppingItem } from "@/lib/shoppingListOrder";
 import { ListCategory, Macros, MealInput, WeekData } from "@/lib/types";
 
-import { EXPECTED_MEAL_COUNTS } from "@/lib/constants";
+import {
+  MAX_DINNERS_PER_WEEK,
+  MIN_DINNERS_PER_WEEK,
+  PLANNED_MEAL_TYPE,
+} from "@/lib/constants";
 
 const REQUIRED_JUNK_CATEGORIES = [
   "Coffee/Creamer",
@@ -109,21 +113,19 @@ function parseRawWeekData(markdown: string): WeekData {
 }
 
 function validateMealCounts(weekData: WeekData, errors: string[]) {
-  const counts = weekData.meals.reduce<Record<string, number>>((acc, meal) => {
-    acc[meal.type] = (acc[meal.type] ?? 0) + 1;
-    return acc;
-  }, {});
-
-  for (const [type, want] of Object.entries(EXPECTED_MEAL_COUNTS)) {
-    const got = counts[type] ?? 0;
-    if (got !== want) {
-      errors.push(`Expected ${want} ${type}(s), found ${got}.`);
+  for (const meal of weekData.meals) {
+    if (meal.type !== PLANNED_MEAL_TYPE) {
+      errors.push(
+        `"${meal.name}" has type ${meal.type}; this household plans ${PLANNED_MEAL_TYPE}s only.`
+      );
     }
   }
 
-  const totalExpected = Object.values(EXPECTED_MEAL_COUNTS).reduce((sum, count) => sum + count, 0);
-  if (weekData.meals.length !== totalExpected) {
-    errors.push(`Expected ${totalExpected} total meals, found ${weekData.meals.length}.`);
+  const count = weekData.meals.length;
+  if (count < MIN_DINNERS_PER_WEEK || count > MAX_DINNERS_PER_WEEK) {
+    errors.push(
+      `Expected between ${MIN_DINNERS_PER_WEEK} and ${MAX_DINNERS_PER_WEEK} dinners, found ${count}.`
+    );
   }
 }
 
