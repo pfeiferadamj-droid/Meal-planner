@@ -23,6 +23,7 @@ async function saveShoppingList(
     shoppingList: organizedShoppingList,
     junkList: mealPlan.junkList,
     householdGoods: mealPlan.householdGoods ?? [],
+    onHandItems: mealPlan.onHandItems ?? [],
     source: "user_edit",
     generationContext: {
       updatedFrom,

@@ -4,6 +4,7 @@
  */
 
 import type { MealType } from "@/lib/types";
+import { HYVEE_STORE_ORDER, TRADER_JOES_STORE_ORDER } from "@/lib/shoppingListOrder";
 
 // Week shape — single source of truth. This household plans dinners only;
 // the number of dinners is chosen per week at planning time (4 on a
@@ -14,26 +15,11 @@ export const MIN_DINNERS_PER_WEEK = 1;
 export const MAX_DINNERS_PER_WEEK = 7;
 export const DEFAULT_DINNERS_PER_WEEK = 4;
 
-// Trader Joe's home-store layout category order
-// Keep aligned with lib/shoppingListOrder.ts.
+// Combined shopping category order: the Trader Joe's walk, then the Hy-Vee
+// walk. Sourced from lib/shoppingListOrder.ts (single source of truth).
 export const STORE_CATEGORY_ORDER = [
-  "Flowers",
-  "Prepped Salads",
-  "Herbs",
-  "Vegetables",
-  "Fruit",
-  "Roots",
-  "Beverages",
-  "Deli Meats & Cheeses",
-  "Dairy & Eggs",
-  "Vegan Items",
-  "Pantry Items",
-  "Frozen Food",
-  "Sweets",
-  "Meats & Seafood",
-  "Bread & Tortillas",
-  "Chips",
-  "Beer/Wine"
+  ...TRADER_JOES_STORE_ORDER,
+  ...HYVEE_STORE_ORDER,
 ] as const;
 
 // Meal Type Ordering — dinner-only household; the MealType union in

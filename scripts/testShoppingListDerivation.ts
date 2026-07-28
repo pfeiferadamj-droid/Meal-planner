@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { HOUSEHOLD_GOODS_SECTION } from "@/lib/constants";
 import { deriveShoppingListFromMeals } from "@/lib/domain/shoppingListDerivation";
-import { TRADER_JOES_STORE_ORDER } from "@/lib/shoppingListOrder";
+import { STORE_WALK_ORDER } from "@/lib/shoppingListOrder";
 import type { HouseholdGoodsItem, MealInput } from "@/lib/types";
 
 function meal(
@@ -69,9 +69,7 @@ assert.ok(
   withHousehold
     .slice(0, -1)
     .every((category) =>
-      TRADER_JOES_STORE_ORDER.includes(
-        category.category as (typeof TRADER_JOES_STORE_ORDER)[number]
-      )
+      STORE_WALK_ORDER.includes(category.category as (typeof STORE_WALK_ORDER)[number])
     )
 );
 
@@ -99,5 +97,45 @@ const checkedList = deriveShoppingListFromMeals(
 );
 
 assert.equal(checkedList.at(-1)?.items[0]?.checked, true);
+
+// Hy-Vee items land in Hy-Vee zones, after the Trader Joe's run.
+const mealWithHyvee = meal("Meal C", ["Chicken thighs", "Trader Joe's Spinach"]);
+const twoStoreList = deriveShoppingListFromMeals([mealWithHyvee], [], []);
+const meatCounter = twoStoreList.find((category) => category.category === "Meat Counter");
+
+assert.deepEqual(
+  meatCounter?.items.map((item) => item.n),
+  ["Chicken thighs"]
+);
+assert.ok(
+  twoStoreList.findIndex((category) => category.category === "Vegetables") <
+    twoStoreList.findIndex((category) => category.category === "Meat Counter"),
+  "Trader Joe's zones should come before Hy-Vee zones"
+);
+
+// On-hand ("Use Up") ingredients auto-mark matching derived items as pantry.
+const onHandList = deriveShoppingListFromMeals([mealA, mealB], [], [], [], {
+  onHandItems: [{ n: "rice" }],
+});
+const onHandItemsByName = new Map(
+  onHandList.flatMap((category) => category.items.map((item) => [item.n, item]))
+);
+
+assert.equal(onHandItemsByName.get("Trader Joe's Rice")?.pantry, true);
+assert.equal(onHandItemsByName.get("Trader Joe's Eggs")?.pantry, undefined);
+
+// A user's explicit pantry choice wins over the on-hand auto-flag.
+const explicitPantryOff = deriveShoppingListFromMeals(
+  [mealB],
+  [{ category: "Pantry Items", items: [{ n: "Trader Joe's Rice", pantry: false }] }],
+  [],
+  [],
+  { onHandItems: [{ n: "rice" }] }
+);
+const explicitRice = explicitPantryOff
+  .flatMap((category) => category.items)
+  .find((item) => item.n === "Trader Joe's Rice");
+
+assert.equal(explicitRice?.pantry, false);
 
 console.log("shopping list derivation tests passed");

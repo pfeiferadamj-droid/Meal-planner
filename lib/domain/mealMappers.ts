@@ -145,10 +145,12 @@ export function serializePlanData(weekData: {
   shoppingList: unknown;
   junkList: unknown;
   householdGoods?: unknown;
+  onHandItems?: unknown;
 }) {
   return {
     shoppingList: weekData.shoppingList,
     junkList: weekData.junkList,
     householdGoods: weekData.householdGoods ?? [],
+    onHandItems: weekData.onHandItems ?? [],
   };
 }

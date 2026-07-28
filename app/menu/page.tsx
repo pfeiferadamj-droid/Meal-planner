@@ -6,13 +6,14 @@ import { Loader2, Plus, Home } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import JunkMenuPanel from "@/components/JunkMenuPanel";
 import HouseholdGoodsPanel from "@/components/HouseholdGoodsPanel";
+import OnHandPanel from "@/components/OnHandPanel";
 import MenuMealCard from "@/components/MenuMealCard";
 import MealPlanGate from "@/components/MealPlanGate";
 import MealSwapPickerModal from "@/components/MealSwapPickerModal";
 import { MEAL_TYPES } from "@/lib/constants";
 import { useMealPlanMutations } from "@/lib/hooks/useMealPlanMutations";
 import { useMealPlan } from "@/lib/MealPlanProvider";
-import { ListCategory, MealType, StoredMeal, HouseholdGoodsItem } from "@/lib/types";
+import { ListCategory, MealType, StoredMeal, HouseholdGoodsItem, OnHandItem } from "@/lib/types";
 import { sectionLabelColorClass } from "@/lib/uiClasses";
 import { buildHref } from "@/lib/urlState";
 
@@ -20,7 +21,7 @@ const MENU_GROUPS: { type: MealType; label: string }[] = [
   { type: "Dinner", label: "Dinners" },
 ];
 
-type MenuTab = MealType | "Junk" | "Household";
+type MenuTab = MealType | "Junk" | "UseUp" | "Household";
 type MenuGroup = { type: MealType; label: string; meals: StoredMeal[] };
 type MenuTabOption = { type: MenuTab; label: string; iconOnly?: boolean };
 
@@ -32,7 +33,7 @@ type PickerTarget = {
 };
 
 function parseMenuTab(raw: string | null): MenuTab | null {
-  if (raw === "Junk" || raw === "Household") return raw;
+  if (raw === "Junk" || raw === "UseUp" || raw === "Household") return raw;
   return MEAL_TYPES.includes(raw as MealType) ? (raw as MealType) : null;
 }
 
@@ -40,6 +41,7 @@ function MenuContent({
   groups,
   junkList,
   householdGoods,
+  onHandItems,
   weekRange,
   mealPlanId,
   queryString,
@@ -54,6 +56,7 @@ function MenuContent({
   groups: MenuGroup[];
   junkList: ListCategory[];
   householdGoods: HouseholdGoodsItem[];
+  onHandItems: OnHandItem[];
   weekRange?: string;
   mealPlanId?: number;
   queryString: string;
@@ -72,6 +75,7 @@ function MenuContent({
     () => [
       ...MENU_GROUPS.map((group) => ({ type: group.type, label: group.type })),
       { type: "Junk", label: "Junk" },
+      { type: "UseUp", label: "Use Up" },
       { type: "Household", label: "Household", iconOnly: true },
     ],
     []
@@ -155,6 +159,12 @@ function MenuContent({
             data={junkList}
             weekRange={weekRange}
             mealPlanId={mealPlanId}
+            onUpdate={onUpdate}
+          />
+        ) : activeTab === "UseUp" ? (
+          <OnHandPanel
+            data={onHandItems}
+            weekRange={weekRange}
             onUpdate={onUpdate}
           />
         ) : activeTab === "Household" ? (
@@ -291,6 +301,7 @@ export default function MenuPage() {
               groups={groups}
               junkList={readyPlan.junkList}
               householdGoods={readyPlan.householdGoods}
+              onHandItems={readyPlan.onHandItems ?? []}
               weekRange={readyPlan.weekRange}
               mealPlanId={readyPlan.id}
               queryString={queryString}

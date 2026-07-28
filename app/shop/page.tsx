@@ -19,13 +19,13 @@ export default function ShopPage() {
       plan={plan}
       isLoading={isLoading}
       error={error}
-      loadingMessage="Loading Trader Joe's provisions..."
+      loadingMessage="Loading this week's provisions..."
       onSeeded={refresh}
     >
       {(readyPlan) => (
         <main className="px-4 pb-12">
           <p className={`mb-6 ${sectionLabelColorClass.green}`}>
-            Trader Joe&apos;s Run
+            Shopping Run
           </p>
 
           <ListSection

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Check, Heart, Loader2, Plus, Undo2, WifiOff, X } from "lucide-react";
+import { Fragment, useEffect, useMemo, useState } from "react";
+import { Check, Heart, Loader2, Plus, Store, Undo2, WifiOff, X } from "lucide-react";
 import { ListCategory, MealType } from "@/lib/types";
 import {
   getShoppingUsageKey,
@@ -13,6 +13,7 @@ import { stripTraderJoesForDisplay } from "@/lib/displayFormatters";
 import { useListMutations } from "@/lib/hooks/useListMutations";
 import { useOfflineChecklist } from "@/lib/hooks/useOfflineChecklist";
 import { JUNK_CATEGORY_ORDER, STORE_CATEGORY_ORDER } from "@/lib/constants";
+import { getStoreForShoppingCategory, STORE_LABELS } from "@/lib/shoppingListOrder";
 
 function listItemKey(category: string, itemName: string) {
   return `${category}::${itemName}`;
@@ -140,6 +141,26 @@ export default function ListSection({
   );
   const progressPercent =
     totalItemCount > 0 ? Math.round((checkedVisibleCount / totalItemCount) * 100) : 0;
+
+  const sectionsToRender = displayData
+    .map((category) => ({
+      category,
+      visibleItems:
+        type === "shopping" && hideChecked
+          ? category.items.filter((item) => !isChecked(category.category, item.n))
+          : category.items,
+    }))
+    .filter(
+      ({ visibleItems }) =>
+        !(visibleItems.length === 0 && (!editable || (type === "shopping" && hideChecked)))
+    );
+
+  // Show "Trader Joe's" / "Hy-Vee" run headers only when the list spans both stores.
+  const showStoreHeaders =
+    type === "shopping" &&
+    new Set(
+      sectionsToRender.map(({ category }) => getStoreForShoppingCategory(category.category))
+    ).size > 1;
 
   useEffect(() => {
     // When week/data changes, derived UI state must re-sync to avoid stale pantry/heart state.
@@ -272,18 +293,28 @@ export default function ListSection({
         </div>
       ) : null}
 
-      {displayData.map((category) => {
-        const visibleItems =
-          type === "shopping" && hideChecked
-            ? category.items.filter((item) => !isChecked(category.category, item.n))
-            : category.items;
-
-        if (visibleItems.length === 0 && (!editable || (type === "shopping" && hideChecked))) {
-          return null;
-        }
+      {sectionsToRender.map(({ category, visibleItems }, sectionIndex) => {
+        const categoryStore = getStoreForShoppingCategory(category.category);
+        const previousStore =
+          sectionIndex > 0
+            ? getStoreForShoppingCategory(
+                sectionsToRender[sectionIndex - 1].category.category
+              )
+            : null;
 
         return (
-        <section key={category.category}>
+        <Fragment key={category.category}>
+        {showStoreHeaders && categoryStore !== previousStore ? (
+          <h2
+            className={`flex items-center gap-2 px-1 pt-3 text-sm font-black uppercase tracking-[0.2em] ${
+              categoryStore === "hyvee" ? "text-harvest-terracotta" : "text-harvest-green"
+            }`}
+          >
+            <Store size={15} strokeWidth={2.5} />
+            {STORE_LABELS[categoryStore]}
+          </h2>
+        ) : null}
+        <section>
           <h3 className={`mb-3 px-1 ${sectionLabelMutedClass}`}>
             {category.category}
           </h3>
@@ -456,6 +487,7 @@ export default function ListSection({
             </div>
           )}
         </section>
+        </Fragment>
         );
       })}
 

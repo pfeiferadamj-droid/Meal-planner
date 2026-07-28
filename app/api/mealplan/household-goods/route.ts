@@ -49,13 +49,15 @@ async function saveHouseholdGoods(
     mealPlan.meals,
     mealPlan.shoppingList,
     mealPlan.junkList,
-    householdGoods
+    householdGoods,
+    { onHandItems: mealPlan.onHandItems ?? [] }
   );
 
   return updateMealPlanLists(mealPlan.id, {
     shoppingList,
     junkList: mealPlan.junkList,
     householdGoods,
+    onHandItems: mealPlan.onHandItems ?? [],
     source: "user_edit",
     generationContext: {
       updatedFrom,

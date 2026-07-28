@@ -122,6 +122,7 @@ export async function updateMealPlanLists(
     shoppingListJson: string;
     junkListJson: string;
     householdGoodsJson: string;
+    onHandItemsJson: string;
     source: string;
     generationContextJson: string;
   }
@@ -132,17 +133,22 @@ export async function updateMealPlanLists(
       SET
         plan_data = jsonb_set(
           jsonb_set(
-            jsonb_set(plan_data, '{shoppingList}', $2::jsonb, true),
-            '{junkList}',
-            $3::jsonb,
+            jsonb_set(
+              jsonb_set(plan_data, '{shoppingList}', $2::jsonb, true),
+              '{junkList}',
+              $3::jsonb,
+              true
+            ),
+            '{householdGoods}',
+            $4::jsonb,
             true
           ),
-          '{householdGoods}',
-          $4::jsonb,
+          '{onHandItems}',
+          $5::jsonb,
           true
         ),
-        source = $5,
-        generation_context = $6::jsonb,
+        source = $6,
+        generation_context = $7::jsonb,
         updated_at = NOW()
       WHERE id = $1
       RETURNING *
@@ -152,6 +158,7 @@ export async function updateMealPlanLists(
       input.shoppingListJson,
       input.junkListJson,
       input.householdGoodsJson,
+      input.onHandItemsJson,
       input.source,
       input.generationContextJson,
     ]

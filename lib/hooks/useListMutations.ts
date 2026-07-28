@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useState } from "react";
 
-type ListType = "shopping" | "junk" | "household";
+type ListType = "shopping" | "junk" | "household" | "onhand";
 
 interface UseListMutationsOptions {
   type: ListType;
@@ -20,6 +20,7 @@ export function useListMutations({
   const endpoint = useMemo(() => {
     if (type === "junk") return "/api/mealplan/junk";
     if (type === "household") return "/api/mealplan/household-goods";
+    if (type === "onhand") return "/api/mealplan/on-hand";
     return "/api/mealplan/shopping";
   }, [type]);
   const [isSaving, setIsSaving] = useState(false);
@@ -146,6 +147,9 @@ export function useListMutations({
       try {
         if (type === "household") {
           await mutateList("DELETE", { weekRange, category });
+        } else if (type === "onhand") {
+          // On-hand items are keyed by name; the first argument carries it.
+          await mutateList("DELETE", { weekRange, n: category });
         } else {
           await mutateList("DELETE", {
             weekRange,
@@ -172,6 +176,9 @@ export function useListMutations({
       try {
         if (type === "household") {
           await mutateList("POST", { weekRange, category });
+        } else if (type === "onhand") {
+          if (!category.trim()) return false;
+          await mutateList("POST", { weekRange, n: category.trim() });
         } else {
           if (!itemName?.trim()) return false;
           await mutateList("POST", {

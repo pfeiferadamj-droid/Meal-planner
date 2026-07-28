@@ -1,7 +1,7 @@
 import { HOUSEHOLD_GOODS_SECTION } from "@/lib/constants";
-import { ListCategory, ListItem, MealInput, StoredMeal, HouseholdGoodsItem } from "@/lib/types";
+import { ListCategory, ListItem, MealInput, StoredMeal, HouseholdGoodsItem, OnHandItem } from "@/lib/types";
 import { getItemStoreZone, organizeShoppingListForStoreLayout } from "@/lib/shoppingListOrder";
-import { normalizeShoppingName } from "@/lib/domain/shoppingUsage";
+import { normalizeShoppingName, shoppingItemMatchesMealIngredient } from "@/lib/domain/shoppingUsage";
 
 type DerivableMeal = MealInput | StoredMeal;
 
@@ -14,10 +14,13 @@ export function deriveShoppingListFromMeals(
   previousShoppingList: ListCategory[] = [],
   junkList: ListCategory[] = [],
   householdGoods: HouseholdGoodsItem[] = [],
-  options?: { pruneOrphans?: boolean }
+  options?: { pruneOrphans?: boolean; onHandItems?: OnHandItem[] }
 ): ListCategory[] {
   const previousByName = getPreviousItemsByName(previousShoppingList);
   const derivedByName = new Map<string, ListItem>();
+  const onHandItems = options?.onHandItems ?? [];
+  const isOnHand = (itemName: string) =>
+    onHandItems.some((onHand) => shoppingItemMatchesMealIngredient(itemName, onHand.n));
 
   for (const meal of meals) {
     for (const ingredientName of getMealIngredientNames(meal)) {
@@ -27,7 +30,10 @@ export function deriveShoppingListFromMeals(
       }
 
       const previous = previousByName.get(normalizedName)?.item;
-      derivedByName.set(normalizedName, buildShoppingItem(ingredientName, previous));
+      derivedByName.set(
+        normalizedName,
+        buildShoppingItem(ingredientName, previous, { onHand: isOnHand(ingredientName) })
+      );
     }
   }
 
@@ -107,12 +113,13 @@ function buildHouseholdGoodsSection(
 function buildShoppingItem(
   itemName: string,
   previous?: ListItem,
-  options: { q?: string; shoppingSource?: "junk" | "household" } = {}
+  options: { q?: string; shoppingSource?: "junk" | "household"; onHand?: boolean } = {}
 ): ListItem {
   return {
     n: itemName,
     q: previous?.q ?? options.q,
-    pantry: previous?.pantry,
+    // An on-hand match auto-marks pantry, but a user's explicit toggle wins.
+    pantry: previous?.pantry ?? (options.onHand ? true : undefined),
     checked: previous?.checked,
     ...(options.shoppingSource ? { shoppingSource: options.shoppingSource } : {}),
   };

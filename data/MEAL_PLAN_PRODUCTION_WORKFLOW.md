@@ -28,13 +28,14 @@ cp data/current-week.md data/backup-week-$(date +%Y-%m-%d-%H%M%S).md
 
 ---
 
-## Step 1: Review recent meals
+## Step 1: Review recent meals and on-hand ingredients
 
 ```bash
 curl -s http://localhost:3000/api/meals | jq .
+curl -s http://localhost:3000/api/mealplan | jq '.mealPlan.onHandItems'
 ```
 
-Avoid repeating meals served in the last week when practical.
+Avoid repeating meals served in the last week when practical. Work the household's on-hand ("Use Up") ingredients into the new week where they fit.
 
 ---
 
@@ -69,6 +70,7 @@ Confirm in the app at http://localhost:3000/menu.
 ## Checklist
 
 - [ ] Read diner + companion preference docs
+- [ ] Checked the on-hand ("Use Up") list and worked items into the week where they fit
 - [ ] Confirmed this week's dinner count (default 4, max 7)
 - [ ] All meals are dinners, nothing else
 - [ ] Every meal gluten-free; no fish/seafood, turkey, or tofu/tempeh

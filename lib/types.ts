@@ -54,6 +54,15 @@ export interface HouseholdGoodsItem {
   n: string;
 }
 
+/**
+ * An ingredient already at home that the household wants used up.
+ * Feeds meal planning (work it into upcoming meals) and the shopping list
+ * (matching derived items are auto-marked pantry).
+ */
+export interface OnHandItem {
+  n: string;
+}
+
 export interface ListItem {
   n: string;
   q?: string;
@@ -78,6 +87,7 @@ export interface WeekData<TMeal = MealInput> {
   shoppingList?: ListCategory[];
   junkList: ListCategory[];
   householdGoods?: HouseholdGoodsItem[];
+  onHandItems?: OnHandItem[];
   feedback?: MealFeedback[];
 }
 
@@ -105,6 +115,7 @@ export interface StoredMealPlan {
   shoppingList: ListCategory[];
   junkList: ListCategory[];
   householdGoods: HouseholdGoodsItem[];
+  onHandItems: OnHandItem[];
   source: string;
   status: string;
   generationContext: Record<string, unknown>;
@@ -136,6 +147,7 @@ export interface MealPlanRow {
     shoppingList: StoredMealPlan["shoppingList"];
     junkList: StoredMealPlan["junkList"];
     householdGoods?: StoredMealPlan["householdGoods"];
+    onHandItems?: StoredMealPlan["onHandItems"];
   };
   source: string;
   status: string;

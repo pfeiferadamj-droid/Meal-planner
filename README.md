@@ -25,12 +25,12 @@ The planning rules live in `data/diner-preferences.md` (dietary hard rules and w
 
 ## Why Harvest
 
-Most meal apps optimize for recipes. Harvest optimizes for **one weekly shop at Trader Joe's**:
+Most meal apps optimize for recipes. Harvest optimizes for **one weekly shop — Trader Joe's first, with a short Hy-Vee run for fresh meat and gluten-free bakery**:
 
 - A flat menu of **dinners — you choose how many per week** (no day grid to babysit)
 - Macros that matter in practice — **calories, protein, carbs, fat, and fiber**
-- A shopping list ordered for how you actually walk the store
-- A companion “junk” list and household goods list beside the meals
+- A shopping list ordered for how you actually walk each store, split by store automatically
+- A companion “junk” list, household goods list, and a **“Use Up” list** of ingredients already at home (they feed the next plan and auto-mark Pantry on the shopping list)
 - Hearts, swaps, and an explore library so good meals come back
 
 It also ships with markdown + JSON tooling so you (or an AI assistant) can draft a week, validate it, and publish it into the live app.
@@ -41,8 +41,8 @@ It also ships with markdown + JSON tooling so you (or an AI assistant) can draft
 
 | Surface | What it does |
 |---|---|
-| **Menu** (`/menu`) | The week’s meals by type, plus Junk and Household tabs |
-| **Shop** (`/shop`) | Derived shopping list in store walking order |
+| **Menu** (`/menu`) | The week’s meals by type, plus Junk, Use Up, and Household tabs |
+| **Shop** (`/shop`) | Derived shopping list in store walking order — Trader Joe's run, then Hy-Vee |
 | **Explore** (`/explore`) | Searchable meal library with hearts and history |
 | **Offline-friendly** | Service worker keeps the current week usable in-store |
 
@@ -143,7 +143,9 @@ npm run meal-plan:publish   # publish to the app (running or not)
 | [`data/data_context.md`](data/data_context.md) | Trader Joe’s product guidance + quality rules |
 | [`data/meal-plan-skill.md`](data/meal-plan-skill.md) | AI/CLI week-authoring skill + JSON scaffold |
 | [`data/MEAL_PLAN_PRODUCTION_WORKFLOW.md`](data/MEAL_PLAN_PRODUCTION_WORKFLOW.md) | End-to-end publish checklist |
-| [`data/shopping-areas.md`](data/shopping-areas.md) | Store-area hints used when ordering the list |
+| [`data/shopping-areas.md`](data/shopping-areas.md) | Trader Joe's store-area hints used when ordering the list |
+| [`data/hyvee-items.md`](data/hyvee-items.md) | What gets bought at Hy-Vee instead of Trader Joe's |
+| [`data/hyvee-areas.md`](data/hyvee-areas.md) | Hy-Vee store-area hints and walk order |
 
 ## Project layout
 
@@ -167,8 +169,9 @@ docs/                Screenshots and public assets for the README
 | `npm run meal-plan:bootstrap-markdown` | Rebuild `current-week.md` from JSON |
 | `npm run meal-plan` | CLI wrapper (`new [date] [dinners]` / `validate` / `publish`; scaffolds from `data/meal-plan-skill.md`) |
 | `npm run test:shopping` | Shopping-list order unit checks |
+| `npm run test:derivation` | Shopping-list derivation unit checks |
 | `npm run test:meal-plans` | Meal-plan fixture validation |
-| `npm run test:meal-plan-tools` | Run both test suites |
+| `npm run test:meal-plan-tools` | Run all test suites |
 | `npm run lint` | ESLint |
 
 Scripts talk to the same embedded database as the app (or through the app's API when it's running). Set `DATABASE_DIR` only if you want the data stored somewhere other than `.harvest-db/`.
@@ -184,6 +187,7 @@ Scripts talk to the same embedded database as the app (or through the app's API 
 | `*` | `/api/mealplan/shopping` | Shopping list updates |
 | `*` | `/api/mealplan/junk` | Junk list updates |
 | `*` | `/api/mealplan/household-goods` | Household list updates |
+| `POST`/`DELETE` | `/api/mealplan/on-hand` | “Use Up” (at-home ingredients) list updates |
 | `GET`/`POST` | `/api/meals` | Meal library |
 | `PUT` | `/api/meals/[id]` | Update a meal |
 

@@ -57,9 +57,14 @@ You are operating the Harvest meal planning engine for Trader Joe's weeks.
 - Junk category strings must exactly match: Coffee/Creamer, Beer/Wine, Chips, Sweets, Frozen Food, Frozen Treats, Beverages/Drinks
 
 ✅ SHOPPING SECTION ORDER:
-- Derived shopping lists use the home-store walk order documented in `data/shopping-areas.md`
+- Derived shopping lists cover TWO stores: the Trader Joe's walk (`data/shopping-areas.md`) first, then the Hy-Vee walk (`data/hyvee-areas.md`)
+- Store assignment is automatic: fresh butcher meat and gluten-free bakery go to Hy-Vee, everything else stays TJ's (`data/hyvee-items.md`). Name ingredients naturally and let the router place them.
 - Vegan Items means the refrigerated vegan/plant-based area only. Beans/lentils stay Pantry Items; frozen vegan items stay Frozen Food.
 - Dairy & Eggs is separate from Deli Meats & Cheeses.
+
+✅ USE WHAT'S AT HOME:
+- Read the household's on-hand list before planning (`GET /api/mealplan` → `mealPlan.onHandItems`, managed in the app's Menu → Use Up tab).
+- Work on-hand ingredients into the week's meals when they genuinely fit; the app auto-marks matching shopping items pantry.
 
 ✅ PIPELINE COMPATIBILITY:
 - Generated plans go in data/mealplans/
