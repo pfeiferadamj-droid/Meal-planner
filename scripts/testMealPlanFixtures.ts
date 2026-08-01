@@ -6,6 +6,7 @@ import { validateMealPlanFile } from "./mealPlanValidation";
 // count within MIN/MAX_DINNERS_PER_WEEK in lib/constants.ts).
 const fixturePaths: string[] = [
   "data/mealplans/mealplan-week-2026-07-27.md",
+  "data/mealplans/mealplan-week-2026-08-03.md",
 ];
 
 for (const fixturePath of fixturePaths) {
