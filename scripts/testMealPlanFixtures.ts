@@ -7,6 +7,7 @@ import { validateMealPlanFile } from "./mealPlanValidation";
 const fixturePaths: string[] = [
   "data/mealplans/mealplan-week-2026-07-27.md",
   "data/mealplans/mealplan-week-2026-08-03.md",
+  "data/mealplans/mealplan-week-2026-08-10.md",
 ];
 
 for (const fixturePath of fixturePaths) {
