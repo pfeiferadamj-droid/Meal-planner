@@ -30,6 +30,8 @@ No day scheduling. No daily calorie targets. Meals are a flat list.
 7. **Eggs are never the featured protein at dinner.** No fried, scrambled, poached, or standalone eggs — and no eggs-in-sauce dishes either (no shakshuka, no eggs in purgatory). Egg is acceptable only as a minor bound-in ingredient (e.g., binding a fritter or fried rice); when in doubt, skip eggs entirely.
 8. **No lentils** in any form — green, red, steamed, dry, or lentil pasta. Other legumes (chickpeas, black beans, cannellini/white beans) are fine and encouraged.
 9. **No yogurt-based sauces, dollops, or dressings.** No tzatziki, raita, yogurt drizzles, or yogurt garnishes on meals.
+10. **No artichokes** in any form — fresh, jarred, marinated, or in dips.
+11. **Keep dinners familiar.** These are recognizable weeknight meals — tacos, spaghetti, stir-fry, BBQ chicken, burrito bowls, curry — not restaurant experiments. See "Familiarity Bar" below; it is a hard rule, not a style note.
 ---
 
 ## Calorie Targets
@@ -63,13 +65,25 @@ Rotate across these proteins. Aim for **≥3 different protein types per week.**
 | Cheese | Feta, cheddar, parmesan as a supporting protein in vegetarian meals |
 | Meat substitutes | Only if gluten-free and not soy-block based; use sparingly |
 
-**Never:** fish, shellfish, turkey, tofu, tempeh, seitan, lentils, eggs as the featured protein, yogurt-based sauces.
+**Never:** fish, shellfish, turkey, tofu, tempeh, seitan, lentils, artichokes, eggs as the featured protein, yogurt-based sauces.
 
 ---
 
 ## Vegetarian Meals
 
 Vegetarian dinners are welcome when they fit the week — they also make the red-meat cadence easier to hit. Make them satisfying and protein-complete with legumes (no lentils) and cheese (no tofu/tempeh, no featured eggs).
+
+---
+
+## Familiarity Bar (read before naming a single meal)
+
+**The test:** could you describe this dinner to a friend in three words and have them know exactly what it is? "Beef tacos." "Spaghetti and meat sauce." "BBQ chicken and potatoes." If it needs explaining, don't plan it.
+
+**Plan meals like these:** tacos, burrito bowls, fajitas, quesadillas, spaghetti with meat sauce, baked ziti-style GF pasta, chicken and broccoli stir-fry, fried rice, BBQ chicken with potatoes, sheet-pan chicken and veg, chicken and rice bowls, chili, loaded baked potatoes, curry over rice, Greek chicken bowls, grilled chicken with a starch and a vegetable.
+
+**Do NOT plan:** ingredient-driven "concept" dishes, obscure or single-use pantry items, unusual vegetable-as-base swaps (spaghetti squash standing in for pasta, cauliflower rice as the main base), fancy composed plates, or anything whose appeal is that it's interesting. Prefer the boring-but-good version every time.
+
+**Ingredient bar:** if it isn't something a typical American home cook keeps or recognizes, skip it. Rice, pasta, potatoes, tortillas, beans, chicken, cheese, standard vegetables, and familiar jarred sauces carry almost every week. Novelty comes from rotating *familiar* meals, not from exotic ingredients.
 
 ---
 
@@ -129,7 +143,8 @@ Vary engines every meal. Check [traderjoes.com](https://www.traderjoes.com) and 
 - [ ] All meals are dinners (no other meal types), and the count matches what was requested this week (default 4, max 7)
 - [ ] Every meal 100% gluten-free (bases, engines, and hidden sources checked)
 - [ ] No fish, shellfish, turkey, tofu, tempeh, or seitan anywhere
-- [ ] No lentils; no yogurt-based sauces or dollops; no eggs as a featured protein (incl. eggs-in-sauce)
+- [ ] No lentils, artichokes, or yogurt-based sauces; no eggs as a featured protein (incl. eggs-in-sauce)
+- [ ] Every meal passes the Familiarity Bar (three-word describable, no concept dishes, no obscure ingredients)
 - [ ] ≤1 red-meat dinner, and none if red meat was served in the last 10 days
 - [ ] ≥3 different protein types across the week
 - [ ] Different TJ's engine on every meal
@@ -143,7 +158,9 @@ Vary engines every meal. Check [traderjoes.com](https://www.traderjoes.com) and 
 
 ## Avoid
 
-- Boring salads and bland proteins
+- Bland proteins and watery salads
 - Repetitive weeks (same base, cuisine, or engines)
 - Product-catalogue meals that feel like a TJ's ad
 - "Gluten-free" meals with a glutenous engine hiding in the sauce
+- **Strange or fussy food** — obscure ingredients, concept dishes, vegetable-as-base substitutions. If it sounds clever, it's wrong.
+- Artichokes

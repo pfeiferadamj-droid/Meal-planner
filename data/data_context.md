@@ -14,7 +14,7 @@ This file is your complete system context. Everything you need to produce, valid
 - **Source of truth:** `data/diner-preferences.md` — read fully at the start of every planning session.
 - Two diners share every dinner, so every rule applies to every meal. The week is **dinners only**; the **count is chosen per week** (typically 4, up to 7 — ask if unspecified, default 4).
 - **HARD RULE — gluten-free:** one diner is gluten-free; **every meal must be 100% gluten-free** (no wheat/barley/rye; no soy sauce/Soyaki/hoisin — tamari or coconut aminos only; GF bases only; verify sauces).
-- **HARD RULE — excluded proteins:** no fish or seafood, no turkey, no tofu/tempeh/seitan, no lentils — ever, in any form. Eggs never as a featured dinner protein (no fried/scrambled/poached/eggs-in-sauce). No yogurt-based sauces or dollops.
+- **HARD RULE — excluded proteins & foods:** no fish or seafood, no turkey, no tofu/tempeh/seitan, no lentils, no artichokes — ever, in any form. Eggs never as a featured dinner protein (no fried/scrambled/poached/eggs-in-sauce). No yogurt-based sauces or dollops.
 - **HARD RULE — red meat cadence:** beef/pork/lamb at most **once every 10 days** — never more than 1 red-meat dinner per week, and none if red meat appeared in the previous 10 days (`last_served_at`).
 - **Calories:** all meals loosely **450–550 kcal per serving**; dinners scale to 2 servings plus leftovers.
 - **Cooking:** 20–30 minutes, up to two pans; sear, sauté, boil, roast, grill, assemble. Frozen grains/veg freely; frozen entrées **≤1–2/week** (GF only).
@@ -23,7 +23,8 @@ This file is your complete system context. Everything you need to produce, valid
 - **Cuisine:** bold, globally inspired; rotate profiles — no same cuisine twice in one week.
 - **Fiber:** first-class on every card; legumes, GF whole grains, veg, seeds.
 - **Engines:** widely vary TJ's sauces, dressings, seasonings, and salad kits — check [traderjoes.com](https://www.traderjoes.com) and the Fearless Flyer for new options; **no duplicate engine across the week; every engine must be gluten-free.**
-- **Avoids:** boring salads, bland proteins, repetitive weeks, product-catalogue meals, hidden gluten in sauces or toppings.
+- **HARD RULE — familiar food only:** every dinner must be a recognizable weeknight meal (tacos, spaghetti, stir-fry, BBQ chicken, curry over rice). No concept dishes, no obscure ingredients, no vegetable-as-base swaps. See the Familiarity Bar in `data/diner-preferences.md`.
+- **Avoids:** bland proteins, repetitive weeks, product-catalogue meals, hidden gluten in sauces or toppings, strange or fussy food.
 
 ### Companion (Secondary User — Junk List Only)
 - **Source of truth:** `data/companion-preferences.md`
@@ -226,7 +227,6 @@ These are grocery staples. Never brand-prefix produce unless it's a specific TJ'
 |---|---|---|
 | Roasted red peppers | Trader Joe's Roasted Red Peppers (jarred) | Keep TJ's brand |
 | Fire roasted diced tomatoes | Fire roasted diced tomatoes (TJ's canned) | "canned fire roasted tomatoes" in builds |
-| Artichoke hearts | Trader Joe's Marinated Artichoke Hearts (jarred) | Keep TJ's brand — marinated specifically |
 | Sun-dried tomatoes | Sun-dried tomatoes in olive oil (TJ's) | "sun-dried tomatoes" in builds |
 
 ---
@@ -512,7 +512,8 @@ Follow `data/companion-preferences.md` end to end (dislikes, per-category counts
 Use the checklist in `data/diner-preferences.md`, plus:
 - ✅ All meals are Dinners, and the count matches the week's request (default 4, max 7)
 - ✅ Every meal 100% gluten-free (bases, engines, toppings, hidden sources)
-- ✅ No fish/seafood, turkey, tofu/tempeh/seitan, or lentils anywhere; no yogurt sauces; no featured-egg dishes
+- ✅ No fish/seafood, turkey, tofu/tempeh/seitan, lentils, or artichokes anywhere; no yogurt sauces; no featured-egg dishes
+- ✅ Every meal passes the Familiarity Bar — recognizable weeknight food, no concept dishes
 - ✅ ≤1 red-meat dinner, and none if red meat was served in the last 10 days
 - ✅ Every meal and ingredient carries a `fiber` macro (grams)
 - ✅ All meals loosely 450–550 kcal
@@ -615,7 +616,7 @@ npm run seed:meal-plan                 # Seed database from JSON (recovery only)
 
 ## 🧠 Tone & Naming
 
-Meal names should sound like something you'd order at a good fast-casual spot — or cook on a Tuesday because you actually feel like it. Not "Protein Bowl Option A." Not "TJ's Product + TJ's Product Bowl."
+Meal names should sound like what you'd say when someone asks what's for dinner: "Beef tacos." "Spaghetti and meat sauce." "BBQ chicken and potatoes." Plain, familiar, appetizing — never restaurant-menu language or invented dish concepts.
 
 **Target style:**
 - "Zhoug Herb Chicken"
