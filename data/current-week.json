@@ -293,90 +293,103 @@
     },
     {
       "type": "Dinner",
-      "name": "Sloppy Joes with Coleslaw",
+      "name": "Baked Ziti with Ground Chicken",
       "build": {
         "pro": [
-          "ground chicken, browned"
+          "ground chicken, browned",
+          "shredded mozzarella",
+          "Trader Joe's Part-Skim Ricotta"
         ],
         "base": [
-          "Trader Joe's Gluten Free Whole Grain Bread, toasted"
+          "Trader Joe's Brown Rice Pasta"
         ],
         "veg": [
-          "yellow onions",
-          "Trader Joe's Cruciferous Crunch Collection"
+          "zucchini"
         ],
         "engine": [
-          "Trader Joe's Kansas City Style BBQ Sauce"
+          "Trader Joe's Roasted Garlic Marinara"
         ]
       },
       "ingredients": [
         {
           "name": "Ground chicken",
-          "quantity": "5 oz",
+          "quantity": "4 oz",
           "category": "pro",
           "macros": {
-            "cal": 220,
-            "p": 30,
+            "cal": 175,
+            "p": 24,
             "c": 0,
-            "f": 11,
+            "f": 9,
             "fiber": 0
           }
         },
         {
-          "name": "Trader Joe's Gluten Free Whole Grain Bread",
-          "quantity": "2 slices, toasted (open-faced)",
+          "name": "Trader Joe's Brown Rice Pasta",
+          "quantity": "1 1/2 oz dry",
           "category": "base",
           "macros": {
-            "cal": 160,
-            "p": 4,
-            "c": 28,
-            "f": 3,
-            "fiber": 4
-          }
-        },
-        {
-          "name": "Yellow onions",
-          "quantity": "1/2 cup diced",
-          "category": "veg",
-          "macros": {
-            "cal": 30,
-            "p": 1,
-            "c": 7,
-            "f": 0,
-            "fiber": 1
-          }
-        },
-        {
-          "name": "Trader Joe's Cruciferous Crunch Collection",
-          "quantity": "1 1/2 cups, dressed with cider vinegar",
-          "category": "veg",
-          "macros": {
-            "cal": 45,
+            "cal": 150,
             "p": 3,
-            "c": 8,
-            "f": 0,
-            "fiber": 3
+            "c": 33,
+            "f": 1,
+            "fiber": 2
           }
         },
         {
-          "name": "Trader Joe's Kansas City Style BBQ Sauce",
-          "quantity": "2 tbsp",
+          "name": "Trader Joe's Roasted Garlic Marinara",
+          "quantity": "1/2 cup",
           "category": "engine",
           "macros": {
-            "cal": 70,
-            "p": 0,
-            "c": 17,
-            "f": 0,
+            "cal": 60,
+            "p": 2,
+            "c": 10,
+            "f": 2,
+            "fiber": 2
+          }
+        },
+        {
+          "name": "Trader Joe's Part-Skim Ricotta",
+          "quantity": "2 tbsp",
+          "category": "pro",
+          "macros": {
+            "cal": 45,
+            "p": 4,
+            "c": 2,
+            "f": 3,
             "fiber": 0
+          }
+        },
+        {
+          "name": "Shredded mozzarella",
+          "quantity": "1/4 cup",
+          "category": "pro",
+          "macros": {
+            "cal": 80,
+            "p": 6,
+            "c": 1,
+            "f": 6,
+            "fiber": 0
+          }
+        },
+        {
+          "name": "Zucchini",
+          "quantity": "1 cup half-moons",
+          "category": "veg",
+          "macros": {
+            "cal": 20,
+            "p": 1,
+            "c": 4,
+            "f": 0,
+            "fiber": 1
           }
         }
       ],
       "macros": {
-        "cal": 525,
-        "p": 38,
-        "c": 60,
-        "f": 14,
-        "fiber": 8
+        "cal": 530,
+        "p": 40,
+        "c": 50,
+        "f": 21,
+        "fiber": 5
       }
     },
     {
@@ -511,7 +524,7 @@
           "n": "Shredded romaine"
         },
         {
-          "n": "Trader Joe's Cruciferous Crunch Collection"
+          "n": "Zucchini"
         }
       ]
     },
@@ -520,9 +533,6 @@
       "items": [
         {
           "n": "Baby potatoes"
-        },
-        {
-          "n": "Yellow onions"
         }
       ]
     },
@@ -562,6 +572,12 @@
         },
         {
           "n": "Trader Joe's Hardwood Smoked Pulled Chicken"
+        },
+        {
+          "n": "Trader Joe's Part-Skim Ricotta"
+        },
+        {
+          "n": "Shredded mozzarella"
         }
       ]
     },
@@ -570,9 +586,6 @@
       "items": [
         {
           "n": "Corn tortillas"
-        },
-        {
-          "n": "Trader Joe's Gluten Free Whole Grain Bread"
         }
       ]
     },
@@ -603,7 +616,10 @@
           "n": "Trader Joe's Taco Seasoning Mix"
         },
         {
-          "n": "Trader Joe's Kansas City Style BBQ Sauce"
+          "n": "Trader Joe's Brown Rice Pasta"
+        },
+        {
+          "n": "Trader Joe's Roasted Garlic Marinara"
         },
         {
           "n": "Trader Joe's Coconut Aminos"
