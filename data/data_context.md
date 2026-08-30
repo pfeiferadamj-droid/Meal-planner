@@ -20,7 +20,7 @@ This file is your complete system context. Everything you need to produce, valid
 - **Cooking:** 20–30 minutes, up to two pans; sear, sauté, boil, roast, grill, assemble. Frozen grains/veg freely; frozen entrées **≤1–2/week** (GF only).
 - **Proteins:** rotate roster in doc (chicken thighs over breast, chicken sausage, ground chicken, beans — never lentils; occasional red meat within cadence). **≥3 types/week.**
 - **Vegetarian:** welcome when it fits the week; protein-complete via beans and cheese (no tofu/tempeh, no lentils, no featured eggs).
-- **Cuisine:** bold, globally inspired; rotate profiles — no same cuisine twice in one week.
+- **Cuisine:** **Midwest home cooking is the default** — baked chicken and potatoes, chicken and rice bakes, taco night, spaghetti, sloppy joes, chili, BBQ. **Asian and Indian dinners get at most 1 slot per week, combined.** American comfort may repeat within a week if the protein, base, and technique differ; the *dish* must never repeat.
 - **Fiber:** first-class on every card; legumes, GF whole grains, veg, seeds.
 - **Engines:** widely vary TJ's sauces, dressings, seasonings, and salad kits — check [traderjoes.com](https://www.traderjoes.com) and the Fearless Flyer for new options; **no duplicate engine across the week; every engine must be gluten-free.**
 - **HARD RULE — familiar food only:** every dinner must be a recognizable weeknight meal (tacos, spaghetti, stir-fry, BBQ chicken, curry over rice). No concept dishes, no obscure ingredients, no vegetable-as-base swaps. See the Familiarity Bar in `data/diner-preferences.md`.
@@ -368,7 +368,7 @@ Follow `data/diner-preferences.md` for the full validation checklist. Key rules:
 - **Vegetarian**: welcome when it fits the week; protein-complete via legumes, eggs, cheese
 - **No repeat meals** within the same week; skip meals served in the last ~7 days (`last_served_at`)
 - **No duplicate engine or base across the week** (also none within a single meal)
-- **Cuisine rotation**: no repeated cuisine profile in the same week
+- **Cuisine mix**: Midwest/American comfort is the backbone (2–3 dinners); Mexican/Tex-Mex and Italian-American ~1 each; **Asian + Indian ≤1 combined**; no two dinners a person would describe the same way
 - **High heart_count** meals should anchor each week; **high appearance_count** meals rotated out periodically
 
 ### Meal Build Format
@@ -487,7 +487,7 @@ Read `data/diner-preferences.md` first, then:
 - Confirm every candidate is gluten-free and contains no fish/seafood, turkey, tofu/tempeh, lentils, yogurt sauces, or featured eggs
 - Decide red meat: at most 1 red-meat dinner, and only if none in the last 10 days
 - Choose a protein arc with ≥3 types (chicken, eggs, legumes carry most weeks)
-- Assign distinct cuisine profiles — no repeats in the same week
+- Set the cuisine mix: Midwest/American comfort as the backbone, ~1 Mexican and ~1 Italian-American, **at most 1 Asian or Indian dinner (combined)**, and no two dinners that describe the same way
 - Give each meal a unique engine and base (no duplicates across the week)
 - Plan 20–30 min cooks; no more than 2 fully frozen entrées (GF only)
 

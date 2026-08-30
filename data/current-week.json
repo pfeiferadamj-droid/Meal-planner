@@ -1,140 +1,53 @@
 {
-  "weekRange": "August 17 — August 23",
+  "weekRange": "August 31 — September 6",
   "meals": [
     {
       "type": "Dinner",
-      "name": "Beef Tacos",
+      "name": "Baked Salmon with Potatoes and Green Beans",
       "build": {
         "pro": [
-          "grass-fed ground beef, browned",
-          "shredded cheddar"
+          "salmon fillet, baked (fish diner)",
+          "chicken thighs, baked (swap portion)"
         ],
         "base": [
-          "corn tortillas"
+          "baby potatoes, roasted"
         ],
         "veg": [
-          "shredded romaine",
-          "cherry tomatoes"
+          "green beans",
+          "lemon"
         ],
         "engine": [
-          "Trader Joe's Taco Seasoning Mix"
+          "Trader Joe's Everything But the Bagel Seasoning"
         ]
       },
       "ingredients": [
         {
-          "name": "Grass-fed ground beef",
-          "quantity": "4 1/2 oz",
+          "name": "Salmon fillet",
+          "quantity": "5 oz (one diner)",
           "category": "pro",
           "macros": {
-            "cal": 225,
-            "p": 25,
+            "cal": 290,
+            "p": 34,
             "c": 0,
-            "f": 14,
+            "f": 17,
             "fiber": 0
           }
         },
-        {
-          "name": "Shredded cheddar",
-          "quantity": "3 tbsp",
-          "category": "pro",
-          "macros": {
-            "cal": 90,
-            "p": 5,
-            "c": 1,
-            "f": 7,
-            "fiber": 0
-          }
-        },
-        {
-          "name": "Corn tortillas",
-          "quantity": "3 tortillas",
-          "category": "base",
-          "macros": {
-            "cal": 150,
-            "p": 3,
-            "c": 30,
-            "f": 2,
-            "fiber": 4
-          }
-        },
-        {
-          "name": "Shredded romaine",
-          "quantity": "1 1/2 cups",
-          "category": "veg",
-          "macros": {
-            "cal": 12,
-            "p": 1,
-            "c": 2,
-            "f": 0,
-            "fiber": 1
-          }
-        },
-        {
-          "name": "Cherry tomatoes",
-          "quantity": "1/2 cup diced",
-          "category": "veg",
-          "macros": {
-            "cal": 15,
-            "p": 1,
-            "c": 3,
-            "f": 0,
-            "fiber": 1
-          }
-        },
-        {
-          "name": "Trader Joe's Taco Seasoning Mix",
-          "quantity": "1 tbsp",
-          "category": "engine",
-          "macros": {
-            "cal": 15,
-            "p": 0,
-            "c": 3,
-            "f": 0,
-            "fiber": 1
-          }
-        }
-      ],
-      "macros": {
-        "cal": 507,
-        "p": 35,
-        "c": 39,
-        "f": 23,
-        "fiber": 7
-      }
-    },
-    {
-      "type": "Dinner",
-      "name": "BBQ Chicken with Potato Wedges & Green Beans",
-      "build": {
-        "pro": [
-          "boneless skinless chicken thighs"
-        ],
-        "base": [
-          "russet potatoes"
-        ],
-        "veg": [
-          "green beans"
-        ],
-        "engine": [
-          "Trader Joe's Kansas City Style BBQ Sauce"
-        ]
-      },
-      "ingredients": [
         {
           "name": "Boneless skinless chicken thighs",
-          "quantity": "5 oz cooked",
+          "quantity": "5 oz — swap portion for the second diner; macros counted separately (see notes)",
           "category": "pro",
           "macros": {
-            "cal": 230,
-            "p": 28,
+            "cal": 0,
+            "p": 0,
             "c": 0,
-            "f": 12,
+            "f": 0,
             "fiber": 0
           }
         },
         {
-          "name": "Russet potatoes",
-          "quantity": "8 oz, cut into wedges",
+          "name": "Baby potatoes",
+          "quantity": "8 oz, halved",
           "category": "base",
           "macros": {
             "cal": 180,
@@ -157,66 +70,90 @@
           }
         },
         {
-          "name": "Trader Joe's Kansas City Style BBQ Sauce",
-          "quantity": "2 tbsp",
+          "name": "Lemon",
+          "quantity": "1/2 lemon",
+          "category": "veg",
+          "macros": {
+            "cal": 10,
+            "p": 0,
+            "c": 3,
+            "f": 0,
+            "fiber": 1
+          }
+        },
+        {
+          "name": "Trader Joe's Everything But the Bagel Seasoning",
+          "quantity": "2 tsp",
           "category": "engine",
           "macros": {
-            "cal": 70,
-            "p": 0,
-            "c": 17,
-            "f": 0,
+            "cal": 10,
+            "p": 1,
+            "c": 1,
+            "f": 1,
             "fiber": 0
           }
         }
       ],
       "macros": {
-        "cal": 525,
-        "p": 34,
-        "c": 68,
-        "f": 12,
-        "fiber": 8
+        "cal": 535,
+        "p": 41,
+        "c": 55,
+        "f": 18,
+        "fiber": 9
       }
     },
     {
       "type": "Dinner",
-      "name": "Chicken & Broccoli Stir-Fry with Rice",
+      "name": "Cheesy Chicken and Rice Bake",
       "build": {
         "pro": [
-          "chicken breast, sliced"
+          "Trader Joe's Just Chicken, pulled",
+          "shredded cheddar"
         ],
         "base": [
-          "Trader Joe's Frozen Jasmine Rice"
+          "white rice"
         ],
         "veg": [
-          "broccoli florets",
-          "carrots"
+          "broccoli florets"
         ],
         "engine": [
-          "Trader Joe's Gluten Free Tamari"
+          "Trader Joe's Garlic Spread & Dip"
         ]
       },
       "ingredients": [
         {
-          "name": "Chicken breast",
-          "quantity": "6 oz, sliced",
+          "name": "Trader Joe's Just Chicken",
+          "quantity": "4 oz, pulled",
           "category": "pro",
           "macros": {
-            "cal": 200,
-            "p": 37,
+            "cal": 140,
+            "p": 28,
             "c": 0,
-            "f": 5,
+            "f": 3,
             "fiber": 0
           }
         },
         {
-          "name": "Trader Joe's Frozen Jasmine Rice",
-          "quantity": "1 cup cooked",
+          "name": "Shredded cheddar",
+          "quantity": "1/4 cup",
+          "category": "pro",
+          "macros": {
+            "cal": 110,
+            "p": 7,
+            "c": 1,
+            "f": 9,
+            "fiber": 0
+          }
+        },
+        {
+          "name": "White rice",
+          "quantity": "3/4 cup cooked",
           "category": "base",
           "macros": {
-            "cal": 215,
-            "p": 4,
-            "c": 47,
-            "f": 1,
+            "cal": 150,
+            "p": 3,
+            "c": 33,
+            "f": 0,
             "fiber": 1
           }
         },
@@ -233,45 +170,135 @@
           }
         },
         {
-          "name": "Carrots",
-          "quantity": "1/2 cup sliced",
-          "category": "veg",
-          "macros": {
-            "cal": 25,
-            "p": 1,
-            "c": 6,
-            "f": 0,
-            "fiber": 2
-          }
-        },
-        {
-          "name": "Trader Joe's Gluten Free Tamari",
-          "quantity": "1 1/2 tbsp",
+          "name": "Trader Joe's Garlic Spread & Dip",
+          "quantity": "2 tbsp",
           "category": "engine",
           "macros": {
-            "cal": 15,
-            "p": 2,
-            "c": 1,
-            "f": 0,
+            "cal": 60,
+            "p": 1,
+            "c": 2,
+            "f": 6,
             "fiber": 0
           }
         }
       ],
       "macros": {
-        "cal": 500,
-        "p": 48,
-        "c": 63,
-        "f": 6,
-        "fiber": 7
+        "cal": 505,
+        "p": 43,
+        "c": 45,
+        "f": 18,
+        "fiber": 5
       }
     },
     {
       "type": "Dinner",
-      "name": "Spaghetti with Chicken Sausage & Marinara",
+      "name": "Chicken Tacos",
       "build": {
         "pro": [
-          "Trader Joe's Roasted Garlic Chicken Sausage, sliced",
-          "shaved parmesan"
+          "Trader Joe's Hardwood Smoked Pulled Chicken",
+          "black beans",
+          "shredded cheddar"
+        ],
+        "base": [
+          "corn tortillas"
+        ],
+        "veg": [
+          "shredded romaine"
+        ],
+        "engine": [
+          "Trader Joe's Taco Seasoning Mix"
+        ]
+      },
+      "ingredients": [
+        {
+          "name": "Trader Joe's Hardwood Smoked Pulled Chicken",
+          "quantity": "4 oz",
+          "category": "pro",
+          "macros": {
+            "cal": 160,
+            "p": 26,
+            "c": 2,
+            "f": 5,
+            "fiber": 0
+          }
+        },
+        {
+          "name": "Black beans",
+          "quantity": "1/2 cup, drained",
+          "category": "pro",
+          "macros": {
+            "cal": 110,
+            "p": 7,
+            "c": 20,
+            "f": 0,
+            "fiber": 7
+          }
+        },
+        {
+          "name": "Shredded cheddar",
+          "quantity": "2 tbsp",
+          "category": "pro",
+          "macros": {
+            "cal": 55,
+            "p": 3,
+            "c": 1,
+            "f": 4,
+            "fiber": 0
+          }
+        },
+        {
+          "name": "Corn tortillas",
+          "quantity": "3 tortillas",
+          "category": "base",
+          "macros": {
+            "cal": 150,
+            "p": 3,
+            "c": 30,
+            "f": 2,
+            "fiber": 4
+          }
+        },
+        {
+          "name": "Shredded romaine",
+          "quantity": "1 cup",
+          "category": "veg",
+          "macros": {
+            "cal": 8,
+            "p": 1,
+            "c": 2,
+            "f": 0,
+            "fiber": 1
+          }
+        },
+        {
+          "name": "Trader Joe's Taco Seasoning Mix",
+          "quantity": "1 tbsp",
+          "category": "engine",
+          "macros": {
+            "cal": 15,
+            "p": 0,
+            "c": 3,
+            "f": 0,
+            "fiber": 1
+          }
+        }
+      ],
+      "macros": {
+        "cal": 498,
+        "p": 40,
+        "c": 58,
+        "f": 11,
+        "fiber": 13
+      }
+    },
+    {
+      "type": "Dinner",
+      "name": "Baked Ziti with Ground Chicken",
+      "build": {
+        "pro": [
+          "ground chicken, browned",
+          "shredded mozzarella",
+          "Trader Joe's Part-Skim Ricotta"
         ],
         "base": [
           "Trader Joe's Brown Rice Pasta"
@@ -285,27 +312,27 @@
       },
       "ingredients": [
         {
-          "name": "Trader Joe's Roasted Garlic Chicken Sausage",
-          "quantity": "2 links, sliced",
+          "name": "Ground chicken",
+          "quantity": "4 oz",
           "category": "pro",
           "macros": {
-            "cal": 220,
-            "p": 22,
-            "c": 8,
-            "f": 11,
+            "cal": 175,
+            "p": 24,
+            "c": 0,
+            "f": 9,
             "fiber": 0
           }
         },
         {
           "name": "Trader Joe's Brown Rice Pasta",
-          "quantity": "2 oz dry",
+          "quantity": "1 1/2 oz dry",
           "category": "base",
           "macros": {
-            "cal": 200,
-            "p": 4,
-            "c": 44,
+            "cal": 150,
+            "p": 3,
+            "c": 33,
             "f": 1,
-            "fiber": 3
+            "fiber": 2
           }
         },
         {
@@ -321,6 +348,30 @@
           }
         },
         {
+          "name": "Trader Joe's Part-Skim Ricotta",
+          "quantity": "2 tbsp",
+          "category": "pro",
+          "macros": {
+            "cal": 45,
+            "p": 4,
+            "c": 2,
+            "f": 3,
+            "fiber": 0
+          }
+        },
+        {
+          "name": "Shredded mozzarella",
+          "quantity": "1/4 cup",
+          "category": "pro",
+          "macros": {
+            "cal": 80,
+            "p": 6,
+            "c": 1,
+            "f": 6,
+            "fiber": 0
+          }
+        },
+        {
           "name": "Zucchini",
           "quantity": "1 cup half-moons",
           "category": "veg",
@@ -331,50 +382,37 @@
             "f": 0,
             "fiber": 1
           }
-        },
-        {
-          "name": "Shaved parmesan",
-          "quantity": "2 tbsp",
-          "category": "pro",
-          "macros": {
-            "cal": 40,
-            "p": 4,
-            "c": 0,
-            "f": 3,
-            "fiber": 0
-          }
         }
       ],
       "macros": {
-        "cal": 540,
-        "p": 33,
-        "c": 66,
-        "f": 17,
-        "fiber": 6
+        "cal": 530,
+        "p": 40,
+        "c": 50,
+        "f": 21,
+        "fiber": 5
       }
     },
     {
       "type": "Dinner",
-      "name": "Chicken Fajitas",
+      "name": "Chicken Fried Rice",
       "build": {
         "pro": [
-          "chicken breast, sliced"
+          "chicken breast, diced"
         ],
         "base": [
-          "Trader Joe's Cilantro Lime Rice"
+          "Trader Joe's Frozen Organic Brown Rice"
         ],
         "veg": [
-          "bell peppers",
-          "yellow onions"
+          "frozen peas and carrots"
         ],
         "engine": [
-          "Trader Joe's Salsa Autentica"
+          "Trader Joe's Coconut Aminos"
         ]
       },
       "ingredients": [
         {
           "name": "Chicken breast",
-          "quantity": "5 oz, sliced",
+          "quantity": "5 oz, diced",
           "category": "pro",
           "macros": {
             "cal": 165,
@@ -385,248 +423,60 @@
           }
         },
         {
-          "name": "Trader Joe's Cilantro Lime Rice",
-          "quantity": "3/4 cup",
-          "category": "base",
-          "macros": {
-            "cal": 170,
-            "p": 3,
-            "c": 33,
-            "f": 2,
-            "fiber": 1
-          }
-        },
-        {
-          "name": "Bell peppers",
-          "quantity": "1 1/2 cups sliced",
-          "category": "veg",
-          "macros": {
-            "cal": 45,
-            "p": 2,
-            "c": 10,
-            "f": 0,
-            "fiber": 3
-          }
-        },
-        {
-          "name": "Yellow onions",
-          "quantity": "1 cup sliced",
-          "category": "veg",
-          "macros": {
-            "cal": 60,
-            "p": 2,
-            "c": 14,
-            "f": 0,
-            "fiber": 2
-          }
-        },
-        {
-          "name": "Avocado",
-          "quantity": "1/4 avocado",
-          "category": "veg",
-          "macros": {
-            "cal": 60,
-            "p": 1,
-            "c": 3,
-            "f": 6,
-            "fiber": 3
-          }
-        },
-        {
-          "name": "Trader Joe's Salsa Autentica",
-          "quantity": "3 tbsp",
-          "category": "engine",
-          "macros": {
-            "cal": 15,
-            "p": 1,
-            "c": 3,
-            "f": 0,
-            "fiber": 1
-          }
-        }
-      ],
-      "macros": {
-        "cal": 515,
-        "p": 40,
-        "c": 63,
-        "f": 12,
-        "fiber": 10
-      }
-    },
-    {
-      "type": "Dinner",
-      "name": "Coconut Curry Chicken over Rice",
-      "build": {
-        "pro": [
-          "boneless skinless chicken thighs"
-        ],
-        "base": [
-          "basmati rice"
-        ],
-        "veg": [
-          "bell peppers",
-          "baby spinach"
-        ],
-        "engine": [
-          "Trader Joe's Organic Coconut Milk"
-        ]
-      },
-      "ingredients": [
-        {
-          "name": "Boneless skinless chicken thighs",
-          "quantity": "5 oz cooked",
-          "category": "pro",
-          "macros": {
-            "cal": 230,
-            "p": 28,
-            "c": 0,
-            "f": 12,
-            "fiber": 0
-          }
-        },
-        {
-          "name": "Basmati rice",
+          "name": "Trader Joe's Frozen Organic Brown Rice",
           "quantity": "3/4 cup cooked",
           "category": "base",
           "macros": {
-            "cal": 150,
-            "p": 3,
-            "c": 33,
-            "f": 0,
-            "fiber": 1
-          }
-        },
-        {
-          "name": "Bell peppers",
-          "quantity": "1 cup sliced",
-          "category": "veg",
-          "macros": {
-            "cal": 30,
-            "p": 1,
-            "c": 7,
-            "f": 0,
+            "cal": 165,
+            "p": 4,
+            "c": 34,
+            "f": 1,
             "fiber": 2
           }
         },
         {
-          "name": "Baby spinach",
-          "quantity": "2 cups",
-          "category": "veg",
-          "macros": {
-            "cal": 14,
-            "p": 2,
-            "c": 2,
-            "f": 0,
-            "fiber": 1
-          }
-        },
-        {
-          "name": "Trader Joe's Organic Coconut Milk",
-          "quantity": "1/3 cup",
-          "category": "engine",
-          "macros": {
-            "cal": 120,
-            "p": 1,
-            "c": 2,
-            "f": 12,
-            "fiber": 0
-          }
-        }
-      ],
-      "macros": {
-        "cal": 544,
-        "p": 35,
-        "c": 44,
-        "f": 24,
-        "fiber": 4
-      }
-    },
-    {
-      "type": "Dinner",
-      "name": "Loaded Sweet Potatoes with Black Beans & Cheddar",
-      "build": {
-        "pro": [
-          "Trader Joe's Organic Black Beans",
-          "shredded cheddar"
-        ],
-        "base": [
-          "sweet potatoes"
-        ],
-        "veg": [
-          "frozen sweet corn"
-        ],
-        "engine": [
-          "Trader Joe's Organic Taco Sauce"
-        ]
-      },
-      "ingredients": [
-        {
-          "name": "Trader Joe's Organic Black Beans",
+          "name": "Frozen peas and carrots",
           "quantity": "3/4 cup",
-          "category": "pro",
-          "macros": {
-            "cal": 165,
-            "p": 10,
-            "c": 30,
-            "f": 1,
-            "fiber": 11
-          }
-        },
-        {
-          "name": "Shredded cheddar",
-          "quantity": "1/4 cup",
-          "category": "pro",
-          "macros": {
-            "cal": 110,
-            "p": 7,
-            "c": 1,
-            "f": 9,
-            "fiber": 0
-          }
-        },
-        {
-          "name": "Sweet potatoes",
-          "quantity": "1 large, baked",
-          "category": "base",
-          "macros": {
-            "cal": 160,
-            "p": 4,
-            "c": 37,
-            "f": 0,
-            "fiber": 6
-          }
-        },
-        {
-          "name": "Frozen sweet corn",
-          "quantity": "1/2 cup",
           "category": "veg",
           "macros": {
             "cal": 60,
-            "p": 2,
-            "c": 14,
-            "f": 1,
-            "fiber": 2
+            "p": 3,
+            "c": 12,
+            "f": 0,
+            "fiber": 4
           }
         },
         {
-          "name": "Trader Joe's Organic Taco Sauce",
-          "quantity": "3 tbsp",
+          "name": "Egg",
+          "quantity": "1 egg, scrambled into the rice",
+          "category": "pro",
+          "macros": {
+            "cal": 70,
+            "p": 6,
+            "c": 0,
+            "f": 5,
+            "fiber": 0
+          }
+        },
+        {
+          "name": "Trader Joe's Coconut Aminos",
+          "quantity": "2 tbsp",
           "category": "engine",
           "macros": {
-            "cal": 15,
+            "cal": 30,
             "p": 0,
-            "c": 3,
+            "c": 7,
             "f": 0,
             "fiber": 0
           }
         }
       ],
       "macros": {
-        "cal": 510,
-        "p": 23,
-        "c": 85,
-        "f": 11,
-        "fiber": 19
+        "cal": 490,
+        "p": 44,
+        "c": 53,
+        "f": 10,
+        "fiber": 6
       }
     }
   ],
@@ -665,25 +515,16 @@
       "category": "Vegetables",
       "items": [
         {
-          "n": "Shredded romaine"
-        },
-        {
-          "n": "Cherry tomatoes"
-        },
-        {
           "n": "Green beans"
         },
         {
           "n": "Broccoli florets"
         },
         {
+          "n": "Shredded romaine"
+        },
+        {
           "n": "Zucchini"
-        },
-        {
-          "n": "Bell peppers"
-        },
-        {
-          "n": "Baby spinach"
         }
       ]
     },
@@ -691,16 +532,7 @@
       "category": "Roots",
       "items": [
         {
-          "n": "Russet potatoes"
-        },
-        {
-          "n": "Carrots"
-        },
-        {
-          "n": "Yellow onions"
-        },
-        {
-          "n": "Sweet potatoes"
+          "n": "Baby potatoes"
         }
       ]
     },
@@ -708,7 +540,7 @@
       "category": "Fruit",
       "items": [
         {
-          "n": "Avocado"
+          "n": "Lemon"
         }
       ]
     },
@@ -716,16 +548,16 @@
       "category": "Meats & Seafood",
       "items": [
         {
-          "n": "Grass-fed ground beef"
+          "n": "Salmon fillet"
         },
         {
           "n": "Boneless skinless chicken thighs"
         },
         {
-          "n": "Chicken breast"
+          "n": "Ground chicken"
         },
         {
-          "n": "Trader Joe's Roasted Garlic Chicken Sausage"
+          "n": "Chicken breast"
         }
       ]
     },
@@ -733,10 +565,19 @@
       "category": "Deli Meats & Cheeses",
       "items": [
         {
+          "n": "Trader Joe's Just Chicken"
+        },
+        {
           "n": "Shredded cheddar"
         },
         {
-          "n": "Shaved parmesan"
+          "n": "Trader Joe's Hardwood Smoked Pulled Chicken"
+        },
+        {
+          "n": "Trader Joe's Part-Skim Ricotta"
+        },
+        {
+          "n": "Shredded mozzarella"
         }
       ]
     },
@@ -749,16 +590,30 @@
       ]
     },
     {
+      "category": "Dairy & Eggs",
+      "items": [
+        {
+          "n": "Egg"
+        }
+      ]
+    },
+    {
       "category": "Pantry Items",
       "items": [
         {
+          "n": "Trader Joe's Everything But the Bagel Seasoning"
+        },
+        {
+          "n": "White rice"
+        },
+        {
+          "n": "Trader Joe's Garlic Spread & Dip"
+        },
+        {
+          "n": "Black beans"
+        },
+        {
           "n": "Trader Joe's Taco Seasoning Mix"
-        },
-        {
-          "n": "Trader Joe's Kansas City Style BBQ Sauce"
-        },
-        {
-          "n": "Trader Joe's Gluten Free Tamari"
         },
         {
           "n": "Trader Joe's Brown Rice Pasta"
@@ -767,19 +622,7 @@
           "n": "Trader Joe's Roasted Garlic Marinara"
         },
         {
-          "n": "Trader Joe's Salsa Autentica"
-        },
-        {
-          "n": "Basmati rice"
-        },
-        {
-          "n": "Trader Joe's Organic Coconut Milk"
-        },
-        {
-          "n": "Trader Joe's Organic Black Beans"
-        },
-        {
-          "n": "Trader Joe's Organic Taco Sauce"
+          "n": "Trader Joe's Coconut Aminos"
         }
       ]
     },
@@ -787,13 +630,10 @@
       "category": "Frozen Food",
       "items": [
         {
-          "n": "Trader Joe's Frozen Jasmine Rice"
+          "n": "Trader Joe's Frozen Organic Brown Rice"
         },
         {
-          "n": "Trader Joe's Cilantro Lime Rice"
-        },
-        {
-          "n": "Frozen sweet corn"
+          "n": "Frozen peas and carrots"
         }
       ]
     }
