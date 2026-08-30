@@ -17,7 +17,7 @@ Copy everything below the line into a Claude chat to generate and publish this w
 
 You are planning one week of dinners for our household using this repo's Harvest meal engine. Work through these steps in order:
 
-1. **Read the rules first** — `data/diner-preferences.md` (hard dietary rules + validation checklist), `data/companion-preferences.md` (junk list), and `data/data_context.md` (Trader Joe's product guidance). The hard rules are non-negotiable: everything gluten-free; no fish/seafood, turkey, or tofu/tempeh; no lentils; no artichokes; no yogurt-based sauces; eggs never as a featured dinner protein; red meat at most once every 10 days; and every dinner must be familiar weeknight food (see the Familiarity Bar).
+1. **Read the rules first** — `data/diner-preferences.md` (hard dietary rules + validation checklist), `data/companion-preferences.md` (junk list), and `data/data_context.md` (Trader Joe's product guidance). The hard rules are non-negotiable: everything gluten-free; no fish/seafood, turkey, or tofu/tempeh; no lentils; no artichokes; no yogurt-based sauces; eggs never as a featured dinner protein; red meat at most once every 10 days; and every dinner must be familiar weeknight food (see the Familiarity Bar) — Midwest home cooking by default, with at most one Asian or Indian dinner a week (see the Familiarity Bar and Cuisine Profile).
 
 2. **Check history so we don't repeat ourselves.**
    - Look at the recent files in `data/mealplans/` (and, if the app is running, `curl -s http://localhost:3000/api/meals` for the library with `lastServedAt` and heart counts).
@@ -26,7 +26,7 @@ You are planning one week of dinners for our household using this repo's Harvest
 
 3. **Check what's current at Trader Joe's** — skim the [Fearless Flyer](https://www.traderjoes.com/home/ff) for new/seasonal gluten-free items worth working into a meal or the junk list. Verify any product you're not sure still exists.
 
-4. **Author the week** as `data/mealplans/mealplan-week-YYYY-MM-DD.md` (Monday date; scaffold with `npm run meal-plan -- new YYYY-MM-DD <dinners>` if helpful). Follow the JSON shape and rules from `data/meal-plan-skill.md`: the requested number of dinners, per-ingredient macros (with fiber) summing to meal macros, no duplicate base or engine across the week, varied cuisines, 450–550 kcal per serving, and a junk list covering all seven categories.
+4. **Author the week** as `data/mealplans/mealplan-week-YYYY-MM-DD.md` (Monday date; scaffold with `npm run meal-plan -- new YYYY-MM-DD <dinners>` if helpful). Follow the JSON shape and rules from `data/meal-plan-skill.md`: the requested number of dinners, per-ingredient macros (with fiber) summing to meal macros, no duplicate base or engine across the week, a Midwest-leaning cuisine mix (Asian + Indian ≤1 dinner combined), 450–550 kcal per serving, and a junk list covering all seven categories.
 
 5. **Validate and publish** (repo access required — otherwise hand the finished markdown to the human with these commands):
    ```bash
@@ -39,4 +39,4 @@ You are planning one week of dinners for our household using this repo's Harvest
 
 6. **Confirm** — tell me the week at a glance: each dinner's name, protein, and calories; which one (if any) is red meat; anything you swapped because of stock or gluten doubts; and remind me the app is at http://localhost:3000/menu.
 
-Keep the meal names appetizing (café-menu style), keep every engine a real, gluten-free Trader Joe's product, and when a label is uncertain, choose the safer swap.
+Keep the meal names plain and homemade-sounding ("Baked Chicken and Potatoes," not a café-menu title), keep every engine a real, gluten-free Trader Joe's product, and when a label is uncertain, choose the safer swap.

@@ -79,7 +79,9 @@ Vegetarian dinners are welcome when they fit the week — they also make the red
 
 **The test:** could you describe this dinner to a friend in three words and have them know exactly what it is? "Beef tacos." "Spaghetti and meat sauce." "BBQ chicken and potatoes." If it needs explaining, don't plan it.
 
-**Plan meals like these:** tacos, burrito bowls, fajitas, quesadillas, spaghetti with meat sauce, baked ziti-style GF pasta, chicken and broccoli stir-fry, fried rice, BBQ chicken with potatoes, sheet-pan chicken and veg, chicken and rice bowls, chili, loaded baked potatoes, curry over rice, Greek chicken bowls, grilled chicken with a starch and a vegetable.
+**Plan meals like these:** baked or roasted chicken with a starch and a vegetable, cheesy chicken and rice bake, chicken and noodle or wild rice soup, sloppy joes, chili, taco night, spaghetti and meatballs, baked ziti-style GF pasta, chicken sausage and peppers, BBQ chicken with potatoes, sheet-pan chicken and veg, loaded baked potatoes, grilled chicken with corn and slaw, quesadillas, burrito bowls, fajitas, chicken fried rice, chicken and broccoli stir-fry, curry over rice.
+
+**The Midwest test:** would this dinner look ordinary on a weeknight table in Ohio or Minnesota? Casseroles and bakes, a protein with two sides, sandwich night, taco night, and spaghetti night are the shape of the week. See "Cuisine Profile" for how often each profile shows up — Asian and Indian together get at most one night.
 
 **Do NOT plan:** ingredient-driven "concept" dishes, obscure or single-use pantry items, unusual vegetable-as-base swaps (spaghetti squash standing in for pasta, cauliflower rice as the main base), fancy composed plates, or anything whose appeal is that it's interesting. Prefer the boring-but-good version every time.
 
@@ -87,16 +89,34 @@ Vegetarian dinners are welcome when they fit the week — they also make the red
 
 ---
 
+## Meal Names (plain, not café-menu)
+
+Name the dinner the way you'd say it out loud when someone asks what's for dinner. **"Baked Chicken and Potatoes." "Sloppy Joes." "Taco Night." "Chicken and Rice Bake."**
+
+- **Do:** plain English, the protein and the main sides, "and" instead of "&" where it reads more naturally, at most one "with."
+- **Don't:** restaurant or café-menu language — no "bowls" that aren't bowls, no engine names in the title ("Chimichurri Chicken Thighs with Blistered Green Beans"), no adjective stacks ("smoky," "crispy," "loaded," "blistered," "charred," "herbed"), no em-dash subtitles.
+- **Rule of thumb:** if the name sounds like it came off a menu, rewrite it as what a person would text their spouse at 4pm.
+
+---
+
 ## Cuisine Profile
 
-Bold, globally inspired flavors. Rotate across these cuisines — don't repeat the same profile more than once per week.
+**Midwest home cooking is the default.** The week should read like dinners a family actually makes on a weeknight in the Midwest — baked chicken and potatoes, a cheesy chicken and rice bake, taco night, spaghetti, sloppy joes, chili, BBQ off the grill. Global flavors are seasoning on that foundation, not the foundation itself.
 
-- Thai / Southeast Asian (tamari or coconut aminos, never soy sauce)
-- Indian
-- Mediterranean / Middle Eastern
-- Mexican / Tex-Mex (corn tortillas make this a natural GF fit)
-- Chinese / Taiwanese (GF engines only)
-- American comfort with a twist
+**Asian and Indian dinners: at most 1 per week, combined.** Thai, Chinese, Vietnamese, and Indian dinners are welcome, but only one slot a week goes to that group — and when it does, pick the version that's already in the American weeknight rotation (chicken fried rice, chicken stir-fry, curry over rice), not a regional specialty. Some weeks have zero, and that's fine.
+
+Draw the rest of the week from these, in rough order of how often they should show up:
+
+| Profile | How often | Examples |
+|---|---|---|
+| **American / Midwest comfort** | The backbone — 2–3 dinners a week | Baked or roasted chicken with a starch and a vegetable, chicken and rice bake, sloppy joes, chili, meatloaf-style bakes (within the red-meat rule), soups and hotdishes, loaded baked potatoes |
+| **Mexican / Tex-Mex** | ~1 a week | Taco night, burrito bowls, quesadillas, fajitas, enchilada bakes |
+| **Italian-American** | ~1 a week | Spaghetti and meatballs, baked ziti-style GF pasta, chicken sausage and peppers, chicken parm-style bakes |
+| **BBQ / cookout** | Seasonal, ~1 a week in warm months | BBQ chicken, grilled chicken with corn, burgers (within the red-meat rule), potato salad and slaw sides |
+| **Asian or Indian** | **≤1 a week, combined** | Chicken fried rice, chicken and broccoli stir-fry, curry over rice |
+| **Mediterranean / Greek** | Occasional | Greek chicken with potatoes, chicken and rice bowls with feta |
+
+**American comfort is allowed to repeat within a week** — two roast-chicken-and-a-starch nights are fine as long as the protein cut, base, technique, and engine are all different. Only Asian/Indian is capped by count. What must not repeat is the *dish*: no two dinners that a person would describe the same way.
 
 **Flavor targets:** umami, heat, fresh herbs. Avoid bland proteins and boring builds.
 
@@ -152,14 +172,17 @@ Vary engines every meal. Check [traderjoes.com](https://www.traderjoes.com) and 
 - [ ] All meals 450–550 kcal per serving
 - [ ] Fiber shown on every meal card
 - [ ] ≤1–2 fully frozen entrées (GF only)
-- [ ] Cuisine profile varies within the week
+- [ ] **At most 1 Asian or Indian dinner in the week (combined)** — the rest are Midwest/American, Mexican/Tex-Mex, Italian-American, BBQ, or Mediterranean
+- [ ] The week reads like home cooking: no two dinners a person would describe the same way, and every name is plain (see Meal Names)
 
 ---
 
 ## Avoid
 
 - Bland proteins and watery salads
-- Repetitive weeks (same base, cuisine, or engines)
+- Repetitive weeks (same base, dish, or engines)
+- **More than one Asian or Indian dinner in a week** — that group gets one slot, and some weeks none
+- **Café-menu meal names** — see "Meal Names"
 - Product-catalogue meals that feel like a TJ's ad
 - "Gluten-free" meals with a glutenous engine hiding in the sauce
 - **Strange or fussy food** — obscure ingredients, concept dishes, vegetable-as-base substitutions. If it sounds clever, it's wrong.
