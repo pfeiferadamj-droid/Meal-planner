@@ -24,4 +24,14 @@ Step-by-step for the dinners in `mealplan-week-2026-08-31.md`.
 7. **Broil 2 minutes** for browned spots on top. Stay at the oven door — it goes from golden to burnt fast.
 8. **Rest 5 minutes** before serving. It sets up as it cools.
 
+### If you're starting with raw chicken
+
+`Trader Joe's Just Chicken` is pre-cooked — the recipe above just pulls it apart. To cook your own instead, buy **about 11 oz raw boneless skinless chicken thighs** (a 1 lb package is fine; thighs beat breast here because the bake's dry oven heat is forgiving on them) and swap steps 3 and 5:
+
+- **3a.** Cut the chicken into 3/4-inch cubes, pat them dry, and season with salt and pepper. Dry surface, brown crust — wet chicken steams.
+- **3b.** Heat an oven-safe skillet over medium-high with a teaspoon of oil. Add the cubes in a single layer and **leave them alone for 3 minutes** to brown, then toss and cook 3–4 minutes more until cooked through (165°F). Move them to a plate and **don't wipe the pan** — the browned bits are the best flavor in the dish.
+- **5a.** Build the bake right in that same skillet. Pour the broth in first and scrape the bottom with a wooden spoon to lift the browned bits, then stir in the rice, chicken, broccoli, Garlic Spread & Dip, half the cheddar, salt, and pepper. Top and bake as written.
+
+This adds about 10 minutes and no extra dishes if you use one oven-safe skillet for both jobs. Do the searing while the rice simmers and you'll finish around the same time. Thighs run roughly 40 calories per serving above the Just Chicken the meal card is built on; chicken breast is a near-exact macro match, but cut it a little larger and pull it the moment it hits 165°F so the oven time doesn't dry it out.
+
 **Notes:** The Garlic Spread & Dip is standing in for canned cream-of-something soup — it's much thicker, so the splash of broth in step 5 is what turns it into a sauce. Don't skip it. To keep this inside the weeknight window, use leftover rice or a microwave rice pouch and it's a 20-minute dinner. Leftovers reheat well with a tablespoon of water stirred in first. If you want a crunchy top, crush a handful of gluten-free crackers or corn chips over the cheese before it bakes.
